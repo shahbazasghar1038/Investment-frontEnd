@@ -137,7 +137,7 @@ export default function Dashboard() {
       </Toolbar>
       <Divider />
       <List onClick={handleDrawerToggle}>
-        <ListItemButton onClick={handleClick}>
+        {/* <ListItemButton onClick={handleClick}>
           <ListItemIcon>
             <DashboardIcon />
           </ListItemIcon>
@@ -146,9 +146,9 @@ export default function Dashboard() {
             primaryTypographyProps={{ variant: "subtitle2" }}
           />
           {open ? <ExpandLess /> : <ExpandMore />}
-        </ListItemButton>
+        </ListItemButton> */}
         {/* Collapsible sub-items */}
-        <Collapse in={open} timeout="auto" unmountOnExit>
+        {/* <Collapse in={open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
             <ListItemButton
               sx={{ pl: 4 }}
@@ -160,9 +160,9 @@ export default function Dashboard() {
                 primaryTypographyProps={{ variant: "subtitle2" }}
               />
             </ListItemButton>
-            {/* You can add more sub-items here */}
+            You can add more sub-items here
           </List>
-        </Collapse>
+        </Collapse> */}
         <ListItemButton component={Link} to="/dashboard">
           <ListItemIcon>
             <HomeIcon />
@@ -172,7 +172,7 @@ export default function Dashboard() {
             primaryTypographyProps={{ variant: "subtitle2" }}
           />
         </ListItemButton>
-        <ListItemButton component={Link} to="/dashboard/contract-list">
+        {/* <ListItemButton component={Link} to="/dashboard/contract-list">
           <ListItemIcon>
             <ArticleIcon />
           </ListItemIcon>
@@ -180,7 +180,7 @@ export default function Dashboard() {
             primary="Contracts"
             primaryTypographyProps={{ variant: "subtitle2" }}
           />
-        </ListItemButton>
+        </ListItemButton> */}
         <ListItemButton component={Link} to="/dashboard/teamlist">
           <ListItemIcon>
             <GroupsIcon />
@@ -190,7 +190,7 @@ export default function Dashboard() {
             primaryTypographyProps={{ variant: "subtitle2" }}
           />
         </ListItemButton>
-        <ListItemButton component={Link} to="/dashboard/branchlist">
+        {/* <ListItemButton component={Link} to="/dashboard/branchlist">
           <ListItemIcon>
             <AccountTreeIcon />
           </ListItemIcon>
@@ -198,9 +198,9 @@ export default function Dashboard() {
             primary="Branches"
             primaryTypographyProps={{ variant: "subtitle2" }}
           />
-        </ListItemButton>
+        </ListItemButton> */}
 
-        <ListItemButton component={Link} to="/dashboard/user-list">
+        {/* <ListItemButton component={Link} to="/dashboard/user-list">
           <ListItemIcon>
             <PersonIcon />
           </ListItemIcon>
@@ -208,8 +208,8 @@ export default function Dashboard() {
             primary="Users"
             primaryTypographyProps={{ variant: "subtitle2" }}
           />
-        </ListItemButton>
-        <ListItemButton component={Link} to="/dashboard/approval-list">
+        </ListItemButton> */}
+        {/* <ListItemButton component={Link} to="/dashboard/approval-list">
           <ListItemIcon>
             <HowToRegIcon />
           </ListItemIcon>
@@ -217,8 +217,8 @@ export default function Dashboard() {
             primary="Approvals"
             primaryTypographyProps={{ variant: "subtitle2" }}
           />
-        </ListItemButton>
-        <ListItemButton component={Link} to="/dashboard/category-list">
+        </ListItemButton> */}
+        {/* <ListItemButton component={Link} to="/dashboard/category-list">
           <ListItemIcon>
             <CategoryIcon />
           </ListItemIcon>
@@ -226,8 +226,8 @@ export default function Dashboard() {
             primary="Categories"
             primaryTypographyProps={{ variant: "subtitle2" }}
           />
-        </ListItemButton>
-        <ListItemButton component={Link} to="/dashboard/tags-list">
+        </ListItemButton> */}
+        {/* <ListItemButton component={Link} to="/dashboard/tags-list">
           <ListItemIcon>
             <LocalOfferIcon />
           </ListItemIcon>
@@ -235,8 +235,8 @@ export default function Dashboard() {
             primary="Tags"
             primaryTypographyProps={{ variant: "subtitle2" }}
           />
-        </ListItemButton>
-        <ListItemButton component={Link} to="/dashboard/clauses-list">
+        </ListItemButton> */}
+        {/* <ListItemButton component={Link} to="/dashboard/clauses-list">
           <ListItemIcon>
             <TaskIcon />
           </ListItemIcon>
@@ -244,9 +244,9 @@ export default function Dashboard() {
             primary="Clauses"
             primaryTypographyProps={{ variant: "subtitle2" }}
           />
-        </ListItemButton>
+        </ListItemButton> */}
 
-        <ListItemButton component={Link} to="/dashboard/folder-list">
+        {/* <ListItemButton component={Link} to="/dashboard/folder-list">
           <ListItemIcon>
             <FolderOpenIcon />
           </ListItemIcon>
@@ -254,9 +254,9 @@ export default function Dashboard() {
             primary="Folders"
             primaryTypographyProps={{ variant: "subtitle2" }}
           />
-        </ListItemButton>
+        </ListItemButton> */}
 
-        <ListItemButton component={Link} to="/dashboard/template-list">
+        {/* <ListItemButton component={Link} to="/dashboard/template-list">
           <ListItemIcon>
             <DescriptionIcon />
           </ListItemIcon>
@@ -264,7 +264,7 @@ export default function Dashboard() {
             primary="Templates"
             primaryTypographyProps={{ variant: "subtitle2" }}
           />
-        </ListItemButton>
+        </ListItemButton> */}
 
         {/* Deposit history  */}
         <ListItemButton component={Link} to="/dashboard/deposit-list">
@@ -288,7 +288,7 @@ export default function Dashboard() {
           />
         </ListItemButton>
 
-        <ListItemButton component={Link} to="/dashboard/feild-list">
+        {/* <ListItemButton component={Link} to="/dashboard/feild-list">
           <ListItemIcon>
             <InputIcon />
           </ListItemIcon>
@@ -296,7 +296,7 @@ export default function Dashboard() {
             primary="Custom Fields"
             primaryTypographyProps={{ variant: "subtitle2" }}
           />
-        </ListItemButton>
+        </ListItemButton> */}
         <ListItemButton component={Link} to="/dashboard/update-compony">
           <ListItemIcon>
             {/* <BusinessIcon /> */}

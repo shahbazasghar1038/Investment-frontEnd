@@ -59,13 +59,12 @@ const defaultColumns: any[] = [
     flex: 0.2,
     field: "name",
     minWidth: 230,
-    headerName: "Team Name",
+    headerName: "Name",
     renderCell: ({ row }: any) => {
       const { name } = row;
 
       return (
-        <Box sx={{ display: "flex", alignItems: "center" }}>
-          {/* <Img src={logo} /> */}
+        <Box sx={{ display: "flex", alignItems: "center" }}> 
           <Box sx={{ display: "flex", flexDirection: "column" }}>
             <Typography sx={{ color: "text.secondary" }}>{name}</Typography>
           </Box>
@@ -76,12 +75,12 @@ const defaultColumns: any[] = [
   {
     flex: 0.2,
     minWidth: 230,
-    field: "managerFirstName",
-    headerName: "Admin Name ",
+    field: "email",
+    headerName: "Email ",
     sortable: true,
     renderCell: (params: any) => (
       <Typography sx={{ color: "text.secondary" }}>
-        {params.row.manager ? params.row.manager.firstName : "-"}
+        {params?.email}
       </Typography>
     ),
   },
@@ -98,9 +97,7 @@ const defaultColumns: any[] = [
           variant="outlined"
           label={
             row.status === "Active"
-              ? "Active"
-              : row.status === "Archived"
-              ? "Archived"
+              ? "Active" 
               : "Inactive"
           }
           sx={{
@@ -108,120 +105,52 @@ const defaultColumns: any[] = [
             // fontWeight: "bold",
             backgroundColor:
               row.status === "Active"
-                ? "#D3FDE4"
-                : row.status === "Archived"
-                ? "#FFF7CB"
+                ? "#D3FDE4" 
                 : "#FFCBCB",
             color:
               row.status === "Active"
-                ? "#3F9748"
-                : row.status === "Archived"
-                ? "#D32F2F"
+                ? "#3F9748" 
                 : "#red",
             borderColor:
               row.status === "Active"
-                ? "#D3FDE4"
-                : row.status === "Archived"
-                ? "#FFF7CB"
+                ? "#D3FDE4" 
                 : "#FFCBCB", // Optional: to match border color with background
             "& .MuiChip-label": {
               // This targets the label inside the chip for more specific styling
               color:
                 row.status === "Active"
-                  ? "#3F9748"
-                  : row.status === "Archived"
-                  ? "#D36A2F"
+                  ? "#3F9748" 
                   : "#D32F2F",
             },
           }}
         />
       </>
     ),
-  },
-  // {
-  //   flex: 0.2,
-  //   minWidth: 125,
-  //   field: "status",
-  //   headerName: "Status",
-  //   renderCell: ({ row }: { row: any }) => (
-  //     <>
-  //       <Chip
-  //         size="small"
-  //         variant="outlined"
-  //         label={
-  //           row.status === "active"
-  //             ? "Active"
-  //             : row.status === "archived"
-  //             ? "Archived"
-  //             : "Inactive"
-  //         }
-  //         sx={{
-  //           backgroundColor:
-  //             row.status === "active"
-  //               ? "#D3FDE4"
-  //               : row.status === "archived"
-  //               ? "#FFF7CB"
-  //               : "#D32F2F",
-  //           color:
-  //             row.status === "active"
-  //               ? "#3F9748"
-  //               : row.status === "archived"
-  //               ? "#D36A2F"
-  //               : "#FFCBCB",
-  //           borderColor:
-  //             row.status === "active"
-  //               ? "#D3FDE4"
-  //               : row.status === "archived"
-  //               ? "#FFF7CB"
-  //               : "#D32F2F", // Optional: to match border color with background
-  //           "& .MuiChip-label": {
-  //             // This targets the label inside the chip for more specific styling
-  //             color:
-  //               row.status === true
-  //                 ? "#3F9748"
-  //                 : row.status === "archived"
-  //                 ? "#D36A2F"
-  //                 : "#FFCBCB",
-  //           },
-  //         }}
-  //       />
-  //     </>
-  //   ),
-  // },
+  }, 
   {
     flex: 0.3,
     minWidth: 125,
-    field: "members",
-    headerName: "No. of Users ",
+    field: "amount",
+    headerName: "Amount ",
     renderCell: ({ row }: { row: any }) => {
-      const { members } = row;
+      const { amount } = row;
       return (
-        <Typography sx={{ color: "text.secondary" }}>{members}</Typography>
+        <Typography sx={{ color: "text.secondary" }}>{amount}</Typography>
       );
     },
   },
   {
     flex: 0.3,
-    minWidth: 120,
-    field: "ctive Contracts ",
-    headerName: "Active Contracts",
-
-    renderCell: ({ row }: { row: RowType }) => {
-      return <Typography sx={{ color: "text.secondary" }}>{"10"}</Typography>;
-    },
-  },
-  {
-    flex: 0.3,
-    minWidth: 120,
-    field: "Annual value",
-    headerName: "Annual Value",
-    // headerAlign: "center",
-    renderCell: ({ row }: { row: RowType }) => {
+    minWidth: 125,
+    field: "date",
+    headerName: "Data ",
+    renderCell: ({ row }: { row: any }) => {
+      const { date } = row;
       return (
-        <Typography sx={{ color: "text.secondary" }}>{"NZD150"}</Typography>
+        <Typography sx={{ color: "text.secondary" }}>{date}</Typography>
       );
     },
-  },
+  }, 
 ];
 
 const BranchList = () => {
@@ -344,121 +273,15 @@ const BranchList = () => {
 
   const columns: GridColDef[] = [
     ...defaultColumns,
-    {
-      flex: 0.02,
-      minWidth: 100,
-      sortable: false,
-      field: "actions",
-      headerName: "Actions",
-      headerAlign: "center",
-      renderCell: ({ row }: CellType) => (
-        <div>
-          <IconButton
-            aria-label="more"
-            aria-controls="long-menu"
-            aria-haspopup="true"
-            onClick={(e: any) => handleClick(e, row)} // Pass the current row here
-          >
-            <MoreVertIcon />
-          </IconButton>
-          <Menu
-            id="long-menu"
-            anchorEl={menuState.anchorEl}
-            open={Boolean(menuState.anchorEl)}
-            onClose={handleClose}
-            PaperProps={{
-              style: {
-                maxHeight: ITEM_HEIGHT * 4.5,
-                width: "20ch",
-              },
-            }}
-          >
-            <MenuItem
-              onClick={() => {
-                handleClose();
-                navigate(`/dashboard/Team-edit/${menuState.row?._id}`); // Use menuState.row._id
-              }}
-            >
-              Edit
-            </MenuItem>
-            <MenuItem
-              onClick={() => {
-                handleClose();
-                handleArchive(menuState.row?._id); // Use menuState.row._id
-              }}
-            >
-              Archive
-            </MenuItem>
-            <MenuItem
-              onClick={() => {
-                handleDelete(menuState.row?._id); // Use menuState.row._id
-                handleClose();
-              }}
-            >
-              Delete
-            </MenuItem>
-          </Menu>
-        </div>
-      ),
-    },
+     
   ];
 
   return (
     <>
       <Grid container spacing={6}>
         <Grid item xs={12}>
-          <CardHeader title="Teams" />
-          <Breadcrumbs
-            aria-label="breadcrumb"
-            sx={{ pl: 2.2, mt: -2, mb: 2, fontSize: "13px" }}
-          >
-            <Link to="/dashboard/teamlist" className="link-no-underline">
-              Home
-            </Link>
-            {/* <Typography color="text.primary">Categories</Typography> */}
-          </Breadcrumbs>
-          <Card>
-            <Box
-              sx={{
-                pl: 3,
-                p: 2,
-                pr: 3,
-                width: "100%",
-                display: "flex",
-                flexDirection: { xs: "column", sm: "row" }, // Responsive flex direction
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
-            >
-              <Box
-                sx={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  alignItems: "center",
-                  mb: { xs: 2, sm: 0 }, // Margin bottom on xs screens
-                  width: { xs: "100%", sm: "auto" }, // Full width on xs screens
-                }}
-              >
-                <TextField
-                  size="small"
-                  value={search}
-                  placeholder="Search"
-                  onChange={(e) => setSearch(e.target.value)}
-                  sx={{ minWidth: "150px", flexGrow: { xs: 1, sm: 0 } }} // TextField takes available space on xs screens
-                />
-              </Box>
-
-              <Button
-                sx={{ textTransform: "none", width: "fit-content" }} // Button width to fit its content
-                variant="contained"
-                component={Link}
-                to="/dashboard/create-team"
-              >
-                <AddIcon /> Create Team
-              </Button>
-            </Box>
-          </Card>
-        </Grid>
+          <CardHeader title="Teams"  className="text-white" />
+          </Grid>
 
         <Grid item xs={12}>
           <Card>
