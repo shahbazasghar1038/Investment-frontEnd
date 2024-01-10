@@ -64,7 +64,7 @@ const defaultColumns: any[] = [
       const { name } = row;
 
       return (
-        <Box sx={{ display: "flex", alignItems: "center" }}> 
+        <Box sx={{ display: "flex", alignItems: "center" }}>
           <Box sx={{ display: "flex", flexDirection: "column" }}>
             <Typography sx={{ color: "text.secondary" }}>{name}</Typography>
           </Box>
@@ -97,7 +97,7 @@ const defaultColumns: any[] = [
           variant="outlined"
           label={
             row.status === "Active"
-              ? "Active" 
+              ? "Active"
               : "Inactive"
           }
           sx={{
@@ -105,28 +105,28 @@ const defaultColumns: any[] = [
             // fontWeight: "bold",
             backgroundColor:
               row.status === "Active"
-                ? "#D3FDE4" 
+                ? "#D3FDE4"
                 : "#FFCBCB",
             color:
               row.status === "Active"
-                ? "#3F9748" 
+                ? "#3F9748"
                 : "#red",
             borderColor:
               row.status === "Active"
-                ? "#D3FDE4" 
+                ? "#D3FDE4"
                 : "#FFCBCB", // Optional: to match border color with background
             "& .MuiChip-label": {
               // This targets the label inside the chip for more specific styling
               color:
                 row.status === "Active"
-                  ? "#3F9748" 
+                  ? "#3F9748"
                   : "#D32F2F",
             },
           }}
         />
       </>
     ),
-  }, 
+  },
   {
     flex: 0.3,
     minWidth: 125,
@@ -150,7 +150,7 @@ const defaultColumns: any[] = [
         <Typography sx={{ color: "text.secondary" }}>{date}</Typography>
       );
     },
-  }, 
+  },
 ];
 
 const BranchList = () => {
@@ -273,15 +273,30 @@ const BranchList = () => {
 
   const columns: GridColDef[] = [
     ...defaultColumns,
-     
+
   ];
 
   return (
     <>
       <Grid container spacing={6}>
         <Grid item xs={12}>
-          <CardHeader title="Teams"  className="text-white" />
-          </Grid>
+          <CardHeader title="Teams" className="text-white" />
+        </Grid>
+
+        <Grid item xs={12}>
+          <div>
+            <p className="font-bold text-[16px] md:text-[22px] text-white text-left"> Invite Friends</p>
+            <div className="my-4 space-y-3 w-[50%]   ">
+               
+                <div className="flex items-center justify-between p-3 text-xs font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow">
+
+                  <span className="   whitespace-nowrap">www.gwmining.com/user/913687546</span>
+                  <span className="inline-flex items-center justify-center px-2 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded cursor-pointer">Copy</span>
+                </div>
+               
+            </div>
+          </div>
+        </Grid>
 
         <Grid item xs={12}>
           <Card>
@@ -308,7 +323,7 @@ const BranchList = () => {
                 <ProgressCircularCustomization />
               </Box>
             ) : (
-              <Box sx={{ maxHeight: 510, width: "100%", overflow: "auto" }}>
+              <Box sx={{ maxHeight: 510, display: "table", tableLayout: "fixed" ,  width: "100%"  }}>
                 <DataGrid
                   style={{ paddingLeft: "10px", paddingRight: "10px" }}
                   pagination
@@ -323,7 +338,7 @@ const BranchList = () => {
                     setSelectedRows(rows)
                   }
                   getRowId={(row: any) => row._id}
-                  // disableColumnMenu
+                // disableColumnMenu
                 />
               </Box>
             )}

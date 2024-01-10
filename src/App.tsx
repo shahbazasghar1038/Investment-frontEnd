@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import LoginPage from "@/pages/LoginPage";
 // import Sidebar from "@/pages/SideBar";
 import CustomerProfile from "@/pages/CustomerProfile";
@@ -13,26 +13,34 @@ import Dashboard from "@/pages/Dashboard";
 import { AuthProvider } from "@/context/AuthContext";
 import Packages from "./pages/Packages";
 import Nav from "./pages/Nav-Footer/Nav";
+import AuthRouts from "./Routs/AuthRouts";
+import GuestRouts from "./Routs/GuestRouts";
+import PublicRouts from "./Routs/PublicRouts";
+import { useEffect } from "react";
 function App() {
+  const userString: string | null = localStorage.getItem("user");
+  let user: any;
+
+  if (userString) {
+    user = JSON.parse(userString);
+  } else {
+    console.log("User data not found in localStorage");
+  }
+
+
   return (
     <>
       <AuthProvider>
         <Toaster position="top-center" reverseOrder={false} />
         <BrowserRouter>
-          {/* <Sidebar /> */}
-          <Nav/>
-          <Routes>
-          <Route path="/" element={<Lander />} />
-          <Route path="/plans" element={<Packages />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/signup" element={<SignupPage />} />
-            <Route path="customerprofile" element={<CustomerProfile />} />
-            <Route path="emailvarfication" element={<EmailVarfication />} />
-            <Route path="componydetails" element={<ComponyDetails />} />
-            <Route path="forgotpassword" element={<ForgotPassword />} />
-            <Route path="resetpassword" element={<ResetPassword />} />
-            <Route path="dashboard/*" element={<Dashboard />} />
-          </Routes>
+        <Nav />
+      {user ?
+              <AuthRouts />
+          :
+         
+            <GuestRouts />
+      }
+        <PublicRouts />
         </BrowserRouter>
       </AuthProvider>
     </>

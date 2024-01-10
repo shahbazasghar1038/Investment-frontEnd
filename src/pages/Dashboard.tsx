@@ -90,6 +90,8 @@ import TinyDahsbord from "@/pages/dasboard/contract/sdk/TinyDahsbord";
 import CustomTextEditor from "@/pages/dasboard/contract/sdk/CustomTextEditor";
 import DepositList from "./dasboard/depositHistory/DepositList";
 import WithdrawList from "./dasboard/withdrawHistory/WithdrawList";
+import Notification from "./dasboard/notification/Notification";
+import WithdrawRequest from "./dasboard/withdrawRequest/WithdrawRequest";
 // Usage: <ArticleIcon />
 
 // Usage: <AssignmentIcon />
@@ -269,7 +271,7 @@ export default function Dashboard() {
         {/* Deposit history  */}
         <ListItemButton component={Link} to="/dashboard/deposit-list">
           <ListItemIcon>
-            <DescriptionIcon />
+          <InputIcon />
           </ListItemIcon>
           <ListItemText
             primary="Deposit History"
@@ -300,10 +302,32 @@ export default function Dashboard() {
         <ListItemButton component={Link} to="/dashboard/update-compony">
           <ListItemIcon>
             {/* <BusinessIcon /> */}
-            <DescriptionIcon />
+            <TaskIcon />
           </ListItemIcon>
           <ListItemText
             primary="Deposit Request"
+            primaryTypographyProps={{ variant: "subtitle2" }}
+          />
+        </ListItemButton>
+
+        <ListItemButton component={Link} to="/dashboard/withdraw-request">
+          <ListItemIcon>
+            {/* <BusinessIcon /> */}
+            <CategoryIcon />
+          </ListItemIcon>
+          <ListItemText
+            primary="Withdraw Request"
+            primaryTypographyProps={{ variant: "subtitle2" }}
+          />
+        </ListItemButton>
+
+        <ListItemButton component={Link} to="/dashboard/notification">
+          <ListItemIcon>
+            {/* <BusinessIcon /> */}
+            <NotificationsIcon />
+          </ListItemIcon>
+          <ListItemText
+            primary="Notifications"
             primaryTypographyProps={{ variant: "subtitle2" }}
           />
         </ListItemButton>
@@ -449,7 +473,9 @@ export default function Dashboard() {
         <Toolbar />
         {/* routes  */}
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage />} /> 
+          <Route path="/withdraw-request" element={<WithdrawRequest />} />
+          <Route path="/notification" element={<Notification />} />
           <Route path="/teamlist" element={<TeamsList />} />
           <Route path="/create-team" element={<CreateTeam />} />
           <Route path="/team-edit/:id" element={<UpdateTeam />} />

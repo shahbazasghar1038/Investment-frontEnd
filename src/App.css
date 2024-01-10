@@ -55,6 +55,11 @@
 /* template css 
  */
 
+.light-green{
+  color: #00ffeb !important;
+  font-weight: 600 !important;
+}
+
  *{
   margin: 0;
   padding: 0;
@@ -1002,7 +1007,7 @@ ul, ol {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: 700px;
+  min-height: 510px;
   background-image: url('./img/bg-img/header2.html');
 }
 
@@ -5742,7 +5747,7 @@ input#checkboxLabel:checked ~ .box span{
 
   .hero-section img{
     margin-top: 64px;
-    margin-left: -96px;
+    /* margin-left: -96px; */
     max-width: 170%;
   }
 

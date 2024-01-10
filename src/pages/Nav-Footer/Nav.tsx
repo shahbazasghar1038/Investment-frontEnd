@@ -3,6 +3,17 @@ import { Link } from 'react-router-dom'
 
 import logo from '../../img/core-img/logo.png'
 const Nav = () => {
+
+// Retrieve user data from localStorage
+const userString: string | null = localStorage.getItem("user");
+let user: any;
+ 
+if (userString) { 
+  user = JSON.parse(userString);  
+} else {
+  console.log("User data not found in localStorage");
+}
+ 
   return (
     <div>
           <nav className="relative px-4 py-4 flex justify-between items-center">
@@ -44,8 +55,14 @@ const Nav = () => {
 			</li>
 			<li><a className="text-sm text-white hover:text-gray-200" href="#contact">Support</a></li>
 		</ul>
+		{user ? 
+		<Link className="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" to="/dashboard">Dashboard</Link>
+		:
+		<>
 		<Link className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200" to='/login'>Sign In</Link>
 		<Link className="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" to="/signup">Sign up</Link>
+		</>
+		}
 	</nav>
     
 	<div className="navbar-menu relative z-50 hidden">

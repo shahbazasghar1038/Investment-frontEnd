@@ -451,7 +451,7 @@ const WithdrawList = () => {
                 <ProgressCircularCustomization />
               </Box>
             ) : (
-              <Box sx={{ maxHeight: 500, width: "100%", overflow: "auto" }}>
+              <Box sx={{ maxHeight: 500, display: "table", tableLayout: "fixed" ,  width: "100%" }}>
                 <DataGrid
                   style={{ paddingLeft: "10px", paddingRight: "10px" }}
                   autoHeight

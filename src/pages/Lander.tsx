@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from '../img/core-img/logo.png'
-import platform1 from '../img/core-img/platform1.png'
-import about1 from '../img/core-img/about-1.png'
+import platform1 from '../img/core-img/platform.png'
+import about1 from '../img/core-img/platform3.png'
 import tradingStroke from "../img/svg/trading-strokes.svg"
 import joinBottom from '../img/svg/joinBottom.svg'
 import part1 from '../img/ico-platforms/1.png'
@@ -20,7 +20,7 @@ import feature7 from "../img/features/feature-7.svg"
 import feature8 from "../img/features/feature-8.svg"
 import part7 from "../img/core-img/platform.png"
 import rings from "../img/core-img/rings.png"
-import whitepaper from "../img/core-img/whitepaper.png"
+import whitepaper from "../img/core-img/whitepaper2.png"
 import sectionIcon from "../img/svg/section-icon-11.svg"
 import distribution from "../img/core-img/distribution.png"
 
@@ -32,7 +32,7 @@ import f4 from "../img/features/f4.svg"
 import f5 from "../img/features/f5.svg"
 import f6 from "../img/features/f6.svg"
 
-import faq from "../img/svg/faq.svg"
+import faq from "../img/svg/faq3.png"
 import team1 from "../img/team-img/1.png"
 import team2 from "../img/team-img/2.png"
 import team3 from "../img/team-img/3.png"
@@ -56,7 +56,7 @@ const Lander = () => {
 
 
     {/* <!-- ##### Welcome Area Start ##### --> */}
-    <section className="hero-section moving v2 section-padding" id="home">
+    <section className="hero-section moving   section-padding" id="home">
         <div className="moving-bg"></div>
         {/* <!-- Hero Content --> */}
         <div className="hero-section-content">
@@ -67,18 +67,18 @@ const Lander = () => {
                     <div className="w-full lg:w-2/5 pr-4 pl-4 md:w-full pr-4 pl-4">
                         <div className="welcome-content">
                             <div className="promo-section">
-                                <h3 className="special-head dark">Creative landing page template</h3>
+                                <h3 className="special-head dark text-left">Unlock Digital Wealth with GW MINING </h3>
                             </div>
-                            <h1>Decenteralized Crypto Trading Platform </h1>
-                            <p className="w-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet dolorem blanditiis ad perferendis, labore delectus dolor sit amet, adipisicing elit. Eveniet.</p>
-                            <div className="dream-btn-group">
-                                <a href="#" className="more-btn mr-3">Whitepaper</a>
-                                <a href="#" className="more-btn mt-xx-15">Buy Token</a>
+                            <h1 className='light-green text-left'>Empower Your Finances through Innovative Crypto Mining Solutions </h1>
+                            <p className="w-text text-left">Elevate your finances with cutting-edge Bitcoin mining. Join [Your Platform Name] for secure, transparent, and profitable opportunities. Start your journey to financial freedom today.</p>
+                            <div className="dream-btn-group flex justify-start">
+                                <Link to="plans" className="more-btn mr-3">Get started</Link>
+                                <Link to="plans" className="more-btn mt-xx-15">Buy Plan</Link>
                             </div>
                         </div>
                     </div>
                     <div className="lg:w-1/2 pr-4 pl-4">
-                        <div className="dotted mt-30" >
+                        <div className="dotted   flex justify-center items-center" >
                             <img draggable="false" src={platform1} alt=""/>
                         </div>
                     </div>
@@ -105,9 +105,9 @@ const Lander = () => {
                         <div className="dream-dots text-left fadeInUp" data-wow-delay="0.2s" >
                             <span className="gradient-text ">Decentralized Trading Platform</span>
                         </div>
-                        <h4 className="fadeInUp" data-wow-delay="0.3s">Connect blockchain to the real world and start crypto tading.</h4>
-                        <p className="fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at dictum risus, non suscipit arcu. Quisque aliquam posuere tortor, sit amet convallis nunc scelerisque in.</p>
-                        <p className="fadeInUp" data-wow-delay="0.5s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit ipsa ut quasi adipisci voluptates, voluptatibus aliquid alias beatae reprehenderit incidunt iusto laboriosam.</p>
+                        <h4 className="fadeInUp  light-green" data-wow-delay="0.3s">Connect blockchain to the real world and start crypto tading.</h4>
+                        <p className="fadeInUp" data-wow-delay="0.4s">Dive into the future of wealth creation with GW MINING. Invest in Bitcoin mining effortlessly, and amplify your gains by referring friends. Experience daily profits, secure transactions, and a user-friendly interface. Start mining and sharing the prosperity today!</p>
+                        <p className="fadeInUp" data-wow-delay="0.5s"> Stay ahead of market trends, diversify your portfolio, and experience the true potential of blockchain in real-world applications. Join us in revolutionizing the way you connect, trade, and thrive in the ever-evolving landscape of digital assets. Start your crypto trading adventure with GW MINING.</p>
                         <a className="more-btn mt-30" href="#">Read More</a>
                     </div>
                 </div>
@@ -121,17 +121,17 @@ const Lander = () => {
     <section className="join-us section-padding-0-100 clearfix">
         <div className="container mx-auto sm:px-4">
             
-            <div className="section-heading text-center hidden-lg">
+            <div className="section-heading text-center ">
                 {/* <!-- Dream Dots --> */}
                 <div className="dream-dots justify-center fadeInUp" data-wow-delay="0.2s">
                     <span>Our Services</span>
                 </div>
-                <h2 className="fadeInUp" data-wow-delay="0.3s">What we speciaized in</h2>
+                <h2 className="fadeInUp light-green" data-wow-delay="0.3s">How it works</h2>
                 <p className="fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
             </div>
                 
 
-            <div className="flex flex-wrap  dark-row pt-60">
+            <div className="flex flex-wrap  dark-row pt-12">
                 <div className="w-full md:w-1/2 pr-4 pl-4 lg:w-1/3 pr-4 pl-4">
                     <div className="contribution-c-wapper has-arrow-right-lg has-arrow-top-md has-arrow-right-md has-arrow-down-sm">
                         {/* <!-- Content --> */}
@@ -140,8 +140,8 @@ const Lander = () => {
                             <div className="cycle_icon">
                                 <span className="gradient-t orange">1</span>
                             </div>
-                            <h6>Creative Chart Modules</h6>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla neque quam, maxi ut accumsan ut, posuere sit Lorem ipsum quam, maximus ut accumsan.</p>
+                            <h6 className='light-green'>Sign Up Platform</h6>
+                            <p>Join our platform in minutes. Unlock exclusive benefits and access advanced features. Your gateway to a seamless and rewarding crypto journey.</p>
                         </div>
                     </div>
                 </div>
@@ -152,8 +152,8 @@ const Lander = () => {
                             <div className="cycle_icon">
                                 <span className="gradient-t pink">2</span>
                             </div>
-                            <h6>Adaptive Social Assistant</h6>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla neque quam, maxi ut accumsan ut, posuere sit Lorem ipsum quam, maximus ut accumsan.</p>
+                            <h6 className='light-green'>Buy Plan</h6>
+                            <p>Explore tailored investment plans. Choose the perfect package to kickstart your mining journey. Invest securely and watch your earnings grow.</p>
                         </div>
                     </div>
                 </div>
@@ -164,8 +164,8 @@ const Lander = () => {
                             <div className="cycle_icon">
                                 <span className="gradient-t blue">3</span>
                             </div>
-                            <h6>Ecommerce Embedded</h6>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla neque quam, maxi ut accumsan ut, posuere sit Lorem ipsum quam, maximus ut accumsan.</p>
+                            <h6 className='light-green'>Start Earning</h6>
+                            <p>Dive into daily profits. Witness the power of automated mining. Your earnings, your way. It's time to turn your investment into a consistent income stream.</p>
                         </div>
                     </div>
                 </div>
@@ -177,7 +177,7 @@ const Lander = () => {
                     <div className="dream-dots justify-center fadeInUp" data-wow-delay="0.2s">
                         <span>Join us</span>
                     </div>
-                    <h2 className="text-3xl" data-wow-delay="0.3s">Contribution Cycle</h2>
+                    <h2 className="text-3xl light-green" data-wow-delay="0.3s">Contribution Cycle</h2>
                 </div>
                 <div className="lg:w-1/3 pr-4 pl-4 md:w-1/4 hidden-md hidden-sm hidden-xs text-center">
                     <img draggable="false" src={joinBottom} className="arrow-img w-full" alt=""/>
@@ -191,8 +191,8 @@ const Lander = () => {
                             <div className="cycle_icon">
                                 <span className="gradient-t green">6</span>
                             </div>
-                            <h6>Creative Chart Modules</h6>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla neque quam, maxi ut accumsan ut, posuere sit Lorem ipsum quam, maximus ut accumsan.</p>
+                            <h6 className='light-green'>Invite Friends</h6>
+                            <p>Share the wealth! Invite friends to join and earn together. Unlock bonuses and watch your network grow. It's not just mining; it's a community of prosperity.</p>
                         </div>
                     </div>
                 </div>
@@ -203,8 +203,8 @@ const Lander = () => {
                             <div className="cycle_icon">
                                 <span className="gradient-t green">5</span>
                             </div>
-                            <h6>Adaptive Social Assistant</h6>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla neque quam, maxi ut accumsan ut, posuere sit Lorem ipsum quam, maximus ut accumsan.</p>
+                            <h6 className='light-green'>Deposit Money</h6>
+                            <p>Fund your success. Effortlessly deposit money into your account. Seamless transactions and instant access to the world of crypto mining. Your journey, your investment.</p>
                         </div>
                     </div>
                 </div>
@@ -215,8 +215,15 @@ const Lander = () => {
                             <div className="cycle_icon">
                                 <span className="gradient-t pink">4</span>
                             </div>
-                            <h6>Ecommerce Embedded</h6>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla neque quam, maxi ut accumsan ut, posuere sit Lorem ipsum quam, maximus ut accumsan.</p>
+                            <h6 className='light-green'>Withdraw Money</h6>
+                            <p>Harvest your profits. Withdraw your earnings hassle-free. Enjoy quick and secure transactions. Your hard-earned gains are just a click away. Welcome to financial freedom.
+
+
+
+
+
+
+</p>
                         </div>
                     </div>
                 </div>
@@ -235,11 +242,11 @@ const Lander = () => {
                 <div className="w-full lg:w-1/2 pr-4 pl-4 offset-lg-0">
                     <div className="who-we-contant">
                         <div className="dream-dots text-left fadeInUp" data-wow-delay="0.2s">
-                            <span className="gradient-text ">Decentralized Trading Platform</span>
+                            <span className="gradient-text ">Invest with Confidence</span>
                         </div>
-                        <h4 className="fadeInUp" data-wow-delay="0.3s">Connect blockchain to the real world and start crypto tading.</h4>
-                        <p className="fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at dictum risus, non suscipit arcu. Quisque aliquam posuere tortor, sit amet convallis nunc scelerisque in.</p>
-                        <p className="fadeInUp" data-wow-delay="0.5s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit ipsa ut quasi adipisci voluptates, voluptatibus aliquid alias beatae reprehenderit incidunt iusto laboriosam.</p>
+                        <h4 className="fadeInUp light-green" data-wow-delay="0.3s">Build Your Network, Multiply Your Gains.</h4>
+                        <p className="fadeInUp" data-wow-delay="0.4s">Dive into secure cryptocurrency mining, ensuring a steady and reliable return on your investment. Our platform combines financial growth with peace of mind, providing a seamless and rewarding experience for every investor.</p>
+                        <p className="fadeInUp" data-wow-delay="0.5s">Experience hassle-free financial transactions on our platform. Securely deposit funds to start your mining journey and withdraw your profits with ease whenever you desire. Your financial transactions, simplified and secure.</p>
                         <a className="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline more-btn mt-30 fadeInUp" data-wow-delay="0.6s" href="#">Read More</a>
                     </div>
                 </div>
@@ -262,8 +269,8 @@ const Lander = () => {
             <div className="dream-dots justify-center wow fadeInUp" data-wow-delay="0.2s">
                 <span>ICO Rating</span>
             </div>
-            <h2 className="wow fadeInUp" data-wow-delay="0.3s">We are trusted</h2>
-            <p className="wow fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
+            <h2 className="wow fadeInUp light-green" data-wow-delay="0.3s">We are trusted</h2>
+            <p className="wow fadeInUp" data-wow-delay="0.4s">Explore success with industry leaders. These trusted partnerships amplify our commitment to excellence and innovation in cryptocurrency mining.</p>
         </div>
         <div className="container mx-auto sm:px-4">
             <div className="flex flex-wrap ">
@@ -362,8 +369,11 @@ const Lander = () => {
                 <div className="dream-dots justify-center fadeInUp" data-wow-delay="0.2s">
                     <span>Why choose us</span>
                 </div>
-                <h2 className="fadeInUp" data-wow-delay="0.3s">Our Main Features</h2>
-                <p className="fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
+                <h2 className="fadeInUp light-green" data-wow-delay="0.3s">Our Main Features</h2>
+                <p className="fadeInUp" data-wow-delay="0.4s">Your Gateway to Prosperity. Explore unparalleled security, cutting-edge technology, and approach for a rewarding cryptocurrency mining experience.
+
+
+</p>
             </div>
                 
 
@@ -375,8 +385,8 @@ const Lander = () => {
                         <div className="service_icon">
                             <img draggable="false" src={feature1} alt=""/>
                         </div>
-                        <h6>Instant settlement</h6>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla neque quam, maxi ut accumsan ut, posuere sit Lorem ipsu.</p>
+                        <h6 className='light-green'>Instant settlement</h6>
+                        <p>Swiftly access your earnings with our instant settlement feature, ensuring your profits are readily available when you need them.</p>
                     </div>
                 </div>
                 <div className="w-full md:w-1/2 pr-4 pl-4 lg:w-1/4 pr-4 pl-4">
@@ -386,8 +396,8 @@ const Lander = () => {
                         <div className="service_icon">
                             <img draggable="false" src={feature2} alt=""/>
                         </div>
-                        <h6>Flexibility</h6>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla neque quam, maxi ut accumsan ut, posuere sit Lorem ipsu.</p>
+                        <h6 className='light-green'>Flexibility</h6>
+                        <p>Tailor your investment strategy with flexible options, adapting to your financial goals and preferences seamlessly for maximum convenience.</p>
                     </div>
                 </div>
                 <div className="w-full md:w-1/2 pr-4 pl-4 lg:w-1/4 pr-4 pl-4">
@@ -397,8 +407,8 @@ const Lander = () => {
                         <div className="service_icon">
                             <img draggable="false" src={feature3} alt=""/>
                         </div>
-                        <h6>Blockchain technology</h6>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla neque quam, maxi ut accumsan ut, posuere sit Lorem ipsu.</p>
+                        <h6 className='light-green'>Blockchain technology</h6>
+                        <p>Harness the power of blockchain for secure, transparent, and efficient transactions, guaranteeing the integrity of your mining experience.</p>
                     </div>
                 </div>
                 <div className="w-full md:w-1/2 pr-4 pl-4 lg:w-1/4 pr-4 pl-4">
@@ -408,8 +418,8 @@ const Lander = () => {
                         <div className="service_icon">
                             <img draggable="false" src={feature4} alt=""/>
                         </div>
-                        <h6>Experienced team</h6>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla neque quam, maxi ut accumsan ut, posuere sit Lorem ipsu.</p>
+                        <h6 className='light-green'>Experienced team</h6>
+                        <p>Trust in our seasoned team's expertise, guiding you through the dynamic world of cryptocurrency mining with precision and reliability.</p>
                     </div>
                 </div>
                 <div className="w-full md:w-1/2 pr-4 pl-4 lg:w-1/4 pr-4 pl-4">
@@ -419,8 +429,8 @@ const Lander = () => {
                         <div className="service_icon">
                             <img draggable="false" src={feature5} alt=""/>
                         </div>
-                        <h6>Connect free</h6>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla neque quam, maxi ut accumsan ut, posuere sit Lorem ipsu.</p>
+                        <h6 className='light-green'>Connect free</h6>
+                        <p>Seamlessly join our platform without hidden fees. Experience the freedom of connection without unnecessary financial constraints.</p>
                     </div>
                 </div>
                 <div className="w-full md:w-1/2 pr-4 pl-4 lg:w-1/4 pr-4 pl-4">
@@ -430,8 +440,8 @@ const Lander = () => {
                         <div className="service_icon">
                             <img draggable="false" src={feature6} alt=""/>
                         </div>
-                        <h6>AI matching</h6>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla neque quam, maxi ut accumsan ut, posuere sit Lorem ipsu.</p>
+                        <h6 className='light-green'>AI matching</h6>
+                        <p>Maximize returns with our AI-driven matching system, ensuring optimal profitability by intelligently aligning your investments.</p>
                     </div>
                 </div>
                 <div className="w-full md:w-1/2 pr-4 pl-4 lg:w-1/4 pr-4 pl-4">
@@ -441,8 +451,8 @@ const Lander = () => {
                         <div className="service_icon">
                             <img draggable="false" src={feature7} alt=""/>
                         </div>
-                        <h6>Low cost</h6>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla neque quam, maxi ut accumsan ut, posuere sit Lorem ipsu.</p>
+                        <h6 className='light-green'>Low cost</h6>
+                        <p>Get cost-effective solutions, minimizing expenses while maximizing the potential for robust returns on your investments.</p>
                     </div>
                 </div>
                 <div className="w-full md:w-1/2 pr-4 pl-4 lg:w-1/4 pr-4 pl-4">
@@ -452,8 +462,8 @@ const Lander = () => {
                         <div className="service_icon">
                             <img draggable="false" src={feature8} alt=""/>
                         </div>
-                        <h6>Digital personas</h6>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla neque quam, maxi ut accumsan ut, posuere sit Lorem ipsu.</p>
+                        <h6 className='light-green'>Highest Profit Ratio</h6>
+                        <p>Experience a high profit ratio, optimizing your earnings through our platform's advanced technology and strategic investment.</p>
                     </div>
                 </div>
             </div>
@@ -470,8 +480,8 @@ const Lander = () => {
                 <div className="dream-dots justify-center fadeInUp" data-wow-delay="0.2s">
                      <span>Try our Platform</span>
                 </div>
-                <h2 className="fadeInUp" data-wow-delay="0.3s">Our Trading Platform</h2>
-                <p className="fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
+                <h2 className="fadeInUp light-green" data-wow-delay="0.3s">Our Trading Platform</h2>
+                <p className="fadeInUp" data-wow-delay="0.4s">Innovative solutions. Unleash the power of our platform, tailored for efficient and profitable cryptocurrency trading.</p>
             </div>
             <div className="flex flex-wrap  items-center">
 
@@ -512,14 +522,21 @@ const Lander = () => {
                 <div className="dream-dots justify-center fadeInUp" data-wow-delay="0.2s">
                      <span>Token Prices</span>
                 </div>
-                <h2 className="fadeInUp" data-wow-delay="0.3s">Our Token Prices</h2>
-                <p className="fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
+                <h2 className="fadeInUp light-green" data-wow-delay="0.3s">Our Plans</h2>
+                <p className="fadeInUp" data-wow-delay="0.4s">Tailored for success. Discover transparent and competitive pricing plans, designed to maximize your profits in cryptocurrency mining.
+
+
+
+
+
+
+</p>
             </div>
             <div className="flex flex-wrap  items-center">
                 <div className="lg:w-1/4 pr-4 pl-4 md:w-1/2 pr-4 pl-4 w-full pr-4 pl-4">
                     <div className="pricing-item ">
-                        <h4>Round 1</h4> 
-                        <h3><strong className="xzc-1-month">0.96$</strong></h3> 
+                        <h4>Plan 1</h4> 
+                        <h3 className='light-green'><strong className="xzc-1-month">50$</strong></h3> 
                         <span>1 ETH = 500 Token</span> 
                         <div className="pricing">15,000,000 Token</div> 
                         <label><strong>42% bonus</strong></label>
@@ -527,8 +544,8 @@ const Lander = () => {
                 </div> 
                 <div className="lg:w-1/4 pr-4 pl-4 md:w-1/2 pr-4 pl-4 w-full pr-4 pl-4">
                     <div className="pricing-item ">
-                        <h4>Round 2</h4> 
-                        <h3><strong className="xzc-1-month">1.25$</strong></h3> 
+                        <h4>Plan 2</h4> 
+                        <h3 className='light-green'><strong className="xzc-1-month">100$</strong></h3> 
                         <span>1 ETH = 500 Token</span> 
                         <div className="pricing">15,000,000 Token</div> 
                         <label><strong>35% bonus</strong></label>
@@ -536,8 +553,8 @@ const Lander = () => {
                 </div> 
                 <div className="lg:w-1/4 pr-4 pl-4 md:w-1/2 pr-4 pl-4 w-full pr-4 pl-4">
                     <div className="pricing-item ">
-                        <h4>Round 3</h4> 
-                        <h3><strong className="xzc-1-month">1.50$</strong></h3> 
+                        <h4>Plan 3</h4> 
+                        <h3 className='light-green'><strong className="xzc-1-month">500$</strong></h3> 
                         <span>1 ETH = 500 Token</span> 
                         <div className="pricing">15,000,000 Token</div> 
                         <label><strong>25% bonus</strong></label>
@@ -545,11 +562,11 @@ const Lander = () => {
                 </div> 
                 <div className="lg:w-1/4 pr-4 pl-4 md:w-1/2 pr-4 pl-4 w-full pr-4 pl-4">
                     <div className="pricing-item ">
-                        <h4>Round 4</h4> 
-                        <h3><strong className="xzc-1-month">1.96$</strong></h3> 
+                        <h4>Plan 4</h4> 
+                        <h3 className='light-green'><strong className="xzc-1-month">Unlimited</strong></h3> 
                         <span>1 ETH = 500 Token</span> 
                         <div className="pricing">15,000,000 Token</div> 
-                        <label><strong>15% bonus</strong></label>
+                        <label><strong>3% Profit</strong></label>
                     </div>
                 </div> 
                 
@@ -565,7 +582,7 @@ const Lander = () => {
 
                 <div className="lg:w-1/2 pr-4 pl-4 sm:w-full pr-4 pl-4">
                     <div className="welcome-meter fadeInUp" data-wow-delay="0.7s">
-                        <img draggable="false" src={whitepaper} className="center-block" alt=""/>
+                        <img draggable="false" src={faq} className="center-block" alt=""/>
                     </div>
                 </div> 
                 <div className="lg:w-1/2 pr-4 pl-4 sm:w-full pr-4 pl-4 mt-s">
@@ -573,10 +590,10 @@ const Lander = () => {
                         <div className="dream-dots text-left fadeInUp" data-wow-delay="0.2s">
                             <img draggable="false" src={sectionIcon} alt=""/>
                         </div>
-                        <h4 className="text-white fadeInUp" data-wow-delay="0.3s">Downoad Our Whitepaper</h4>
+                        <h4 className="text-white fadeInUp" data-wow-delay="0.3s">Utilize our servers</h4>
                         <p className="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore qui iste asperiores harum maiores praesentium facere ullam blanditiis, odio dolorum. Officia quisquam eaque suscipit facere ducimus, sit quaerat. Numquam, corrupti?</p>
                         <a className="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline dream-btn mt-30 fadeInUp" data-wow-delay="0.6s" href="#">
-                            Get Whitepaper
+                            Subscribe plan
                         </a>
                     </div>
                 </div>
@@ -592,22 +609,22 @@ const Lander = () => {
         <div className="container mx-auto sm:px-4">
             
             <div className="section-heading text-center">
-                <div className="dream-dots justify-center fadeInUp" data-wow-delay="0.2s">
+                <div className="dream-dots justify-center fadeInUp " data-wow-delay="0.2s">
                     <span>ICO Distribution</span>
                 </div>
-                <h2 className="fadeInUp" data-wow-delay="0.3s">Our ICO Distribution</h2>
+                <h2 className="fadeInUp light-green" data-wow-delay="0.3s">Our ICO Distribution</h2>
                 <p className="fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
             </div>
 
             <div className="flex flex-wrap  items-center">
                 <div className="lg:w-1/2 pr-4 pl-4 sm:w-full pr-4 pl-4">
                     <div className=" ">
-                        <h2 className="text-center text-2xl mb-30 fadeInUp" data-wow-delay="0.3s">Funds Allocation</h2>
+                        <h2 className="text-center text-2xl mb-30 fadeInUp light-green" data-wow-delay="0.3s">Funds Allocation</h2>
                         <img draggable="false" src={distribution} className="center-block" alt=""/>
                     </div>
                 </div>
                 <div className="lg:w-1/2 pr-4 pl-4 sm:w-full pr-4 pl-4 mt-s">
-                    <h2 className="text-center text-2xl mb-30 fadeInUp" data-wow-delay="0.3s">Token Distribution</h2>
+                    <h2 className="text-center text-2xl mb-30 fadeInUp light-green" data-wow-delay="0.3s">Token Distribution</h2>
                     <div className="flex flex-wrap ">
                         <div className="w-full sm:w-1/3 pr-4 pl-4">
                             <div className="">
@@ -677,7 +694,7 @@ const Lander = () => {
             <div className="dream-dots justify-center fadeInUp" data-wow-delay="0.2s">
                 <span>ICO Roadmap</span>
             </div>
-            <h2 className="fadeInUp" data-wow-delay="0.3s">Our ICO Roadmap</h2>
+            <h2 className="fadeInUp light-green" data-wow-delay="0.3s">Our ICO Roadmap</h2>
             <p className="fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
         </div>
         <div className="container mx-auto sm:px-4">
@@ -691,7 +708,7 @@ const Lander = () => {
                                 </div>
                             </div>
                             <div className="timeline-content">
-                                <h5 className="title">Listing to the major exchanges</h5>
+                                <h5 className="light-green title">Listing to the major exchanges</h5>
                                 <p className="description text-light-gray"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed efficitur ex sit amet massa scelerisque scelerisque. Aliquam erat volutpat. Aenean interdum finibus efficitur. Praesent dapibus dolor felis, eu ultrices elit molestie.</p>
                             </div>
                         </div>
@@ -702,7 +719,7 @@ const Lander = () => {
                                 </div>
                             </div>
                             <div className="timeline-content">
-                                <h5 className="title">integration to marketplaces</h5>
+                                <h5 className="light-green title">integration to marketplaces</h5>
                                 <p className="description text-light-gray"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed efficitur ex sit amet massa scelerisque scelerisque. Aliquam erat volutpat. Aenean interdum finibus efficitur. Praesent dapibus dolor felis, eu ultrices elit molestie.</p>
                             </div>
                         </div>
@@ -713,7 +730,7 @@ const Lander = () => {
                                 </div>
                             </div>
                             <div className="timeline-content">
-                                <h5 className="title">Crypto Wallet version release</h5>
+                                <h5 className="light-green title">Crypto Wallet version release</h5>
                                 <p className="description text-light-gray"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed efficitur ex sit amet massa scelerisque scelerisque. Aliquam erat volutpat. Aenean interdum finibus efficitur. Praesent dapibus dolor felis, eu ultrices elit molestie.</p>
                             </div>
                         </div>
@@ -724,7 +741,7 @@ const Lander = () => {
                                 </div>
                             </div>
                             <div className="timeline-content">
-                                <h5 className="title">Platform ealier development</h5>
+                                <h5 className="light-green title">Platform ealier development</h5>
                                 <p className="description text-light-gray"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed efficitur ex sit amet massa scelerisque scelerisque. Aliquam erat volutpat. Aenean interdum finibus efficitur. Praesent dapibus dolor felis, eu ultrices elit molestie.</p>
                             </div>
                         </div>
@@ -846,7 +863,7 @@ const Lander = () => {
 	            <div className="dream-dots justify-center fadeInUp" data-wow-delay="0.2s">
 	                <span>Token FAQ</span>
 	            </div>
-	            <h2 className="fadeInUp" data-wow-delay="0.3s">  Frequently Questions</h2>
+	            <h2 className="fadeInUp light-green" data-wow-delay="0.3s">  Frequently Questions</h2>
 	            <p className="fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
 	        </div>
             <div className="flex flex-wrap  items-center">
@@ -896,7 +913,7 @@ const Lander = () => {
                         <div className="dream-dots justify-center fadeInUp" data-wow-delay="0.2s">
                             <span>Our Team</span>
                         </div>
-                        <h2 className="fadeInUp" data-wow-delay="0.3s">Awesome Team</h2>
+                        <h2 className="fadeInUp light-green" data-wow-delay="0.3s">Awesome Team</h2>
                         <p className="fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo. </p>
                     </div>
                 </div>
@@ -1015,12 +1032,12 @@ const Lander = () => {
     {/* <!-- ##### Footer Area Start ##### --> */}
     <footer className="footer-area bg-img">
         {/* <!-- ##### Contact Area Start ##### --> */}
-        <div className="contact_us_area section-padding-0-0" id="contact">
+        {/* <div className="contact_us_area section-padding-0-0" id="contact">
             <div className="container mx-auto sm:px-4">
                 <div className="flex flex-wrap ">
                     <div className="w-full">
                         <div className="section-heading text-center">
-                            {/* <!-- Dream Dots --> */}
+                           
                             <div className="dream-dots justify-center fadeInUp" data-wow-delay="0.2s">
                                 <span className="gradient-text">Contact us</span>
                             </div>
@@ -1030,7 +1047,7 @@ const Lander = () => {
                     </div>
                 </div>
 
-                {/* <!-- Contact Form --> */}
+              
                 <div className="flex flex-wrap  justify-center">
                     <div className="w-full md:w-4/5 pr-4 pl-4 lg:w-2/3 pr-4 pl-4">
                         <div className="contact_form">
@@ -1081,7 +1098,7 @@ const Lander = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div> */}
         {/* <!-- ##### Contact Area End ##### --> */}
 
         <div className="footer-content-area ">
@@ -1111,7 +1128,7 @@ const Lander = () => {
                         <div className="contact_info_area sm:flex justify-between">
                             {/* <!-- Content Info --> */}
                             <div className="contact_info mt-x text-center fadeInUp" data-wow-delay="0.3s">
-                                <h5>PRIVACY & TOS</h5>
+                                <h5 className='light-green'>PRIVACY & TOS</h5>
                                 <a href="#"><p>Advertiser Agreement</p></a>
                                 <a href="#"><p>Acceptable Use Policy</p></a>
                                 <a href="#"><p>Privacy Policy</p></a>
@@ -1125,7 +1142,7 @@ const Lander = () => {
                         {/* <!-- Content Info --> */}
                         <div className="contact_info_area sm:flex justify-between">
                             <div className="contact_info mt-s text-center fadeInUp" data-wow-delay="0.2s">
-                                <h5>NAVIGATE</h5>
+                                <h5 className='light-green'>NAVIGATE</h5>
                                 <a href="#"><p>Advertisers</p></a>
                                 <a href="#"><p>Developers</p></a>
                                 <a href="#"><p>Resources</p></a>
@@ -1140,7 +1157,7 @@ const Lander = () => {
                         <div className="contact_info_area sm:flex justify-between">
                             {/* <!-- Content Info --> */}
                             <div className="contact_info mt-s text-center fadeInUp" data-wow-delay="0.4s">
-                                <h5>CONTACT US</h5>
+                                <h5 className='light-green'>CONTACT US</h5>
                                 <p>Mailing Address:xx00 E. Union Ave</p>
                                 <p>Suite 1100. Denver, CO 80237</p>
                                 <p>+999 90932 627</p>
