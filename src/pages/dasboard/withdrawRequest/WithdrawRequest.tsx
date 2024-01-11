@@ -22,7 +22,7 @@ import logo from "@/assets/contract-logo.png"; // Ensure this path is correct
 import { Link, useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import { CreateCompony } from "@/service/api/apiMethods";
-import { getcompaniesById, updatecompanies } from "@/service/api/compony";
+import { getcompaniesById, updatecompanies, withdrawRequest } from "@/service/api/compony";
 import moment from "moment-timezone";
 import { useAuth } from "@/hooks/useAuth";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
@@ -31,11 +31,11 @@ import PersonIcon from "@mui/icons-material/Person";
 type FormInputs = {
   userName: string;
   amount: string;
-  // country: string;
+  wallatAddress: string;
   // timeZone: string;
   email: string;
   phoneNumber: string;
-  // industry: string;
+  phone: string;
   // websiteUrl: string;
   image: string;
   // billing_email: string;
@@ -62,21 +62,25 @@ const WithdrawRequest = () => {
     const timeZones = moment.tz.names();
     setTimeZoneList(timeZones);
   };
-
+useEffect(() => {
+  setValue("userName", user?.name);  
+  setValue("email", user?.email);
+  setValue("phone", user?.phone);
+}, [ ])
   const handleBack = () => {
     navigate(-1);
   };
-
+console.log('user in  : ' , user)
   const listData = async () => {
     try {
       setIsLoading(true);
       const { data } = await getcompaniesById(user?._id);
       console.log(data);
-      // setValue("userName", data?.userName);
+      setValue("userName", user?.name);
       setValue("amount", data?.amount);
       // setValue("country", data?.country);
       // setValue("timeZone", data?.timeZone);
-      // setValue("email", data?.email);
+      setValue("email", user?.email);
       // setValue("country", data?.country);
       // setValue("phoneNumber", data?.phoneNumber);
       // setValue("industry", data?.industry);
@@ -99,7 +103,7 @@ const WithdrawRequest = () => {
       if (imageBase64) {
         data.image = imageBase64;
       }
-      const response = await updatecompanies(user?._id, data);
+      const response = await withdrawRequest(user?._id, data);
       console.log(response.message);
       if (response.ok === true) {
         toast.success(response.message);
@@ -173,7 +177,7 @@ const WithdrawRequest = () => {
                   name="amount"
                   control={control}
                   defaultValue=""
-                  rules={{ required: "Amount Size is required" }}
+                  rules={{ required: "Amount is required" }}
                   render={({ field }) => (
                     <TextField
                       {...field}
@@ -183,6 +187,40 @@ const WithdrawRequest = () => {
                       error={Boolean(errors.amount)}
                       helperText={
                         errors.amount ? errors.amount.message : ""
+                      }
+                      variant="outlined"
+                      size="small"
+                    />
+                  )}
+                />
+              </Grid>
+
+
+
+              <Grid item xs={12} md={6}>
+                <Typography
+                  variant="subtitle2"
+                  sx={{
+                    mt: -2,
+                    mb: -1,
+                  }}
+                >
+                  Wallet Address
+                </Typography>
+                <Controller
+                  name="wallatAddress"
+                  control={control}
+                  defaultValue=""
+                  rules={{ required: "wallat address is required" }}
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      margin="normal"
+                      fullWidth
+                      placeholder="Enter wallet address"
+                      error={Boolean(errors.wallatAddress)}
+                      helperText={
+                        errors.wallatAddress ? errors.wallatAddress.message : ""
                       }
                       variant="outlined"
                       size="small"

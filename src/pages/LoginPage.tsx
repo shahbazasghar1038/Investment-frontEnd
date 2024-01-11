@@ -47,7 +47,6 @@ const LoginPage: React.FC = () => {
     formState: { errors },
   } = useForm<FormInputs>();
   const navigate = useNavigate();
-
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
     try {
       setIsLoading(true);
@@ -56,18 +55,17 @@ const LoginPage: React.FC = () => {
         password: data.password,
       };
       const response = await login(payload);
-
+  
       if (response.ok === true) {
         if (response?.user?.twoFactorAuth === true) {
           toast.success(response?.message);
-          navigate("/emailverification");
-          navigate("/emailvarfication", {
+          navigate("/emailverification", {
             state: { email: data.email, condition: "twoFactorAuth" },
           });
         } else {
           toast.success("Logged in successfully!");
           navigate("/dashboard");
-          loginContext(response?.user);
+          loginContext(response?.user);  
         }
       } else {
         toast.error(response?.message || "Something went wrong!");
@@ -78,9 +76,7 @@ const LoginPage: React.FC = () => {
         navigate("/forgotpassword");
       }
       const errorMessage =
-        error.response?.data?.message ||
-        error.response?.data ||
-        "Something went wrong!";
+        error.response?.data?.message || error.response?.data || "Something went wrong!";
       toast.error(errorMessage);
       console.log(error);
     } finally {

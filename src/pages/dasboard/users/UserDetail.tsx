@@ -214,7 +214,7 @@ const UserDetail = () => {
             <Tab label="Profile" sx={{ fontWeight: "bold" }} />
             <Tab label="Login History" sx={{ fontWeight: "bold" }} />
           </Tabs>
-          <Button
+          {/* <Button
             sx={{
               ml: "auto",
               textTransform: "none",
@@ -228,7 +228,7 @@ const UserDetail = () => {
             to={`/dashboard/user-update-user/${id}`}
           >
             Edit
-          </Button>
+          </Button> */}
         </Box>
 
         <TabPanel value={tabValue} index={0}>
@@ -347,7 +347,7 @@ const UserDetail = () => {
                     </Typography>
                   </Box>
 
-                  <Box sx={{ display: "flex", mb: 2 }}>
+                  {/* <Box sx={{ display: "flex", mb: 2 }}>
                     <Typography
                       variant="subtitle2"
                       sx={{
@@ -367,8 +367,8 @@ const UserDetail = () => {
                     >
                       {list?.job}
                     </Typography>
-                  </Box>
-                  <Box sx={{ display: "flex", mb: 2 }}>
+                  </Box> */}
+                  {/* <Box sx={{ display: "flex", mb: 2 }}>
                     <Typography
                       variant="subtitle2"
                       sx={{
@@ -388,7 +388,7 @@ const UserDetail = () => {
                     >
                       {list?.branch}
                     </Typography>
-                  </Box>
+                  </Box> */}
                   <Box sx={{ display: "flex", mb: 2 }}>
                     <Typography
                       variant="subtitle2"
@@ -452,7 +452,7 @@ const UserDetail = () => {
                       {list?.mobile}
                     </Typography>
                   </Box>
-                  <Box sx={{ display: "flex", mb: 2 }}>
+                  {/* <Box sx={{ display: "flex", mb: 2 }}>
                     <Typography
                       variant="subtitle2"
                       sx={{
@@ -472,8 +472,8 @@ const UserDetail = () => {
                     >
                       {list?.landline}
                     </Typography>
-                  </Box>
-                  <Box sx={{ display: "flex", mb: 2 }}>
+                  </Box> */}
+                  {/* <Box sx={{ display: "flex", mb: 2 }}>
                     <Typography
                       variant="subtitle2"
                       sx={{
@@ -493,7 +493,7 @@ const UserDetail = () => {
                     >
                       {"Admin"}
                     </Typography>
-                  </Box>
+                  </Box> */}
                 </Box>
               </CardContent>
             </Grid>
@@ -503,7 +503,7 @@ const UserDetail = () => {
                 sx={{ mt: (theme: any) => `${theme.spacing(1)} !important` }}
               />
             </Grid>
-            <Grid item xs={12} md={5} lg={5}>
+            {/* <Grid item xs={12} md={5} lg={5}>
               <CardContent sx={{ p: 3, mt: 2, mb: 2, ml: 2 }}>
                 <Box sx={{ pt: 2, pb: 1 }}>
                   <Box sx={{ display: "flex", mb: 2 }}>
@@ -598,7 +598,7 @@ const UserDetail = () => {
                   </Box>
                 </Box>
               </CardContent>
-            </Grid>
+            </Grid> */}
           </Grid>
         </TabPanel>
         <TabPanel value={tabValue} index={1}>

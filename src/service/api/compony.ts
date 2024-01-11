@@ -26,7 +26,7 @@ export const updateStatus = async (id: any, data: any) => {
 
 
 export const updatecompanies = async (id: any, data: any) => {
-  const response = await baseURL.patch(`/api/v1/companies/${id}`, data);
+  const response = await baseURL.post(`/api/v1/companies/${id}`, data);
   return response.data;
 };
 

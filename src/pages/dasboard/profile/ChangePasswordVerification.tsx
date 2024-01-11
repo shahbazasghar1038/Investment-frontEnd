@@ -151,14 +151,14 @@ const ChangePasswordVerification: React.FC<ChangePasswordVerification> = ({
                 ...(isMobile && { paddingBottom: 2 }),
               }}
             >
-              <img
+              {/* <img
                 src={logo}
                 alt="Logo"
                 style={{
                   maxWidth: isMobile ? "100px" : "220px",
                   marginTop: "16px",
                 }}
-              />
+              /> */}
 
               <Box
                 sx={{

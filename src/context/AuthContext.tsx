@@ -44,9 +44,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   }, []);
 
-  const loginContext = (userData: User) => {
-    const navigatge = useNavigate()
-    navigatge('/dashboard')
+  const loginContext = (userData: User) => { 
     setUser(userData);
     localStorage.setItem("user", JSON.stringify(userData)); // Save user data to localStorage
   };

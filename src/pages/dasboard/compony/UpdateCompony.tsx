@@ -71,11 +71,11 @@ const UpdateCompony = () => {
       setIsLoading(true);
       const { data } = await getcompaniesById(user?._id);
       console.log(data);
-      setValue("userName", data?.userName);
+      setValue("userName", user?.name);
       setValue("amount", data?.amount);
       // setValue("country", data?.country);
       // setValue("timeZone", data?.timeZone);
-      setValue("email", data?.email);
+      setValue("email", user?.email);
       // setValue("country", data?.country);
       setValue("phoneNumber", data?.phoneNumber);
       // setValue("industry", data?.industry);

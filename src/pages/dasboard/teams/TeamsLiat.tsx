@@ -34,6 +34,7 @@ import {
 import AddIcon from "@mui/icons-material/Add";
 import ProgressCircularCustomization from "@/pages/dasboard/users/ProgressCircularCustomization";
 import { useAuth } from "@/hooks/useAuth";
+import axios from "axios";
 interface CellType {
   row: any;
   _id: any;
@@ -276,6 +277,41 @@ const BranchList = () => {
 
   ];
 
+  const [isCopied, setIsCopied] = useState(false);
+
+  const handleCopyClick = () => {
+    const referralCode = user?.referralCode;
+
+    if (referralCode) {
+      navigator.clipboard.writeText(referralCode);
+      setIsCopied(true);
+
+      // Reset the "Copied" state after a certain duration if needed
+      setTimeout(() => {
+        setIsCopied(false);
+      }, 2000);
+    }
+  };
+
+
+  // const [referralData, setReferralData] = useState(null);
+
+  // useEffect(() => {
+  //   axios.get('/user/referrals')
+  //     .then(response => {
+  //       setReferralData(response.data);
+  //     })
+  //     .catch(error => {
+  //       console.error('Error fetching referral data', error);
+  //     });
+  // }, []);
+
+  // if (!referralData) {
+  //   return <div className="text-white">Loading...</div>;
+  // }
+
+
+
   return (
     <>
       <Grid container spacing={6}>
@@ -287,13 +323,17 @@ const BranchList = () => {
           <div>
             <p className="font-bold text-[16px] md:text-[22px] text-white text-left"> Invite Friends</p>
             <div className="my-4 space-y-3 w-[50%]   ">
-               
-                <div className="flex items-center justify-between p-3 text-xs font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow">
 
-                  <span className="   whitespace-nowrap"> 9136</span>
-                  <span className="inline-flex items-center justify-center px-2 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded cursor-pointer">Copy</span>
-                </div>
-               
+              <div className="flex items-center justify-between p-3 text-xs font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow">
+                <span className="whitespace-nowrap">{user?.referralCode}</span>
+                <span
+                  className={`inline-flex items-center justify-center px-2 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded cursor-pointer ${isCopied ? 'bg-green-500 text-white' : ''}`}
+                  onClick={handleCopyClick}
+                >
+                  {isCopied ? 'Copied!' : 'Copy'}
+                </span>
+              </div>
+
             </div>
           </div>
         </Grid>
@@ -323,7 +363,7 @@ const BranchList = () => {
                 <ProgressCircularCustomization />
               </Box>
             ) : (
-              <Box sx={{ maxHeight: 510, display: "table", tableLayout: "fixed" ,  width: "100%"  }}>
+              <Box sx={{ maxHeight: 510, display: "table", tableLayout: "fixed", width: "100%" }}>
                 <DataGrid
                   style={{ paddingLeft: "10px", paddingRight: "10px" }}
                   pagination

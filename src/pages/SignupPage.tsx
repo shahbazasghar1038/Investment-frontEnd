@@ -28,6 +28,8 @@ type FormInputs = {
   email: string;
   password: string;
   confirmPassword: string;
+  referralCode: string;
+  bankDetail: string;
 };
 
 const SignupPage: React.FC = () => {
@@ -47,17 +49,22 @@ const SignupPage: React.FC = () => {
   } = useForm<FormInputs>();
   const navigate = useNavigate();
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
+    console.log('data : ', data)
     try {
       setIsLoading(true);
+ 
       const payload = {
         email: data.email,
         password: data.confirmPassword,
+        referralCode: data.referralCode,
+        bankDetail: data.bankDetail,
         role: 1,
         emailVerified: true,
       };
 
       const response = await signU(payload);
       console.log(response);
+
       if (response.ok === true) {
         toast.success(response.message);
         navigate("/emailverification");
@@ -179,7 +186,7 @@ const SignupPage: React.FC = () => {
                       },
                     }}
                   >
-                   Sign up for free
+                    Sign up for free
                   </Link>
                 </Typography>
 
@@ -228,16 +235,16 @@ const SignupPage: React.FC = () => {
                     rules={{
                       required: "Password is required",
                       minLength: {
-                        value: 10,
+                        value: 8,
                         message: "Password must have at least 8 characters",
                       },
-                      pattern: {
-                        // This is a simple regex for at least one uppercase, one lowercase, one number, and one special character
-                        value:
-                          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-                        message:
-                          "Password must include uppercase, lowercase, number, and special char",
-                      },
+                      // pattern: {
+                      //   // This is a simple regex for at least one uppercase, one lowercase, one number, and one special character
+                      //   value:
+                      //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                      //   message:
+                      //     "Password must include uppercase, lowercase, number, and special char",
+                      // },
                     }}
                     render={({ field }) => (
                       <TextField
@@ -311,6 +318,67 @@ const SignupPage: React.FC = () => {
                             </InputAdornment>
                           ),
                         }}
+                      />
+                    )}
+                  />
+
+
+                  <Typography variant="subtitle2" color={'gray'} sx={{ mt: 0, mb: -1 }}>
+                    Referel Code (optional)
+                  </Typography>
+                  <Controller
+                    name="referralCode"
+                    control={control}
+                    defaultValue=""
+                    rules={{
+                      required: "Referal Code is required",
+                      // pattern: {
+                      //   // value: /^\S+@\S+\.\S+$/,
+                      //   message: "Invalid referal code",
+                      // },
+                    }}
+                    render={({ field }) => (
+                      <TextField
+                        {...field}
+                        margin="normal"
+                        fullWidth
+                        type="text"
+                        autoComplete="code"
+                        placeholder="Enter referel code"
+                        error={Boolean(errors.referralCode)}
+                        helperText={errors.referralCode ? errors.referralCode.message : ""}
+                        variant="outlined"
+                        size="small"
+                      />
+                    )}
+                  />
+
+                  <Typography variant="subtitle2" color={'gray'} sx={{ mt: 0, mb: -1 }}>
+                    Wallet Address
+                  </Typography>
+                  <Controller
+                    name="bankDetail"
+                    control={control}
+                    defaultValue=""
+                    rules={{
+                      required: "Wallet Address is required",
+                      // pattern: {
+                      //   // value: /^\S+@\S+\.\S+$/,
+                      //   message: "Invalid wallet address",
+                      // },
+                    }}
+                    render={({ field }) => (
+                      <TextField
+                        {...field}
+                        margin="normal"
+                        fullWidth
+                        type="text"
+                        autoComplete="bankDetail"
+                        placeholder="Enter wallet address"
+                        error={Boolean(errors.bankDetail)}
+                        helperText={errors.bankDetail ? errors.bankDetail.message : ""}
+                        variant="outlined"
+                        size="small"
                       />
                     )}
                   />

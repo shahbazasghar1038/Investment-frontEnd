@@ -66,8 +66,8 @@ const SignupPage: React.FC = () => {
               state: { email: email },
             });
           } else {
-            navigate("/componydetails");
-            navigate("/componydetails", {
+            navigate("/");
+            navigate("/", {
               state: { id: id },
             });
           }
@@ -105,14 +105,14 @@ const SignupPage: React.FC = () => {
             ...(isMobile && { paddingBottom: 2 }),
           }}
         >
-          <img
+          {/* <img
             src={logo}
             alt="Logo"
             style={{
               maxWidth: isMobile ? "150px" : "320px",
               marginTop: "16px",
             }}
-          />
+          /> */}
 
           <Box
             sx={{

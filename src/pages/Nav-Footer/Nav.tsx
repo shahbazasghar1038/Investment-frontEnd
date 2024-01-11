@@ -13,7 +13,7 @@ if (userString) {
 } else {
   console.log("User data not found   ");
 }
- 
+ console.log('user : ' , user)
 const [show , setShow] = useState(false)
 
   return (
