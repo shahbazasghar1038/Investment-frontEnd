@@ -23,10 +23,21 @@ export const updateStatus = async (id: any, data: any) => {
   return response.data;
 };
 
+
+
 export const updatecompanies = async (id: any, data: any) => {
   const response = await baseURL.patch(`/api/v1/companies/${id}`, data);
   return response.data;
 };
+
+
+
+export const withdrawRequest = async (id: any, data: any) => {
+  const response = await baseURL.post(`/api/v1/companies/withdrawRequest`, data);
+  return response.data;
+};
+
+
 
 export const getcompaniesById = async (id: any) => {
   const response = await baseURL.get(`/api/v1/companies/single/${id}`);

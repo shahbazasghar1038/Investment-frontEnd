@@ -1,9 +1,22 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import baseURL from "./axiosInstance";
 
+
+
+
+
 export const getList = async () => {
   return await baseURL.get(`/api/v1/templates/list`);
 };
+
+
+
+export const getWithdrawList = async () => {
+  return await baseURL.get(`/api/v1/templates/withdrawList`);
+};
+
+
+
 
 export const create = async (data: any) => {
   const response = await baseURL.post(

@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { createContext, useState, useEffect, ReactNode } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface User {
   id: string;
@@ -44,6 +45,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   }, []);
 
   const loginContext = (userData: User) => {
+    const navigatge = useNavigate()
+    navigatge('/dashboard')
     setUser(userData);
     localStorage.setItem("user", JSON.stringify(userData)); // Save user data to localStorage
   };

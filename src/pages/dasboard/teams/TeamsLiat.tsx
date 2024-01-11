@@ -290,7 +290,7 @@ const BranchList = () => {
                
                 <div className="flex items-center justify-between p-3 text-xs font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow">
 
-                  <span className="   whitespace-nowrap">www.gwmining.com/user/913687546</span>
+                  <span className="   whitespace-nowrap"> 9136</span>
                   <span className="inline-flex items-center justify-center px-2 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded cursor-pointer">Copy</span>
                 </div>
                

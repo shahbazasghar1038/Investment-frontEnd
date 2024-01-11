@@ -26,7 +26,7 @@ import Button from "@mui/material/Button";
 import { Link, useNavigate } from "react-router-dom";
 import ProgressCircularCustomization from "@/pages/dasboard/users/ProgressCircularCustomization";
 import { useAuth } from "@/hooks/useAuth";
-import { archiveTemp, deletetemplates, getList } from "@/service/api/template";
+import { archiveTemp, deletetemplates, getList, getWithdrawList } from "@/service/api/template";
 import { format, utcToZonedTime } from "date-fns-tz";
 interface CellType {
   row: any;
@@ -85,7 +85,7 @@ const WithdrawList = () => {
   const listData = async () => {
     try {
       setIsLoading(true);
-      const { data } = await getList();
+      const { data } = await getWithdrawList();
 
       setCategorylist(data);
 

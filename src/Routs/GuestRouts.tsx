@@ -23,12 +23,8 @@ function GuestRouts() {
     if (userString) {
         user = JSON.parse(userString);
     } else {
-        console.log("User data not found in localStorage");
+        console.log("User data not found ");
     }
-
-
-
-
 
     return (
         <>

@@ -80,9 +80,15 @@ export const createTeam = async (data: any) => {
   return response.data;
 };
 
+
+
+
 export const getTeamsList = async (id: any) => {
   return await baseURL.get(`/api/v1/teams/list-teams/${id}`);
 };
+
+
+
 
 export const deleteTeam = async (id: string) => {
   const response = await baseURL.delete(`/api/v1/teams/${id}`);

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import logo from '../../img/core-img/logo.png'
@@ -11,17 +11,19 @@ let user: any;
 if (userString) { 
   user = JSON.parse(userString);  
 } else {
-  console.log("User data not found in localStorage");
+  console.log("User data not found   ");
 }
  
+const [show , setShow] = useState(false)
+
   return (
     <div>
           <nav className="relative px-4 py-4 flex justify-between items-center">
-		<Link className="text-3xl font-bold leading-none" to="/h">
-			<img draggable="false" src={logo} alt="logo"/>
+		<Link className="text-3xl font-bold leading-none flex" to="/">
+			<img draggable="false" src={logo} alt="logo"/> <h2 className='text-[#9302ff] p-2.5 md:p-1.5 text-[24px] md:text-[32px]'> <span className='text-[#05e3e7]'>GW</span>  MINING</h2>
 		</Link>
 		<div className="lg:hidden">
-			<button className="navbar-burger flex items-center text-blue-600 p-3">
+			<button onClick={()=>{setShow(true)}} className="navbar-burger flex items-center text-blue-600 p-3">
 				<svg className="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
 					<title>Mobile menu</title>
 					<path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
@@ -41,7 +43,7 @@ if (userString) {
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
 				</svg>
 			</li>
-			<li><a className="text-sm text-white hover:text-gray-200" href="#services">Services</a></li>
+			<li><a className="text-sm text-white hover:text-gray-200" href="#howitworks">How it Works</a></li>
 			<li className="text-gray-300">
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" className="w-4 h-4 current-fill" viewBox="0 0 24 24">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
@@ -65,14 +67,14 @@ if (userString) {
 		}
 	</nav>
     
-	<div className="navbar-menu relative z-50 hidden">
-		<div className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
+	<div className={`navbar-menu relative z-[999] ${!show && 'hidden' } `}>
+	{show && <div onClick={()=>{setShow(false)}} className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-50"></div> }
 		<nav className="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
 			<div className="flex items-center mb-8">
 				<a className="mr-auto text-3xl font-bold leading-none" href="#">
 					<img draggable="false" src={logo} alt="logo"/>
 				</a>
-				<button className="navbar-close">
+				<button onClick={()=>{setShow(false)}} className="navbar-close">
 					<svg className="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
 					</svg>
@@ -81,34 +83,41 @@ if (userString) {
 			<div>
 				<ul>
 					<li className="mb-1">
-						<a className='block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded' href='index.html'>Home</a>
+						<a onClick={()=>{setShow(false)}} className='block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded' href='index.html'>Home</a>
 					</li>
 					<li className="mb-1">
-						<a className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#about">About Us</a>
+						<Link className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" to="/plans">Plans</Link>
 					</li>
 					<li className="mb-1">
-						<a className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#services">Services</a>
+						<a onClick={()=>{setShow(false)}} className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#howitworks">How it Works</a>
 					</li>
 					<li className="mb-1">
-						<a className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#roadmap">Roadmap</a>
+						<a onClick={()=>{setShow(false)}} className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#roadmap">Roadmap</a>
 					</li>
 					<li className="mb-1">
-						<a className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#contact">Support</a>
+						<a onClick={()=>{setShow(false)}} className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#contact">Support</a>
 					</li>
 				</ul>
 			</div>
 			<div className="mt-auto">
 				<div className="pt-6">
+				{user ? 
+				<>
 					<Link className="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl" to="/login">Sign in</Link>
 					<Link className="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" to="/signup">Sign Up</Link>
+					</>
+					:
+					<Link className="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" to="/dashboard">Dashboard</Link>
+				}
 				</div>
 				<p className="my-4 text-xs text-center text-gray-400">
-					<span>Copyright © 2021</span>
+					<span>Copyright © 2024</span>
 				</p>
 			</div>
 		</nav>
 
     </div>
+	 
     </div>
   )
 }

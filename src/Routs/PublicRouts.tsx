@@ -16,28 +16,17 @@ import Nav from "../pages/Nav-Footer/Nav";
 import RedirectRoute from "./RedirectRout";
 import { useEffect } from "react";
 function PublicRouts() {
-
-    const userString: string | null = localStorage.getItem("user");
-    let user: any;
-
-    if (userString) {
-        user = JSON.parse(userString);
-    } else {
-        console.log("User data not found in localStorage");
-    }
-
-
+ 
 
 
 
     return (
         <>
-            
+
             <Routes>
-              
-                    <Route path="/" element={<Lander />} />
-                    <Route path="/plans" element={<Packages />} />               
-                    </Routes>
+                <Route path="/" element={<Lander />} />
+                <Route path="/plans" element={<Packages />} />
+            </Routes>
         </>
     );
 }

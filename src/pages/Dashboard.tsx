@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import {
   Box,
@@ -99,12 +99,27 @@ import WithdrawRequest from "./dasboard/withdrawRequest/WithdrawRequest";
 const drawerWidth = 240;
 export default function Dashboard() {
   const { user, logout } = useAuth();
+
+
+ 
+
+
+  const navigate = useNavigate();
+  useEffect(() => {
+      console.log('dashboard routes are rendered');
+      if (!user) {
+          navigate('/')
+      }
+  }, [])
+
+
+
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [open, setOpen] = useState(true);
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const navigate = useNavigate();
+ 
   const isMenuOpen = Boolean(anchorEl);
 
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
