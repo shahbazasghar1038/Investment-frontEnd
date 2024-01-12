@@ -28,20 +28,20 @@ function GuestRouts() {
 
     return (
         <>
-            
-            <Routes>
-               
 
-                    <Route path="/login" element={<LoginPage />} />
-                    <Route path="/signup" element={<SignupPage />} />
-                    <Route path="customerprofile" element={<CustomerProfile />} />
-                    <Route path="emailvarfication" element={<EmailVarfication />} />
-                    <Route path="componydetails" element={<ComponyDetails />} />
-                    <Route path="forgotpassword" element={<ForgotPassword />} />
-                    <Route path="resetpassword" element={<ResetPassword />} />
-                    <Route path="/*" element={<RedirectRoute to="/" />} />
-               
-                    </Routes>
+            <Routes>
+
+
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/signup" element={<SignupPage />} />
+                <Route path="customerprofile" element={<CustomerProfile />} />
+                <Route path="emailvarfication" element={<EmailVarfication />} />
+                <Route path="componydetails" element={<ComponyDetails />} />
+                <Route path="forgotpassword" element={<ForgotPassword />} />
+                <Route path="resetpassword" element={<ResetPassword />} />
+                <Route path="/*" element={<RedirectRoute to="/" />} />
+
+            </Routes>
         </>
     );
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import logo from '../../img/core-img/logo.png'
+import logo from '../../img/core-img/logo2.png'
 const Nav = () => {
 
 // Retrieve user data from localStorage
@@ -20,7 +20,8 @@ const [show , setShow] = useState(false)
     <div>
           <nav className="relative px-4 py-4 flex justify-between items-center">
 		<Link className="text-3xl font-bold leading-none flex" to="/">
-			<img draggable="false" src={logo} alt="logo"/> <h2 className='text-[#9302ff] p-2.5 md:p-1.5 text-[24px] md:text-[32px]'> <span className='text-[#05e3e7]'>GW</span>  MINING</h2>
+			<img draggable="false" src={logo} alt="logo" className='h-10 md:h-14' /> 
+			{/* <h2 className='text-[#9302ff] p-2.5 md:p-1.5 text-[24px] md:text-[32px]'> <span className='text-[#05e3e7]'>GW</span>  MINING</h2> */}
 		</Link>
 		<div className="lg:hidden">
 			<button onClick={()=>{setShow(true)}} className="navbar-burger flex items-center text-blue-600 p-3">
@@ -69,10 +70,10 @@ const [show , setShow] = useState(false)
     
 	<div className={`navbar-menu relative z-[999] ${!show && 'hidden' } `}>
 	{show && <div onClick={()=>{setShow(false)}} className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-50"></div> }
-		<nav className="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
+		<nav className="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-blue-900 border-r overflow-y-auto">
 			<div className="flex items-center mb-8">
 				<a className="mr-auto text-3xl font-bold leading-none" href="#">
-					<img draggable="false" src={logo} alt="logo"/>
+					<img draggable="false" src={logo} alt="logo" className='h-10'/>
 				</a>
 				<button onClick={()=>{setShow(false)}} className="navbar-close">
 					<svg className="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

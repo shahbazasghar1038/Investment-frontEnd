@@ -40,7 +40,7 @@ function App() {
          
             <GuestRouts />
       }
-        <PublicRouts />
+        {/* <PublicRouts /> */}
         </BrowserRouter>
       </AuthProvider>
     </>

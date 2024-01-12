@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../img/core-img/logo.png'
+import logo from '../img/core-img/logo2.png'
 import platform1 from '../img/core-img/platform.png'
 import about1 from '../img/core-img/platform3.png'
 import tradingStroke from "../img/svg/trading-strokes.svg"
@@ -70,7 +70,7 @@ const Lander = () => {
                                         <h3 className="special-head dark text-left">Unlock Digital Wealth with GW MINING </h3>
                                     </div>
                                     <h1 className='light-green text-left'>Empower Your Finances through Innovative Crypto Mining Solutions </h1>
-                                    <p className="w-text text-left">Elevate your finances with cutting-edge Bitcoin mining. Join [Your Platform Name] for secure, transparent, and profitable opportunities. Start your journey to financial freedom today.</p>
+                                    <p className="w-text text-left">Elevate your finances with cutting-edge Bitcoin mining. Join GW MINING for secure, transparent, and profitable opportunities. Start your journey to financial freedom today.</p>
                                     <div className="dream-btn-group flex justify-start">
                                         <Link to="plans" className="more-btn mr-3">Get started</Link>
                                         <Link to="plans" className="more-btn ">Buy Plan</Link>
@@ -1107,7 +1107,7 @@ const Lander = () => {
                                     {/* <!-- Copywrite --> */}
                                     <div className="copywrite_text fadeInUp" data-wow-delay="0.2s">
                                         <div className="footer-logo">
-                                            <a href="#"><img draggable="false" src={logo} alt="logo" /> GW Mining </a>
+                                            <a href="#"><img draggable="false" src={logo} alt="logo" className='h-16' /> </a>
                                         </div>
                                         <p> Innovative crypto solutions. Cutting-edge technology. Secure investments. Daily profits. Build a prosperous team. Explore the future of cryptocurrency with GW Mining.</p>
                                     </div>

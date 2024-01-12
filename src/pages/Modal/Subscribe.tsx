@@ -1,7 +1,26 @@
-import React from "react";
+import { useAuth } from "@/hooks/useAuth";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Subscribe() {
   const [showModal, setShowModal] = React.useState(false);
+
+  const [isCopied, setIsCopied] = useState(false);
+  const referralCode = '1Lbcfr7sAHTD9CgdQo3HTMTkV8LK4ZnX71'
+  const handleCopyClick = () => {
+
+    if (referralCode) {
+      navigator.clipboard.writeText(referralCode);
+      setIsCopied(true);
+
+      // Reset the "Copied" state after a certain duration if needed
+      setTimeout(() => {
+        setIsCopied(false);
+      }, 2000);
+    }
+  };
+
+  const { user } = useAuth();
   return (
     <>
       <button
@@ -10,61 +29,71 @@ export default function Subscribe() {
         onClick={() => setShowModal(true)}
       >
         Subscribe
-      </button> 
-        
+      </button>
+
       {showModal ? (
         <>
-          <div   className=" flex justify-center overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-    <div className="relative p-4 w-full max-w-md max-h-full">
-        
-        <div className="relative rounded-lg shadow bg-gray-700">
-           
-            <div className="flex items-center justify-between py-3 px-5 border-b rounded-t dark:border-gray-600">
-                <h3 className="text-lg font-semibold  text-white">
-                      Wallet Address
-                </h3>
-                <button onClick={() => setShowModal(false)} type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm h-8 w-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crypto-modal">
+          <div   className=" flex justify-center   absolute top-0 right-0 left-0 z-[91] items-center     h-[100%] max-h-full">
+            <div className="relative p-4 w-full max-w-md max-h-full z-[99]">
+
+              <div className="relative rounded-lg shadow bg-[#100f43] ">
+
+                <div className="flex items-center justify-between py-3 px-5 border-b rounded-t dark:border-gray-600">
+                
+                  <h3 className="text-lg font-semibold  text-[#f8f517]">
+                   {user ? 'Wallet Address': 'Please Login'}  
+                  </h3>
+                  
+                  <button onClick={() => setShowModal(false)} type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm h-8 w-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crypto-modal">
                     <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                     </svg>
                     <span className="sr-only">Close modal</span>
-                </button>
-            </div> 
-            <div className="p-3">
-            <div className="px-4">
-            <h3 className="text-lg font-semibold  text-red-600">
+                  </button>
+                </div>
+{user ?
+                <div className="p-3">
+                  <div className="px-4">
+                    <h3 className="text-lg font-semibold  text-red-600">
                       Important
-                </h3>
-                <ul className="my-3 space-y-3 text-left list-disc">
-                    <li className="text-sm font-normal  text-gray-100 list-disc">
-                     Copy wallet address and send amount according to plan you want to subscribe. 
-                    </li> 
-                    <li className="text-sm font-normal  text-gray-100 list-disc">
-                     Take screenshot and upload from your profile as a proof. 
-                    </li>   
-                </ul>
-                </div> 
-                <ul className="my-4 space-y-3">
-                    <li>
-                        <a href="#" className="flex items-center justify-between p-3 text-xs font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
-                            
-                            <span className="   whitespace-nowrap">1Lbcfr7sAHTD9CgdQo3HTMTkV8LK4ZnX71</span>
-                            <span className="inline-flex items-center justify-center px-2 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">Copy</span>
-                        </a>
-                    </li>   
-                </ul>
-                {/* <div>
-                    <a href="#" className="inline-flex items-center text-xs font-normal text-gray-500 hover:underline dark:text-gray-400">
-                        <svg className="w-3 h-3 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.529 7.988a2.502 2.502 0 0 1 5 .191A2.441 2.441 0 0 1 10 10.582V12m-.01 3.008H10M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-                        </svg>
-                        Why do I need to connect with my wallet?</a>
-                </div> */}
+                    </h3>
+                    <ul className="my-3 space-y-3 text-left list-disc text-[#00ffeb]">
+                      <li className="text-sm font-normal    list-disc">
+                        Copy wallet address and send amount according to plan you want to subscribe.
+                      </li>
+                      <li className="text-sm font-normal    list-disc">
+                        Take screenshot and upload from your Dashboard as a proof.
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="my-4 space-y-3">
+
+                    <div className="flex items-center justify-between p-3 text-xs font-bold text-gray-50 rounded-lg bg-[#252471]   ">
+
+                      <span className="   whitespace-nowrap">{referralCode}</span>
+                      <span
+                        className={`inline-flex items-center justify-center px-2 py-0.5 ms-3 text-xs font-medium  bg-gray-400 rounded cursor-pointer ${isCopied ? 'bg-green-400 text-white' : 'text-gray-100'}`}
+                        onClick={handleCopyClick}
+                      >
+                        {isCopied ? 'Copied!' : 'Copy'}
+                      </span>
+                    </div>
+
+                  </div>
+                </div>
+                :
+                <div className="py-5"> 
+                  <div className="inline-flex items-center text-lg font-semibold text-[#00ffeb] hover:underline  ">
+                    
+                    Please Login first to Subscribe any package</div>
+                    <Link to="/login" className="more-btn mr-3 mt-5">Login</Link>
+                    
+                </div>
+                }
+              </div>
             </div>
-        </div>
-    </div>
-</div>
-          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+          {showModal && <div onClick={() => { setShowModal(false) }} className="opacity-40 fixed inset-0 z-[50] bg-blue-500"></div>}
+          </div>
         </>
       ) : null}
     </>
