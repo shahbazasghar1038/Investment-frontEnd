@@ -4,7 +4,7 @@ import axios from "axios";
 //   baseURL: "http://localhost:1337",
 // });
 const baseURL = axios.create({
-  baseURL: "http://api-mining.innoplore.com",
+  baseURL: "13.200.247.126:1337",
 });
 
 export default baseURL;
