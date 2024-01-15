@@ -25,6 +25,7 @@ import { signU } from "@/service/api/apiMethods";
 import { useAuth } from "@/hooks/useAuth";
 import ProgressCircularCustomization from "@/pages/dasboard/users/ProgressCircularCustomization";
 type FormInputs = {
+  name: string;
   email: string;
   password: string;
   confirmPassword: string;
@@ -52,8 +53,9 @@ const SignupPage: React.FC = () => {
     console.log('data : ', data)
     try {
       setIsLoading(true);
- 
+
       const payload = {
+        name: data.name,
         email: data.email,
         password: data.confirmPassword,
         referralCode: data.referralCode,
@@ -195,6 +197,40 @@ const SignupPage: React.FC = () => {
                   onSubmit={handleSubmit(onSubmit)}
                   noValidate
                 >
+
+                  {/* Name label and input */}
+
+                  <Typography variant="subtitle2" color={'gray'} sx={{ mt: 0, mb: -1 }}>
+                    Name
+                  </Typography>
+                  <Controller
+                    name="name"
+                    control={control}
+                    defaultValue=""
+                    rules={{
+                      required: "Name is required",
+                      // pattern: {
+                      //   value: /^\S+@\S+\.\S+$/,
+                      //   message: "Invalid name",
+                      // },
+                    }}
+                    render={({ field }) => (
+                      <TextField
+                        {...field}
+                        margin="normal"
+                        fullWidth
+                        type="text"
+                        autoComplete="name"
+                        placeholder="Enter name"
+                        error={Boolean(errors.email)}
+                        helperText={errors.name ? errors.name.message : ""}
+                        variant="outlined"
+                        size="small"
+                      />
+                    )}
+                  />
+
+
                   {/* Email Label and Input */}
                   <Typography variant="subtitle2" color={'gray'} sx={{ mt: 0, mb: -1 }}>
                     Email

@@ -31,7 +31,8 @@ function GuestRouts() {
 
             <Routes>
 
-
+            <Route path="/" element={<Lander />} />
+                <Route path="/plans" element={<Packages />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/signup" element={<SignupPage />} />
                 <Route path="customerprofile" element={<CustomerProfile />} />
