@@ -28,9 +28,7 @@ function GuestRouts() {
 
     return (
         <>
-
             <Routes>
-
             <Route path="/" element={<Lander />} />
                 <Route path="/plans" element={<Packages />} />
                 <Route path="/login" element={<LoginPage />} />

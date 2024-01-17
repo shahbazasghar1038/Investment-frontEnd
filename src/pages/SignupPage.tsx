@@ -28,6 +28,7 @@ type FormInputs = {
   name: string;
   email: string;
   password: string;
+  mobile: string;
   confirmPassword: string;
   referralCode: string;
   bankDetail: string;
@@ -59,6 +60,7 @@ const SignupPage: React.FC = () => {
         email: data.email,
         password: data.confirmPassword,
         referralCode: data.referralCode,
+        mobile: data.mobile,
         bankDetail: data.bankDetail,
         role: 1,
         emailVerified: true,
@@ -232,7 +234,7 @@ const SignupPage: React.FC = () => {
 
 
                   {/* Email Label and Input */}
-                  <Typography variant="subtitle2" color={'gray'} sx={{ mt: 0, mb: -1 }}>
+                  <Typography variant="subtitle2" color={'gray'} sx={{ mt: 0, mb: -1, }}>
                     Email
                   </Typography>
                   <Controller
@@ -357,6 +359,53 @@ const SignupPage: React.FC = () => {
                       />
                     )}
                   />
+
+
+
+<Typography variant="subtitle2"  color={'gray'}  sx={{ mt: 0, mb: -1 }}>
+                    Phone
+                  </Typography>
+                  <Controller
+                    name="mobile"
+                    control={control}
+                    defaultValue=""
+                    rules={{
+                      required: "mobile is required",
+                      minLength: {
+                        value: 8,
+                        message: "mobile must have at least 8 characters",
+                      }, 
+                    }}
+                    render={({ field }) => (
+                      <TextField
+                        {...field} 
+                        margin="normal"
+                        fullWidth
+                        autoComplete="current-mobile"
+                        placeholder="Enter mobile" 
+                       
+                        variant="outlined"
+                        size="small"
+                        InputProps={{
+                          endAdornment: (
+                            <InputAdornment position="end">
+                              <IconButton
+                                onClick={togglePasswordVisibility}
+                                edge="end"
+                              >
+                                {showPassword ? (
+                                  <VisibilityOff />
+                                ) : (
+                                  <Visibility />
+                                )}
+                              </IconButton>
+                            </InputAdornment>
+                          ),
+                        }}
+                      />
+                    )}
+                  />
+
 
 
                   <Typography variant="subtitle2" color={'gray'} sx={{ mt: 0, mb: -1 }}>

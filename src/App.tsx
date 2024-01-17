@@ -33,14 +33,14 @@ function App() {
       <AuthProvider>
         <Toaster position="top-center" reverseOrder={false} />
         <BrowserRouter>
-        <Nav />
-      {user ?
-              <AuthRouts />
-          :
-         
+          <Nav />
+          {user ?
+            <AuthRouts />
+            :
+
             <GuestRouts />
-      }
-        {/* <PublicRouts /> */}
+          }
+          {/* <PublicRouts /> */}
         </BrowserRouter>
       </AuthProvider>
     </>
