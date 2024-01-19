@@ -92,25 +92,26 @@ import DepositList from "./dasboard/depositHistory/DepositList";
 import WithdrawList from "./dasboard/withdrawHistory/WithdrawList";
 import Notification from "./dasboard/notification/Notification";
 import WithdrawRequest from "./dasboard/withdrawRequest/WithdrawRequest";
+import AllUsers from "./dasboard/adminPages/allusers/AllUsers";
+import PendingDepositReq from "./dasboard/adminPages/pendingDepositReq/PendingDepositReq";
 // Usage: <ArticleIcon />
 
 // Usage: <AssignmentIcon />
 
 const drawerWidth = 240;
-export default function Dashboard() {
+export default function AdminDashboard() {
   const { user, logout } = useAuth();
 
 
- 
+
 
 
   const navigate = useNavigate();
-
   useEffect(() => {
-      console.log('dashboard are rendered');
-      if (!user) {
-          navigate('/')
-      }
+    console.log('dashboard routes are rendered');
+    if (!user) {
+      navigate('/')
+    }
   }, [])
 
 
@@ -120,7 +121,7 @@ export default function Dashboard() {
   const [open, setOpen] = useState(true);
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
- 
+
   const isMenuOpen = Boolean(anchorEl);
 
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -148,7 +149,7 @@ export default function Dashboard() {
           src={logo}
           alt="Logo"
           style={{
-            maxWidth: isMobile ? "60px" : "120px",
+            maxWidth: isMobile ? "100px" : "120px",
             marginTop: "16px",
           }}
         />
@@ -199,12 +200,12 @@ export default function Dashboard() {
             primaryTypographyProps={{ variant: "subtitle2" }}
           />
         </ListItemButton> */}
-        <ListItemButton component={Link} to="/dashboard/teamlist">
+        <ListItemButton component={Link} to="/dashboard/all-users">
           <ListItemIcon>
             <GroupsIcon />
           </ListItemIcon>
           <ListItemText
-            primary="Teams"
+            primary="All Users"
             primaryTypographyProps={{ variant: "subtitle2" }}
           />
         </ListItemButton>
@@ -285,12 +286,12 @@ export default function Dashboard() {
         </ListItemButton> */}
 
         {/* Deposit history  */}
-        <ListItemButton component={Link} to="/dashboard/deposit-list">
+        <ListItemButton component={Link} to="/dashboard/pending-deposit">
           <ListItemIcon>
-          <InputIcon />
+            <InputIcon />
           </ListItemIcon>
           <ListItemText
-            primary="Deposit History"
+            primary="Deposit Requests"
             primaryTypographyProps={{ variant: "subtitle2" }}
           />
         </ListItemButton>
@@ -301,7 +302,7 @@ export default function Dashboard() {
             <DescriptionIcon />
           </ListItemIcon>
           <ListItemText
-            primary="Withdraw History"
+            primary="Withdraw Requests"
             primaryTypographyProps={{ variant: "subtitle2" }}
           />
         </ListItemButton>
@@ -315,38 +316,35 @@ export default function Dashboard() {
             primaryTypographyProps={{ variant: "subtitle2" }}
           />
         </ListItemButton> */}
-        <ListItemButton component={Link} to="/dashboard/update-compony">
-          <ListItemIcon>
-            {/* <BusinessIcon /> */}
+        {/* <ListItemButton component={Link} to="/dashboard/update-compony">
+          <ListItemIcon> 
             <TaskIcon />
           </ListItemIcon>
           <ListItemText
             primary="Deposit Request"
             primaryTypographyProps={{ variant: "subtitle2" }}
           />
-        </ListItemButton>
+        </ListItemButton> */}
 
-        <ListItemButton component={Link} to="/dashboard/withdraw-request">
-          <ListItemIcon>
-            {/* <BusinessIcon /> */}
+        {/* <ListItemButton component={Link} to="/dashboard/withdraw-request">
+          <ListItemIcon> 
             <CategoryIcon />
           </ListItemIcon>
           <ListItemText
             primary="Withdraw Request"
             primaryTypographyProps={{ variant: "subtitle2" }}
           />
-        </ListItemButton>
+        </ListItemButton> */}
 
-        <ListItemButton component={Link} to="/dashboard/notification">
-          <ListItemIcon>
-            {/* <BusinessIcon /> */}
+        {/* <ListItemButton component={Link} to="/dashboard/notification">
+          <ListItemIcon> 
             <NotificationsIcon />
           </ListItemIcon>
           <ListItemText
             primary="Notifications"
             primaryTypographyProps={{ variant: "subtitle2" }}
           />
-        </ListItemButton>
+        </ListItemButton> */}
       </List>
     </div>
   );
@@ -379,16 +377,22 @@ export default function Dashboard() {
             component="div"
             sx={{ flexGrow: 1 }}
           >
-            Dashboard
+            Admin Dashboard
           </Typography>
-          <IconButton>
+
+          {/* notification bell icon  */}
+
+          {/* <IconButton>
             <Badge badgeContent={4} color="secondary">
               <NotificationsIcon />
             </Badge>
-          </IconButton>
+          </IconButton> */}
+
+          {/* user profile icon */}
+
           <IconButton>
             <div>
-              <IconButton
+              {/* <IconButton
                 edge="end"
                 aria-label="account of current user"
                 aria-controls={menuId}
@@ -432,15 +436,13 @@ export default function Dashboard() {
                 <MenuItem
                   onClick={() => {
                     handleMenuClose();
-                    // navigate(`/`);
+                    navigate(`/`);
                     logout();
-                    window.location.href = '/';
-
                   }}
                 >
                   Logout
                 </MenuItem>
-              </Menu>
+              </Menu> */}
             </div>
           </IconButton>
         </Toolbar>
@@ -491,11 +493,11 @@ export default function Dashboard() {
         {/* <Toolbar /> */}
         {/* routes  */}
         <Routes>
-          <Route path="/" element={<HomePage />} /> 
+          <Route path="/" element={<HomePage />} />
           <Route path="/withdraw-request" element={<WithdrawRequest />} />
           <Route path="/notification" element={<Notification />} />
-          <Route path="/teamlist" element={<TeamsList />} />
-          <Route path="/create-team" element={<CreateTeam />} />
+          <Route path="/all-users" element={<AllUsers />} />
+          <Route path="/pending-deposit" element={<PendingDepositReq />} />
           <Route path="/team-edit/:id" element={<UpdateTeam />} />
           <Route path="/create-branch" element={<CreateBranch />} />
           <Route path="/branchlist" element={<BranchList />} />
@@ -528,9 +530,9 @@ export default function Dashboard() {
           <Route path="/Upload-folder/:id" element={<Upload />} />
           <Route path="/folder-list" element={<FolderLIst />} />
           {/* Depoist list page  */}
-          <Route path="/deposit-list" element={<DepositList />} />  
-            {/* Depoist list page  */}
-            <Route path="/withdraw-list" element={<WithdrawList />} /> 
+          <Route path="/deposit-list" element={<DepositList />} />
+          {/* Depoist list page  */}
+          <Route path="/withdraw-list" element={<WithdrawList />} />
 
           {/* template list page old */}
           <Route path="/template-list" element={<TemplateList />} />

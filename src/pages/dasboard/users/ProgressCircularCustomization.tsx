@@ -8,7 +8,7 @@ import CircularProgress, {
 const CircularProgressDeterminate = styled(
   CircularProgress
 )<CircularProgressProps>(({ theme }) => ({
-  color: "red",
+  color: "#04f9fa",
 }));
 
 const CircularProgressIndeterminate = styled(
@@ -17,7 +17,7 @@ const CircularProgressIndeterminate = styled(
   left: 0,
   position: "absolute",
   animationDuration: "550ms",
-  color: theme.palette.mode === "light" ? "#1a90ff" : "#308fe8",
+  color: theme.palette.mode === "light" ? "#f97316" : "#308fe8",
 }));
 
 const ProgressCircularCustomization = () => {

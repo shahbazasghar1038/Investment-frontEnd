@@ -386,22 +386,7 @@ const SignupPage: React.FC = () => {
                        
                         variant="outlined"
                         size="small"
-                        InputProps={{
-                          endAdornment: (
-                            <InputAdornment position="end">
-                              <IconButton
-                                onClick={togglePasswordVisibility}
-                                edge="end"
-                              >
-                                {showPassword ? (
-                                  <VisibilityOff />
-                                ) : (
-                                  <Visibility />
-                                )}
-                              </IconButton>
-                            </InputAdornment>
-                          ),
-                        }}
+                       
                       />
                     )}
                   />

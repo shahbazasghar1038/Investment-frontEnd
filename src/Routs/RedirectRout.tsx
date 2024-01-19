@@ -18,7 +18,7 @@ if (userString) {
     useEffect(() => {
             navigate(to);
     }, [])
-
+console.log('user from redirect')
     return (
         <>
         </>

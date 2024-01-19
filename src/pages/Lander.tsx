@@ -105,7 +105,7 @@ const Lander = () => {
                                 <div className="dream-dots text-left fadeInUp" data-wow-delay="0.2s" >
                                     <span className="gradient-text ">Decentralized Trading Platform</span>
                                 </div>
-                                <h4 className="fadeInUp  light-green" data-wow-delay="0.3s">Connect blockchain to the real world and start crypto tading.</h4>
+                                <h4 className="fadeInUp  light-green" data-wow-delay="0.3s">Connect blockchain to the real world and start crypto trading.</h4>
                                 <p className="fadeInUp" data-wow-delay="0.4s">Dive into the future of wealth creation with GW MINING. Invest in Bitcoin mining effortlessly, and amplify your gains by referring friends. Experience daily profits, secure transactions, and a user-friendly interface. Start mining and sharing the prosperity today!</p>
                                 <p className="fadeInUp" data-wow-delay="0.5s"> Stay ahead of market trends, diversify your portfolio, and experience the true potential of blockchain in real-world applications. Join us in revolutionizing the way you connect, trade, and thrive in the ever-evolving landscape of digital assets. Start your crypto trading adventure with GW MINING.</p>
                                 <Link className="more-btn mt-30" to="/plans"> More About Plans</Link>

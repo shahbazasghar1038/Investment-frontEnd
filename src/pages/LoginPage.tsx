@@ -64,7 +64,7 @@ const LoginPage: React.FC = () => {
           });
         } else {
           toast.success("Logged in successfully!");
-          navigate("/dashboard");
+          window.location.href = '/dashboard';
           loginContext(response?.user);  
         }
       } else {

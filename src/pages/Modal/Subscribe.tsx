@@ -33,7 +33,7 @@ export default function Subscribe() {
 
       {showModal ? (
         <>
-          <div   className=" flex justify-center   absolute top-0 right-0 left-0 z-[91] items-center     h-[100%] max-h-full">
+          <div   className=" flex justify-center   fixed top-0 right-0 left-0 z-[91] items-center     h-[100%] max-h-full">
             <div className="relative p-4 w-full max-w-md max-h-full z-[99]">
 
               <div className="relative rounded-lg shadow bg-[#100f43] ">
@@ -68,11 +68,11 @@ export default function Subscribe() {
                   </div>
                   <div className="my-4 space-y-3">
 
-                    <div className="flex items-center justify-between p-3 text-xs font-bold text-gray-50 rounded-lg bg-[#252471]   ">
+                    <div className=" relative flex items-center justify-between p-3 text-xs font-bold text-gray-50 rounded-lg bg-[#252471]   ">
 
-                      <span className="   whitespace-nowrap">{referralCode}</span>
+                      <div className="w-[80%] overflow-hidden">{referralCode}</div>
                       <span
-                        className={`inline-flex items-center justify-center px-2 py-0.5 ms-3 text-xs font-medium  bg-gray-400 rounded cursor-pointer ${isCopied ? 'bg-green-400 text-white' : 'text-gray-100'}`}
+                        className={`absolute inline-flex items-center justify-center px-2 py-0.5 right-3  text-xs font-medium  bg-gray-400 rounded cursor-pointer ${isCopied ? 'bg-green-400 text-white' : 'text-gray-100'}`}
                         onClick={handleCopyClick}
                       >
                         {isCopied ? 'Copied!' : 'Copy'}

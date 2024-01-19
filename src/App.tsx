@@ -16,31 +16,71 @@ import Nav from "./pages/Nav-Footer/Nav";
 import AuthRouts from "./Routs/AuthRouts";
 import GuestRouts from "./Routs/GuestRouts";
 import PublicRouts from "./Routs/PublicRouts";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import AdminDashboard from "./pages/AdminDashboard";
+import AdminRouts from "./Routs/AdminRouts";
+import { Box } from "@mui/material";
+import ProgressCircularCustomization from "./pages/dasboard/users/ProgressCircularCustomization";
+
+interface User {
+  role: number;
+}
 function App() {
-  const userString: string | null = localStorage.getItem("user");
-  let user: any;
+  const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  if (userString) {
-    user = JSON.parse(userString);
-  } else {
-    console.log("User data not found in localStorage");
-  }
+  useEffect(() => {
+    // Simulating an asynchronous function to check if user is stored
+    const checkUserStorage = async () => {
+      // Your logic to check if user is stored, for example, fetching from an API
+      // Replace the setTimeout with your actual logic
+      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulating async delay
 
+      // For demonstration purposes, let's assume the user is stored in local storage
+      const storedUser = localStorage.getItem('user');
 
+      // Update the user state and loading state
+      setUser(storedUser ? JSON.parse(storedUser) : null);
+      setIsLoading(false);
+    };
+
+    checkUserStorage();
+  }, []); // Run this effect only once when the component mounts
+
+ 
   return (
     <>
       <AuthProvider>
         <Toaster position="top-center" reverseOrder={false} />
         <BrowserRouter>
           <Nav />
-          {user ?
-            <AuthRouts />
-            :
 
-            <GuestRouts />
-          }
-          {/* <PublicRouts /> */}
+          <>
+            {isLoading ? (
+              <Box sx={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  background:'#030239',
+                  position:'fixed',
+                  inset:0,
+                  height: "100vh",
+                }}>
+                <ProgressCircularCustomization />
+              </Box>
+            ) : user ? (
+              <>
+                {user?.role == 2 ?
+                  <AuthRouts />
+                  :
+                  <AdminRouts />
+                }
+              </>
+            ) : (
+              <GuestRouts />
+            )}
+          </>
         </BrowserRouter>
       </AuthProvider>
     </>

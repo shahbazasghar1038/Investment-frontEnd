@@ -2,11 +2,11 @@
 import baseURL from "./axiosInstance";
 
 export const getList = async (id: any) => {
-  return await baseURL.get(`/api/v1/companies/list-compony/${id}`);
+  return await baseURL.get(`/api/v1/companies/list/${id}`);
 };
 
-export const create = async (data: any) => {
-  const response = await baseURL.post("/api/v1/companies/create", data);
+export const depositRequest = async (data: any) => {
+  const response = await baseURL.post("/api/v1/deposit/deposit", data);
   return response.data;
 };
 
@@ -33,7 +33,7 @@ export const updatecompanies = async (id: any, data: any) => {
 
 
 export const withdrawRequest = async (id: any, data: any) => {
-  const response = await baseURL.post(`/api/v1/companies/withdrawRequest`, data);
+  const response = await baseURL.post(`/api/v1/withdraw/withdrawRequest`, data);
   return response.data;
 };
 

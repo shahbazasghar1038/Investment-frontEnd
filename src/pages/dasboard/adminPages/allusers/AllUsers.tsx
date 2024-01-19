@@ -28,8 +28,7 @@ import { Link, useNavigate } from "react-router-dom";
 import {
   archiveTeam,
   deleteTeam,
-  getRefferalList,
-  getTeamsList,
+  getAllUserList,
   resetPaasword,
 } from "@/service/api/apiMethods";
 import AddIcon from "@mui/icons-material/Add";
@@ -76,10 +75,9 @@ const defaultColumns: any[] = [
   },
   {
     flex: 0.2,
-    minWidth: 230,
     field: "email",
-    headerName: "Email ",
-    sortable: true,
+    minWidth: 230,
+    headerName: "Email",
     renderCell: ({ row }: any) => {
       const { email } = row;
 
@@ -87,6 +85,24 @@ const defaultColumns: any[] = [
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <Box sx={{ display: "flex", flexDirection: "column" }}>
             <Typography sx={{ color: "text.secondary" }}>{email}</Typography>
+          </Box>
+        </Box>
+      );
+    },
+  },
+
+  {
+    flex: 0.2,
+    field: "mobile",
+    minWidth: 230,
+    headerName: "Phone",
+    renderCell: ({ row }: any) => {
+      const { mobile } = row;
+
+      return (
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <Typography sx={{ color: "text.secondary" }}>{mobile}</Typography>
           </Box>
         </Box>
       );
@@ -153,15 +169,15 @@ const defaultColumns: any[] = [
     field: "date",
     headerName: "Data ",
     renderCell: ({ row }: { row: any }) => {
-      const { date } = row;
+      const { createdAt } = row;
       return (
-        <Typography sx={{ color: "text.secondary" }}>{date}</Typography>
+        <Typography sx={{ color: "text.secondary" }}>{createdAt ? new Date(createdAt).toLocaleDateString() : ''}</Typography>
       );
     },
   },
 ];
 
-const BranchList = () => {
+const AllUsers = () => {
   const navigate = useNavigate();
   // ** State
   const { user } = useAuth();
@@ -198,15 +214,16 @@ const BranchList = () => {
   const listData = async () => {
     try {
       setIsLoading(true);
-      const { data } = await getRefferalList(user?._id);
-      const transformedData = data?.referredUsers.map((row: any) => ({
+      const { data } = await getAllUserList(user?._id);
+      const transformedData = data.map((row: any) => ({
         ...row,
         managerFirstName: row.manager ? row.manager.firstName : "",
         members: row.members ? row.members.length : "",
       }));
-      console.log("refferal users list", transformedData);
+      console.log('transform :' , transformedData)
       setCategorylist(transformedData);
 
+      console.log("teams", data);
     } catch (error) {
       console.log(error);
     } finally {
@@ -323,26 +340,8 @@ const BranchList = () => {
     <>
       <Grid container spacing={6}>
         <Grid item xs={12}>
-          <CardHeader title="Teams" className="text-white" />
-        </Grid>
-
-        <Grid item xs={12}>
-          <div>
-            <p className="font-bold text-[16px] md:text-[22px] text-white text-left"> Invite Friends</p>
-            <div className="my-4 space-y-3 w-[50%]   ">
-
-              <div className="flex items-center justify-between p-3 text-sm font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow">
-                <span className="whitespace-nowrap">{user?.referralCode}</span>
-                <span
-                  className={`inline-flex items-center justify-center px-2 py-0.5 ms-3 text-xs font- text-gray-800 bg-gray-400 rounded cursor-pointer ${isCopied ? 'bg-green-500 text-white' : ''}`}
-                  onClick={handleCopyClick}
-                >
-                  {isCopied ? 'Copied!' : 'Copy'}
-                </span>
-              </div>
-            </div>
-          </div>
-        </Grid>
+          <CardHeader title="All Users" className="text-white" />
+        </Grid> 
 
         <Grid item xs={12}>
           <Card>
@@ -383,8 +382,7 @@ const BranchList = () => {
                   onRowSelectionModelChange={(rows: any) =>
                     setSelectedRows(rows)
                   }
-                  getRowId={(row: any) => row._id}
-                // disableColumnMenu
+                  getRowId={(row: any) => row._id} 
                 />
               </Box>
             )}
@@ -395,4 +393,4 @@ const BranchList = () => {
   );
 };
 
-export default BranchList;
+export default AllUsers;

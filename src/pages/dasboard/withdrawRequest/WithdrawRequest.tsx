@@ -29,10 +29,10 @@ import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
 import PersonIcon from "@mui/icons-material/Person";
 
 type FormInputs = {
+  id: string;
   userName: string;
   amount: string;
   wallatAddress: string;
-  // timeZone: string;
   email: string;
   phoneNumber: string;
   phone: string;
@@ -63,6 +63,8 @@ const WithdrawRequest = () => {
     setTimeZoneList(timeZones);
   };
 useEffect(() => {
+
+  setValue("id", user?._id);
   setValue("userName", user?.name);  
   setValue("email", user?.email);
   setValue("phone", user?.phone);
@@ -76,12 +78,13 @@ console.log('user in  : ' , user)
       setIsLoading(true);
       const { data } = await getcompaniesById(user?._id);
       console.log(data);
+      setValue("id", user?._id);
       setValue("userName", user?.name);
       setValue("amount", data?.amount);
       // setValue("country", data?.country);
       // setValue("timeZone", data?.timeZone);
       setValue("email", user?.email);
-      // setValue("country", data?.country);
+      setValue("wallatAddress", user?.wallatAddress);
       // setValue("phoneNumber", data?.phoneNumber);
       // setValue("industry", data?.industry);
       // setValue("websiteUrl", data?.websiteUrl);
@@ -107,6 +110,7 @@ console.log('user in  : ' , user)
       console.log(response.message);
       if (response.ok === true) {
         toast.success(response.message);
+        setValue("amount", '');
         // navigate("/dashboard/compony-list");
       } else {
         const errorMessage = response.data || response.message;
@@ -118,7 +122,7 @@ console.log('user in  : ' , user)
 
       let errorMessage = "failed";
       if (error.response) {
-        errorMessage = error.response.data || error.response.data.message;
+        errorMessage = error.response.data?.message || error.response.data.message;
       } else {
         errorMessage = error.message;
       }
@@ -210,7 +214,7 @@ console.log('user in  : ' , user)
                 <Controller
                   name="wallatAddress"
                   control={control}
-                  defaultValue=""
+                  defaultValue={user?.bankDetail}
                   rules={{ required: "wallat address is required" }}
                   render={({ field }) => (
                     <TextField

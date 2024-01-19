@@ -263,20 +263,18 @@ const UserDetail = () => {
                   <Typography
                     variant="subtitle1"
                     // sx={{ color: "text.secondary" }}
-                  >{`${list?.firstName} ${list.lastName}`}</Typography>
-                  <Typography
+                  >{user?.name}</Typography>
+                  {/* <Typography
                     variant="subtitle2"
                     sx={{ color: "text.secondary" }}
-                  >{`${list?.job} `}</Typography>
+                  >{`${list?.job} `}</Typography> */}
 
                   <Chip
                     size="small"
                     variant="outlined"
                     label={
                       list?.status === "active"
-                        ? "Active"
-                        : list?.status === "archived"
-                        ? "Archived"
+                        ? "Active" 
                         : "Inactive"
                     }
                     sx={{
@@ -343,7 +341,7 @@ const UserDetail = () => {
                         whiteSpace: "nowrap",
                       }}
                     >
-                      {`${list?.firstName} ${list.lastName}`}
+                      {user?.name}
                     </Typography>
                   </Box>
 
@@ -399,7 +397,7 @@ const UserDetail = () => {
                         color: "text.secondary",
                       }}
                     >
-                      Team
+                      Wallet Address
                     </Typography>
                     <Typography
                       variant="body1"
@@ -407,7 +405,7 @@ const UserDetail = () => {
                         color: "text.secondary",
                       }}
                     >
-                      {list?.team}
+                      {user?.bankDetail}
                     </Typography>
                   </Box>
                   <Box sx={{ display: "flex", mb: 2 }}>

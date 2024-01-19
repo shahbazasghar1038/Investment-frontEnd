@@ -88,6 +88,13 @@ export const getTeamsList = async (id: any) => {
 };
 
 
+export const getRefferalList = async (id: any) => {
+  return await baseURL.get(`/api/v1/users/referrals/${id}`);
+};
+
+export const getAllUserList = async (id: any) => {
+  return await baseURL.get(`/api/v1/users/list-user`);
+};
 
 
 export const deleteTeam = async (id: string) => {

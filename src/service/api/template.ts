@@ -9,10 +9,13 @@ export const getList = async () => {
   return await baseURL.get(`/api/v1/templates/list`);
 };
 
+export const getDepositList = async (id:any) => {
+  return await baseURL.get(`/api/v1/deposit/list/${id} `);
+};
 
 
-export const getWithdrawList = async () => {
-  return await baseURL.get(`/api/v1/templates/withdrawList`);
+export const getWithdrawList = async (id:any) => {
+  return await baseURL.get(`/api/v1/withdraw/list/${id}`);
 };
 
 
@@ -49,6 +52,6 @@ export const gettemplatesById = async (id: any) => {
   return response.data;
 };
 export const archiveTemp = async (id: any, data: any) => {
-  const response = await baseURL.patch(`/api/v1/templates/archive/${id}`, data);
+  const response = await baseURL.patch(`/api/v1/templates/archive/${id}`);
   return response.data;
 };

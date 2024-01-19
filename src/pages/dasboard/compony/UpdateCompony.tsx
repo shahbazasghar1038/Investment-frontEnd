@@ -21,7 +21,7 @@ import logo from "@/assets/contract-logo.png"; // Ensure this path is correct
 import { Link, useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import { CreateCompony } from "@/service/api/apiMethods";
-import { getcompaniesById, updatecompanies } from "@/service/api/compony";
+import { depositRequest, getcompaniesById, updatecompanies } from "@/service/api/compony";
 import moment from "moment-timezone";
 import { useAuth } from "@/hooks/useAuth";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
@@ -34,7 +34,7 @@ type FormInputs = {
   // timeZone: string;
   email: string;
   phoneNumber: string;
-  // industry: string;
+  wallatAddress: string; 
   // websiteUrl: string;
   image: string;
   // billing_email: string;
@@ -71,14 +71,14 @@ const UpdateCompony = () => {
       setIsLoading(true);
       const { data } = await getcompaniesById(user?._id);
       console.log(data);
-      setValue("userName", user?.name);
+      setValue("userName", data?.name);
       setValue("amount", data?.amount);
       // setValue("country", data?.country);
       // setValue("timeZone", data?.timeZone);
-      setValue("email", user?.email);
+      setValue("email", data?.email);
       // setValue("country", data?.country);
       setValue("phoneNumber", data?.phoneNumber);
-      // setValue("industry", data?.industry);
+      setValue("wallatAddress", data?.wallatAddress);
       // setValue("websiteUrl", data?.websiteUrl);
       // setValue("billing_email", data?.billing_email);
       setImage(data?.image);
@@ -98,7 +98,7 @@ const UpdateCompony = () => {
       if (imageBase64) {
         data.image = imageBase64;
       }
-      const response = await updatecompanies(user?._id, data);
+      const response = await depositRequest(data);
       console.log(response.message);
       if (response.ok === true) {
         toast.success(response.message);
@@ -225,7 +225,7 @@ const UpdateCompony = () => {
                 <Controller
                   name="userName"
                   control={control}
-                  defaultValue=""
+                  defaultValue={user?.name}
                   rules={{ required: " User Name is required" }}
                   render={({ field }) => (
                     <TextField
@@ -373,7 +373,7 @@ const UpdateCompony = () => {
                 <Controller
                   name="email"
                   control={control}
-                  defaultValue=""
+                  defaultValue={user?.email}
                   rules={{
                     required: "Email is required",
                     pattern: {
@@ -412,7 +412,7 @@ const UpdateCompony = () => {
                 <Controller
                   name="phoneNumber"
                   control={control}
-                  defaultValue=""
+                  defaultValue={user?.mobile}
                   rules={{
                     required: "Phone Number is required",
                     pattern: {
@@ -448,7 +448,7 @@ const UpdateCompony = () => {
               </Grid>
 
               {/* Industry Field */}
-              {/* <Grid item xs={12} md={6}>
+              <Grid item xs={12} md={6}>
                 <Typography
                   variant="subtitle2"
                   sx={{
@@ -456,29 +456,29 @@ const UpdateCompony = () => {
                     mb: -1,
                   }}
                 >
-                  Industry
+                  wallet Address
                 </Typography>
                 <Controller
-                  name="industry"
+                  name="wallatAddress"
                   control={control}
-                  defaultValue=""
+                  defaultValue={user?.bankDetail}
                   rules={{ required: "Industry is required" }}
                   render={({ field }) => (
                     <TextField
                       {...field}
                       margin="normal"
                       fullWidth
-                      placeholder="Enter your industry"
-                      error={Boolean(errors.industry)}
+                      placeholder="Enter your wallet Address"
+                      error={Boolean(errors.wallatAddress)}
                       helperText={
-                        errors.industry ? errors.industry.message : ""
+                        errors.wallatAddress ? errors.wallatAddress.message : ""
                       }
                       variant="outlined"
                       size="small"
                     />
                   )}
                 />
-              </Grid> */}
+              </Grid>
 
               {/* Website URL Field */}
               {/* <Grid item xs={12} md={6}>

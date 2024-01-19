@@ -15,23 +15,26 @@ import Nav from "../pages/Nav-Footer/Nav";
 import Lander from "@/pages/Lander";
 import RedirectRoute from "./RedirectRout";
 import { useEffect } from "react";
-function AuthRouts() {
+import AdminDashboard from "@/pages/AdminDashboard";
+function AdminRouts() {
 
-    
-
+   
     return (
         <>
-
-            <Routes>
+           
+           <Routes>
+           
                 <Route path="/" element={<Lander />} />
                 <Route path="/plans" element={<Packages />} />
-                <Route path="dashboard/*" element={<Dashboard />} />
+                <Route path="dashboard/*" element={<AdminDashboard />} />
                 <Route path="/*" element={<RedirectRoute to="/dashboard" />} />
-            </Routes>
 
 
+                </Routes>              
+
+          
         </>
     );
 }
 
-export default AuthRouts;
+export default AdminRouts;

@@ -85,9 +85,10 @@ const WithdrawList = () => {
   const listData = async () => {
     try {
       setIsLoading(true);
-      const { data } = await getWithdrawList();
-
-      setCategorylist(data);
+      const { data } = await getWithdrawList(user?._id);
+      
+      setCategorylist(data?.filter((item:any) => user?.email === item?.email));
+     
 
       console.log("teams", data);
     } catch (error) {

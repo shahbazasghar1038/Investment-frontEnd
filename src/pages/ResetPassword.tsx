@@ -178,13 +178,13 @@ const ResetPassword: React.FC = () => {
                       value: 10,
                       message: "Password must have at least 8 characters",
                     },
-                    pattern: {
-                      // This is a simple regex for at least one uppercase, one lowercase, one number, and one special character
-                      value:
-                        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-                      message:
-                        "Password must be at least 8  characters long  include 1 number, and special characters , 1 uppercase letter and 1 lower caseletter",
-                    },
+                    // pattern: {
+                    //   // This is a simple regex for at least one uppercase, one lowercase, one number, and one special character
+                    //   value:
+                    //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                    //   message:
+                    //     "Password must be at least 8  characters long  include 1 number, and special characters , 1 uppercase letter and 1 lower caseletter",
+                    // },
                   }}
                   render={({ field }) => (
                     <TextField
