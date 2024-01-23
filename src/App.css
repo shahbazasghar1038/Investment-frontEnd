@@ -980,7 +980,7 @@ ul, ol {
   --tw-text-opacity: 1;
   color: rgba(255, 255, 255, var(--tw-text-opacity));
   z-index: 1;
-  min-width: 160px;
+  min-width: 140px;
   line-height: 48px !important;
   background-size: 200% auto;
   box-shadow: 0 3ox 20px rgba(0, 0, 0, 0.1);
@@ -5297,13 +5297,39 @@ input#checkboxLabel:checked ~ .box span{
   background-image: linear-gradient(73deg,#d787f5,#3634bb);
 }
 
+
+.tnc-header{
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  box-shadow: rgba(6, 28, 66, 0.1) 0px 20px 40px;
+  background-image: linear-gradient(73deg,#d787f5,#3634bb);
+}
+
+.sub-heading{
+  font-size: 22px;
+  font-weight : 600;
+  color: white;
+}
+
+.tnc-decs{
+  font-size: 16px;
+  font-weight : 400;
+  color: white;
+}
+
 @media (max-width: 992px){
   .download {
     margin-top: 0px;
     padding-left: 0px;
     padding-right: 0px;
-    padding-top: 96px;
-    padding-bottom: 96px
+    padding-top: 16px;
+    padding-bottom: 16px
   }
 }
 

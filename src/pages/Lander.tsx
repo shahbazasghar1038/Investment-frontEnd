@@ -33,10 +33,10 @@ import f5 from "../img/features/f5.svg"
 import f6 from "../img/features/f6.svg"
 
 import faq from "../img/svg/faq3.png"
-import team1 from "../img/team-img/1.png"
-import team2 from "../img/team-img/2.png"
-import team3 from "../img/team-img/3.png"
-import team4 from "../img/team-img/4.png"
+import team1 from "../img/team-img/1.jpeg"
+import team2 from "../img/team-img/2.jpeg"
+import team3 from "../img/team-img/3.jpeg"
+import team4 from "../img/team-img/4.jpeg"
 
 import computer from "../img/core-img/computer.png"
 import { Link } from 'react-router-dom'
@@ -65,12 +65,12 @@ const Lander = () => {
                         <div className="flex flex-wrap items-center">
                             {/* <!-- Welcome Content --> */}
                             <div className="w-full lg:w-2/5   md:w-full px-4 ">
-                                <div className="welcome-content px-2">
+                                <div className="welcome-content px-1">
                                     <div className="promo-section">
                                         <h3 className="special-head dark text-left">Unlock Digital Wealth with GW MINING </h3>
                                     </div>
-                                    <h1 className='light-green text-left'>Empower Your Finances through Innovative Crypto Mining Solutions </h1>
-                                    <p className="w-text text-left">Elevate your finances with cutting-edge Bitcoin mining. Join GW MINING for secure, transparent, and profitable opportunities. Start your journey to financial freedom today.</p>
+                                    <h1 className='light-green text-left px-2'>Empower Your Finances through Innovative Crypto Mining Solutions </h1>
+                                    <p className="w-text text-left px-2">Elevate your finances with cutting-edge Bitcoin mining. Join GW MINING for secure, transparent, and profitable opportunities. Start your journey to financial freedom today.</p>
                                     <div className="dream-btn-group flex justify-start">
                                         <Link to="plans" className="more-btn mr-3">Get started</Link>
                                         <Link to="plans" className="more-btn ">Buy Plan</Link>
@@ -909,10 +909,10 @@ const Lander = () => {
                             <div className="section-heading text-center">
                                 {/* <!-- Dream Dots --> */}
                                 <div className="dream-dots justify-center fadeInUp" data-wow-delay="0.2s">
-                                    <span>Our Team</span>
+                                    <span>Top Members</span>
                                 </div>
-                                <h2 className="fadeInUp light-green" data-wow-delay="0.3s">Awesome Team</h2>
-                                <p className="fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo. </p>
+                                <h2 className="fadeInUp light-green" data-wow-delay="0.3s">Month of Outstanding Contributions</h2>
+                                <p className="fadeInUp" data-wow-delay="0.4s">These experts navigate the dynamic landscape, maximizing returns and shaping the future of mining excellence. </p>
                             </div>
                         </div>
                     </div>
@@ -928,11 +928,7 @@ const Lander = () => {
                                 {/* <!-- Team Info --> */}
                                 <div className="team-info">
                                     <h5 className="w-text">Joman Helal</h5>
-                                    <p className="g-text">Executive Officer</p>
-                                </div>
-                                {/* <!-- Social Icon --> */}
-                                <div className="team-social-icon">
-                                    <a href="#"><i className="fa fa-linkedin"></i></a>
+                                    {/* <p className="g-text">Executive Officer</p> */}
                                 </div>
                             </div>
                         </div>
@@ -947,11 +943,7 @@ const Lander = () => {
                                 {/* <!-- Team Info --> */}
                                 <div className="team-info">
                                     <h5 className="w-text">Slans Alons</h5>
-                                    <p className="g-text">Business Development</p>
-                                </div>
-                                {/* <!-- Social Icon --> */}
-                                <div className="team-social-icon">
-                                    <a href="#"><i className="fa fa-linkedin"></i></a>
+                                    {/* <p className="g-text">Business Development</p> */}
                                 </div>
                             </div>
                         </div>
@@ -966,11 +958,7 @@ const Lander = () => {
                                 {/* <!-- Team Info --> */}
                                 <div className="team-info">
                                     <h5 className="w-text">Josha Michal</h5>
-                                    <p className="g-text">UX/UI Designer</p>
-                                </div>
-                                {/* <!-- Social Icon --> */}
-                                <div className="team-social-icon">
-                                    <a href="#"><i className="fa fa-linkedin"></i></a>
+                                    {/* <p className="g-text">UX/UI Designer</p> */}
                                 </div>
                             </div>
                         </div>
@@ -984,12 +972,8 @@ const Lander = () => {
                                 </div>
                                 {/* <!-- Team Info --> */}
                                 <div className="team-info">
-                                    <h5 className="w-text">Johan Wright</h5>
-                                    <p className="g-text">Head of Marketing</p>
-                                </div>
-                                {/* <!-- Icon --> */}
-                                <div className="team-social-icon">
-                                    <a href="#"><i className="fa fa-linkedin"></i></a>
+                                    <h5 className="w-text">Saim </h5>
+                                    {/* <p className="g-text">Head of Marketing</p> */}
                                 </div>
                             </div>
                         </div>
@@ -1005,8 +989,8 @@ const Lander = () => {
                         <div className="w-full pr-4 pl-4">
                             <div className="subscribe-wrapper">
                                 <div className="section-heading text-center">
-                                    <h2 className="wow fadeInUp" data-wow-delay="0.3s">Don’t Miss ICO News And Updates!</h2>
-                                    <p className="wow fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
+                                    <h2 className="wow fadeInUp" data-wow-delay="0.3s">stay Update!</h2>
+                                    <p className="wow fadeInUp" data-wow-delay="0.4s">Don’t Miss ICO News And Updates.</p>
                                 </div>
                                 <div className="service-text text-center">
 
@@ -1122,16 +1106,16 @@ const Lander = () => {
                                 </div>
                             </div>
 
-                            <div className="w-full lg:w-1/5 pr-4 pl-4 md:w-1/2 pr-4 pl-4">
+                            <div className="w-full lg:w-1/5 pr-4 pl-4 md:w-1/2 ">
                                 <div className="contact_info_area sm:flex justify-between">
                                     {/* <!-- Content Info --> */}
                                     <div className="contact_info mt-x text-center fadeInUp" data-wow-delay="0.3s">
                                         <h5 className='light-green'>PRIVACY & TOS</h5>
-                                        <a href="#"><p>Advertiser Agreement</p></a>
-                                        <a href="#"><p>Acceptable Use Policy</p></a>
-                                        <a href="#"><p>Privacy Policy</p></a>
-                                        <a href="#"><p>Technology Privacy</p></a>
-                                        <a href="#"><p>Developer Agreement</p></a>
+                                        <a href="#"><p>Home</p></a>
+                                        <a href="#"><p>Plans</p></a>
+                                        <a href="#"><p>How it Works</p></a>
+                                        <a href="#"><p>Roadmap</p></a>
+                                        <a href="#"><p>Support</p></a>
                                     </div>
                                 </div>
                             </div>
@@ -1141,9 +1125,13 @@ const Lander = () => {
                                 <div className="contact_info_area sm:flex justify-between">
                                     <div className="contact_info mt-s text-center fadeInUp" data-wow-delay="0.2s">
                                         <h5 className='light-green'>NAVIGATE</h5>
-                                        <a href="#"><p>Advertisers</p></a>
-                                        <a href="#"><p>Developers</p></a>
-                                        <a href="#"><p>Resources</p></a>
+
+                                        <p>
+                                            <Link to='terms-of-services' className='text-white'>Terms of Services</Link>
+                                        </p>
+                                        <p>
+                                            <Link to='about-us' className='text-white'>About Us</Link>
+                                        </p>
                                         <a href="#"><p>Company</p></a>
                                         <a href="#"><p>Connect</p></a>
                                     </div>

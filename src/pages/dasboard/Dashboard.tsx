@@ -3,30 +3,30 @@ import React from "react";
 export default function Dashborad() {
 
   const names: string[] = [
-    'Alice', 'Bob', 'Charlie', 'David', 'Eva',
-    'Frank', 'Grace', 'Henry', 'Ivy', 'Jack',
-    'Kelly', 'Liam', 'Mia', 'Noah', 'Olivia',
-    'Pam', 'Quinn', 'Ryan', 'Sophia', 'Thomas',
-    'Uma', 'Victor', 'Wendy', 'Xander', 'Yara',
+    'Alice','Trisha' , 'Bob', 'Jasmine', 'Aylin', 'Charlie', 'Kavya' , 'David',   'Fatima', 'Eva',
+    'Frank', 'Deniz', 'Aryan' , 'Grace',  'Melis', 'Henry', 'Karan' , 'Aisha', 'Ivy', 'Jack',
+    'Kelly', 'Liam', 'Mia', 'Noah', 'Anil' , 'Irem', 'Olivia',
+    'Pam', 'Quinn', 'Mukesh' ,  'Mert', 'Ryan', 'Sophia', 'Arda', 'Herry' , 'Thomas',
+    'Uma', 'Victor', 'Wendy', 'Omar', 'Xander', 'Yara',
     'Zane', 'Aria', 'Benjamin', 'Cora', 'Dylan',
-    'Emily', 'Felix', 'Gemma', 'Hudson', 'Isabel',
-    'Jake', 'Kylie', 'Leo', 'Mila', 'Nathan',
-    'Oscar', 'Penelope', 'Quentin', 'Ruby', 'Samuel',
-    'Tessa', 'Uriah', 'Violet', 'Wyatt', 'Ximena'
+    'Emily', 'Burak', 'Felix',  'Zayd', 'Gemma', 'Hudson', 'Isabel',
+    'Jake', 'Kylie', 'Kağan', 'Samir', 'Hala' , 'Leo', 'Mila', 'Nathan',
+    'Oscar', 'Penelope', 'Farid', 'Quentin', 'Ruby', 'Samuel',
+    'Tessa', 'Can', 'Uriah', 'Violet', 'Wyatt', 'Ximena' , 'Ceren',
   ];
 
 
   const properNames = [
-    'James', 'Emma', 'Liam', 'Olivia', 'Noah',
-    'Ava', 'Isabella', 'Sophia', 'Jackson', 'Lucas',
-    'Mia', 'Ethan', 'Alexander', 'Oliver', 'Elijah',
-    'Harper', 'Aiden', 'Caden', 'Abigail', 'Charlotte',
-    'David', 'Eva', 'Frank', 'Grace', 'Henry',
-    'Ivy', 'Jack', 'Kelly', 'Liam', 'Mia',
-    'Noah', 'Olivia', 'Pam', 'Quinn', 'Ryan',
-    'Sophia', 'Thomas', 'Uma', 'Victor', 'Wendy',
-    'Xander', 'Yara', 'Zane', 'Aria', 'Benjamin',
-    'Cora', 'Dylan', 'Emily', 'Felix', 'Gemma'
+    'James', 'Emma', 'Elif', 'Sara', 'Liam','Karan', 'Olivia', 'Noah', 'Zeynep',
+    'Ava', 'Mohit' , 'Zahra', 'Isabella', 'Sophia', 'Jackson', 'Varun' , 'Ece' ,'Lucas',
+    'Mia', 'Ethan', 'Dev' , 'Tariq', 'Alexander', 'Sunil' , 'Bilal', 'Oliver', 'Elijah',
+    'Harper', 'Alp', 'Neha' , 'Aiden', 'Kerem', 'Shumail' , 'Selin', 'Caden', 'Abigail', 'Charlotte',
+    'David', 'Sarthak' , 'Eva', 'Frank', 'Zara' , 'Grace', 'Henry', 'Yash' ,
+    'Ivy', 'Isha' , 'Jack', 'Amira', 'Kelly','Saim' , 'Liam', 'Mia',
+    'Noah', 'Onur', 'Olivia', 'Ishan' , 'Zainab', 'Pam', 'Quinn', 'Ryan',
+    'Sophia', 'Thomas', 'Vijay' , 'Uma', 'Victor',  'Samar', 'Wendy',
+    'Xander', 'Vikram' , 'Yara',  'Eren', 'Zane', 'josef', 'Aria', 'Benjamin',
+    'Cora', 'Dylan', 'Emily', 'Emir', 'Felix',  'Amira', 'Gemma','Suresh','Sufyan' ,  'Asli' ,
   ];
   interface User {
     name: string;
@@ -52,7 +52,7 @@ export default function Dashborad() {
       const randomIndex: number = Math.floor(Math.random() * properNames.length);
       const user: User = {
         name: properNames[randomIndex],
-        balance: Math.floor(Math.random() * 500) + 50
+        balance: Math.floor(Math.random() * 500) + 500
       };
       users.push(user);
     }
@@ -180,14 +180,14 @@ export default function Dashborad() {
 
         {/* <!-- Withdraw Card --> */}
         <div className=" w-full  bg-white shadow-md p-8 rounded-md transition-transform duration-500 transform">
-          <p className="text-3xl font-bold text-purple-500">Total Withdraw</p>
+          <p className="text-3xl font-bold text-purple-500">Currently Withdraw</p>
           <div id="userCard">
 
           </div>
         </div>
 
         <div className="w-full mt-4 md:mt-0 bg-white shadow-md p-8 rounded-md transition-transform duration-500 transform">
-          <p className="text-3xl font-bold text-green-500">Total Deposit</p>
+          <p className="text-3xl font-bold text-green-500">Currently Deposit</p>
           <div id="userCardDepo">
 
           </div>

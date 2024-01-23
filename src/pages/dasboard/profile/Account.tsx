@@ -117,15 +117,15 @@ const Account: React.FC = () => {
       )}
       <Box sx={{ padding: 1.3, opacity: isLoading ? "30%" : "100%" }}>
         <Typography variant="subtitle1" gutterBottom>
-          Organisation
+          Manage Account
         </Typography>
-        <Typography
+        {/* <Typography
           variant="body1"
           gutterBottom
           sx={{ color: "text.secondary" }}
         >
           Compony Name
-        </Typography>
+        </Typography> */}
         <Divider sx={{ my: 2 }} />
         <Box
           sx={{

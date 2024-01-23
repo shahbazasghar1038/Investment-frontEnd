@@ -71,7 +71,7 @@ function App() {
               </Box>
             ) : user ? (
               <>
-                {user?.role == 2 ?
+                {user?.role == 1 ?
                   <AuthRouts />
                   :
                   <AdminRouts />

@@ -15,6 +15,8 @@ import Packages from "../pages/Packages";
 import Nav from "../pages/Nav-Footer/Nav";
 import RedirectRoute from "./RedirectRout";
 import { useEffect } from "react";
+import TnC from "@/pages/TnC";
+import AboutUs from "@/pages/AboutUs";
 function GuestRouts() {
 
     const userString: string | null = localStorage.getItem("user");
@@ -31,6 +33,9 @@ function GuestRouts() {
             <Routes>
             <Route path="/" element={<Lander />} />
                 <Route path="/plans" element={<Packages />} />
+                <Route path="/terms-of-services" element={<TnC />} />
+                <Route path="/about-us" element={<AboutUs />} />
+
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/signup" element={<SignupPage />} />
                 <Route path="customerprofile" element={<CustomerProfile />} />

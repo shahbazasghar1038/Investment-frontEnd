@@ -15,6 +15,8 @@ import Nav from "../pages/Nav-Footer/Nav";
 import Lander from "@/pages/Lander";
 import RedirectRoute from "./RedirectRout";
 import { useEffect } from "react";
+import TnC from "@/pages/TnC";
+import AboutUs from "@/pages/AboutUs";
 function AuthRouts() {
 
     
@@ -26,6 +28,8 @@ function AuthRouts() {
                 <Route path="/" element={<Lander />} />
                 <Route path="/plans" element={<Packages />} />
                 <Route path="dashboard/*" element={<Dashboard />} />
+                <Route path="/terms-of-services" element={<TnC />} />
+                <Route path="/about-us" element={<AboutUs />} />
                 <Route path="/*" element={<RedirectRoute to="/dashboard" />} />
             </Routes>
 
