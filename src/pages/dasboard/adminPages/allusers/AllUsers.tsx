@@ -122,7 +122,7 @@ const defaultColumns: any[] = [
           label={
             row.status === "Active"
               ? "Active"
-              : "Inactive"
+              : "Active"
           }
           sx={{
             fontSize: "14px",
@@ -130,21 +130,21 @@ const defaultColumns: any[] = [
             backgroundColor:
               row.status === "Active"
                 ? "#D3FDE4"
-                : "#FFCBCB",
+                : "#D3FDE4",
             color:
               row.status === "Active"
                 ? "#3F9748"
-                : "#red",
+                : "#3F9748",
             borderColor:
               row.status === "Active"
                 ? "#D3FDE4"
-                : "#FFCBCB", // Optional: to match border color with background
+                : "#D3FDE4", // Optional: to match border color with background
             "& .MuiChip-label": {
               // This targets the label inside the chip for more specific styling
               color:
                 row.status === "Active"
                   ? "#3F9748"
-                  : "#D32F2F",
+                  : "#3F9748",
             },
           }}
         />

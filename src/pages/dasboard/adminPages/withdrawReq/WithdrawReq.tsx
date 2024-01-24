@@ -26,9 +26,8 @@ import Button from "@mui/material/Button";
 import { Link, useNavigate } from "react-router-dom";
 import ProgressCircularCustomization from "@/pages/dasboard/users/ProgressCircularCustomization";
 import { useAuth } from "@/hooks/useAuth";
-import { archiveTemp, deletetemplates, getDepositList, getList } from "@/service/api/template";
+import { archiveTemp, deletetemplates, getAllWithdrawReqToAdmin, getList, getWithdrawList, updateWithdrawToAdminStatus } from "@/service/api/template";
 import { format, utcToZonedTime } from "date-fns-tz";
-import { getDepositListToAdmin, updateDepositStatus } from "@/service/api/compony";
 interface CellType {
   row: any;
   _id: any;
@@ -49,7 +48,7 @@ interface RowType {
 
 // ** Styled components
 
-const PendingDepositReq = () => {
+const WithdrawReq = () => {
   const navigate = useNavigate();
   // ** State
   const { user } = useAuth();
@@ -86,12 +85,12 @@ const PendingDepositReq = () => {
   const listData = async () => {
     try {
       setIsLoading(true);
-      const  data = await getDepositListToAdmin();
-
+      const  data = await getAllWithdrawReqToAdmin();
+      
       setCategorylist(data);
+     
 
-
-      console.log("admin side deposit requests", data);
+      console.log("withdraw list to admin", data);
     } catch (error) {
       console.log(error);
     } finally {
@@ -120,37 +119,36 @@ const PendingDepositReq = () => {
     }
   };
 
-  const handleArchive = async (id: any) => {
-    try {
-      if (window.confirm("Are you sure you want to archive this template?")) {
-        setIsLoading(true);
-        const res = await archiveTemp(id, { status: "Archived" });
-        console.log({ res });
+  // const handleArchive = async (id: any) => {
+  //   try {
+  //     if (window.confirm("Are you sure you want to archive this template?")) {
+  //       setIsLoading(true);
+  //       const res = await archiveTemp(id, { status: "Archived" });
+  //       console.log({ res });
 
-        if (res.ok === true) {
-          toast.success(res.message);
-          listData();
-        } else {
-          toast.error(res?.message || "");
-        }
-      }
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-  const handleActive = async (id: any , status:any) => {
-    console.log('active')
+  //       if (res.ok === true) {
+  //         toast.success(res.message);
+  //         listData();
+  //       } else {
+  //         toast.error(res?.message || "");
+  //       }
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
+  const handleActive = async (id: any , status : any) => {
     try {
       if (
         window.confirm(
-          "Are you sure you want to change the status this request?"
+          "Are you sure you want to change the status this template?"
         )
       ) {
         setIsLoading(true);
 
-        const res = await updateDepositStatus(id, { status: status });
+        const res = await updateWithdrawToAdminStatus(id, { status: status });
         console.log({ res });
 
         if (res.ok === true) {
@@ -170,13 +168,8 @@ const PendingDepositReq = () => {
   useEffect(() => {
     listData();
   }, []);
- 
 
-  const handleOpenImage = (imageUrl:any) => {
-    window.open(imageUrl, "_blank");
-  };
-
-
+  console.log(search, "serch");
 
   const filteredList = useMemo(() => {
     let result = catategorylist;
@@ -192,37 +185,10 @@ const PendingDepositReq = () => {
   };
 
   const columns: GridColDef[] = [
-    
-    
-    {
-      flex: 0.2,
-      field: "name",
-      minWidth: 200,
-      headerName: "Name",
-      renderCell: ({ row }: any) => {
-        const { name } = row;
-
-        return (
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <Box sx={{ display: "flex", flexDirection: "column" }}>
-              <Typography sx={{ color: "text.secondary" }}>{name}</Typography>
-            </Box>
-          </Box>
-        );
-      },
-    },
-    
-    
-    
-    
-    
-    
-    
-    
     {
       flex: 0.2,
       field: "amount",
-      minWidth: 50,
+      minWidth: 230,
       headerName: "Amount",
       renderCell: ({ row }: any) => {
         const { amount } = row;
@@ -237,14 +203,13 @@ const PendingDepositReq = () => {
       },
     },
 
-   
 
 
     {
       flex: 0.2,
       field: "wallatAddress",
-      minWidth: 300,
-      headerName: "Wallet Address",
+      minWidth: 230,
+      headerName: "Wallat Address",
       renderCell: ({ row }: any) => {
         const { wallatAddress } = row;
 
@@ -257,35 +222,6 @@ const PendingDepositReq = () => {
         );
       },
     },
-
-
-
-
-    {
-      flex: 0.2,
-      field: "email",
-      minWidth: 230,
-      headerName: "Email",
-      renderCell: ({ row }: any) => {
-        const { email } = row;
-
-        return (
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <Box sx={{ display: "flex", flexDirection: "column" }}>
-              <Typography sx={{ color: "text.secondary" }}>{email}</Typography>
-            </Box>
-          </Box>
-        );
-      },
-    },
-
-
-
-    
-
-
-
-
 
 
     // {
@@ -326,7 +262,7 @@ const PendingDepositReq = () => {
             label={
               row.status === "Approved"
                 ? "Approved" 
-                : row.status === "Reject" ? 'Reject'  : 'Pending'  } 
+                : row.status === "Reject" ? 'Reject'  : 'Pending'  }
             sx={{
               fontSize: "14px",
               fontWeight: "bold",
@@ -417,48 +353,6 @@ const PendingDepositReq = () => {
         );
       },
     },
-
-
-    {
-      flex: 0.2,
-      field: "image",
-      minWidth: 230,
-      headerName: "Screenshot",
-      renderCell: ({ row }: any) => {
-        const { image } = row;
-
-        return (
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <Box sx={{ display: "flex", flexDirection: "column" }}> 
-            
-            {image ? 
-              <button onClick={() => handleOpenImage(image)}><Chip
-              size="small"
-              variant="outlined"
-              label={  "OPEN"   }
-              sx={{
-                fontSize: "14px",
-                fontWeight: "bold",
-                backgroundColor:
-                  row.status === "Approved"
-                    ? "#3F9748"
-                    : "#3F9748",
-                        
-                "& .MuiChip-label": { 
-                  color:
-                    row.status === "Approved"
-                      ? "#FFF" 
-                      : "#FFF",
-                },
-              }}
-            /></button>
-            : 'N/A'
-            }
-              </Box>
-          </Box>
-        );
-      },
-    },
     // {
     //   flex: 0.2,
     //   field: "uploaded_by",
@@ -519,7 +413,7 @@ const PendingDepositReq = () => {
             <MenuItem
               onClick={() => {
                 handleClose();
-                handleActive(menuState.row?._id , 'Approved'); // Use menuState.row._id
+                handleActive(menuState.row?._id , 'Approved' ); // Use menuState.row._id
               }}
             >
               Approve
@@ -534,7 +428,7 @@ const PendingDepositReq = () => {
             </MenuItem> */}
             <MenuItem
               onClick={() => {
-                handleActive(menuState.row?._id , 'Reject'); // Use menuState.row._id
+                handleActive(menuState.row?._id , 'Reject' ); // Use menuState.row._id
                 handleClose();
               }}
             >
@@ -551,7 +445,7 @@ const PendingDepositReq = () => {
       <Grid container spacing={6}>
       
       <Grid item xs={12}>
-          <CardHeader title="Deposit Requests" className="text-white" />
+          <CardHeader title="Withdraw Requests" className="text-white" />
          </Grid>
 
         <Grid item xs={12}>
@@ -602,8 +496,9 @@ const PendingDepositReq = () => {
           </Card>
         </Grid>
       </Grid>
+      
     </>
   );
 };
 
-export default PendingDepositReq;
+export default WithdrawReq;

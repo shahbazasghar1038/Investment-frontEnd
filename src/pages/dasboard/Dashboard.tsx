@@ -1,32 +1,36 @@
-import React from "react";
+import { useAuth } from "@/hooks/useAuth";
+import { getRefferalList } from "@/service/api/apiMethods";
+import { getDepositList, getWithdrawList } from "@/service/api/template";
+import React, { useEffect, useState } from "react";
 
 export default function Dashborad() {
+  const { user } = useAuth();
 
   const names: string[] = [
-    'Alice','Trisha' , 'Bob', 'Jasmine', 'Aylin', 'Charlie', 'Kavya' , 'David',   'Fatima', 'Eva',
-    'Frank', 'Deniz', 'Aryan' , 'Grace',  'Melis', 'Henry', 'Karan' , 'Aisha', 'Ivy', 'Jack',
-    'Kelly', 'Liam', 'Mia', 'Noah', 'Anil' , 'Irem', 'Olivia',
-    'Pam', 'Quinn', 'Mukesh' ,  'Mert', 'Ryan', 'Sophia', 'Arda', 'Herry' , 'Thomas',
+    'Alice', 'Trisha', 'Bob', 'Jasmine', 'Aylin', 'Charlie', 'Kavya', 'David', 'Fatima', 'Eva',
+    'Frank', 'Deniz', 'Aryan', 'Grace', 'Melis', 'Henry', 'Karan', 'Aisha', 'Ivy', 'Jack',
+    'Kelly', 'Liam', 'Mia', 'Noah', 'Anil', 'Irem', 'Olivia',
+    'Pam', 'Quinn', 'Mukesh', 'Mert', 'Ryan', 'Sophia', 'Arda', 'Herry', 'Thomas',
     'Uma', 'Victor', 'Wendy', 'Omar', 'Xander', 'Yara',
     'Zane', 'Aria', 'Benjamin', 'Cora', 'Dylan',
-    'Emily', 'Burak', 'Felix',  'Zayd', 'Gemma', 'Hudson', 'Isabel',
-    'Jake', 'Kylie', 'Kağan', 'Samir', 'Hala' , 'Leo', 'Mila', 'Nathan',
+    'Emily', 'Burak', 'Felix', 'Zayd', 'Gemma', 'Hudson', 'Isabel',
+    'Jake', 'Kylie', 'Kağan', 'Samir', 'Hala', 'Leo', 'Mila', 'Nathan',
     'Oscar', 'Penelope', 'Farid', 'Quentin', 'Ruby', 'Samuel',
-    'Tessa', 'Can', 'Uriah', 'Violet', 'Wyatt', 'Ximena' , 'Ceren',
+    'Tessa', 'Can', 'Uriah', 'Violet', 'Wyatt', 'Ximena', 'Ceren',
   ];
 
 
   const properNames = [
-    'James', 'Emma', 'Elif', 'Sara', 'Liam','Karan', 'Olivia', 'Noah', 'Zeynep',
-    'Ava', 'Mohit' , 'Zahra', 'Isabella', 'Sophia', 'Jackson', 'Varun' , 'Ece' ,'Lucas',
-    'Mia', 'Ethan', 'Dev' , 'Tariq', 'Alexander', 'Sunil' , 'Bilal', 'Oliver', 'Elijah',
-    'Harper', 'Alp', 'Neha' , 'Aiden', 'Kerem', 'Shumail' , 'Selin', 'Caden', 'Abigail', 'Charlotte',
-    'David', 'Sarthak' , 'Eva', 'Frank', 'Zara' , 'Grace', 'Henry', 'Yash' ,
-    'Ivy', 'Isha' , 'Jack', 'Amira', 'Kelly','Saim' , 'Liam', 'Mia',
-    'Noah', 'Onur', 'Olivia', 'Ishan' , 'Zainab', 'Pam', 'Quinn', 'Ryan',
-    'Sophia', 'Thomas', 'Vijay' , 'Uma', 'Victor',  'Samar', 'Wendy',
-    'Xander', 'Vikram' , 'Yara',  'Eren', 'Zane', 'josef', 'Aria', 'Benjamin',
-    'Cora', 'Dylan', 'Emily', 'Emir', 'Felix',  'Amira', 'Gemma','Suresh','Sufyan' ,  'Asli' ,
+    'James', 'Emma', 'Elif', 'Sara', 'Liam', 'Karan', 'Olivia', 'Noah', 'Zeynep',
+    'Ava', 'Mohit', 'Zahra', 'Isabella', 'Sophia', 'Jackson', 'Varun', 'Ece', 'Lucas',
+    'Mia', 'Ethan', 'Dev', 'Tariq', 'Alexander', 'Sunil', 'Bilal', 'Oliver', 'Elijah',
+    'Harper', 'Alp', 'Neha', 'Aiden', 'Kerem', 'Shumail', 'Selin', 'Caden', 'Abigail', 'Charlotte',
+    'David', 'Sarthak', 'Eva', 'Frank', 'Zara', 'Grace', 'Henry', 'Yash',
+    'Ivy', 'Isha', 'Jack', 'Amira', 'Kelly', 'Saim', 'Liam', 'Mia',
+    'Noah', 'Onur', 'Olivia', 'Ishan', 'Zainab', 'Pam', 'Quinn', 'Ryan',
+    'Sophia', 'Thomas', 'Vijay', 'Uma', 'Victor', 'Samar', 'Wendy',
+    'Xander', 'Vikram', 'Yara', 'Eren', 'Zane', 'josef', 'Aria', 'Benjamin',
+    'Cora', 'Dylan', 'Emily', 'Emir', 'Felix', 'Amira', 'Gemma', 'Suresh', 'Sufyan', 'Asli',
   ];
   interface User {
     name: string;
@@ -124,6 +128,93 @@ export default function Dashborad() {
 
 
 
+
+  // ================= Stats ====================
+
+
+  const [totalDeposit, setTotalDeposit] = useState<number>(0);
+  const [totalWithdraw, setTotalWithdraw] = useState<number>(0);
+  const [totalTeam, setTotalTeam] = useState<Array<any>>([]);
+
+  const [currentPlan, setCurrentPlan] = useState<number>(0);
+
+
+  const TotalDepositData = async () => {
+    try {
+      const { data } = await getDepositList(user?._id);
+
+      // Filter deposits with status 'Approved'
+      const approvedDeposits = data?.filter((item: any) => item?.status === 'Approved');
+
+      // Use Array.reduce() to find the latest deposit based on the createdAt property
+      const latestDeposit = approvedDeposits.reduce((latest: any, deposit: any) => {
+        if (!latest || deposit.createdAt > latest.createdAt) {
+          return deposit;
+        }
+        return latest;
+      }, null);
+      setCurrentPlan(latestDeposit?.amount);
+      const sumAmount = approvedDeposits?.reduce((acc: number, deposit: any) => {
+        const amountAsNumber = parseFloat(deposit.amount);
+        return acc + (isNaN(amountAsNumber) ? 0 : amountAsNumber);
+      }, 0);
+      const sumAmountAsNumber = Number(sumAmount) || 0;
+      setTotalDeposit(sumAmountAsNumber);
+
+    } catch (error) {
+      console.log(error);
+    } finally {
+      console.error('error');
+    }
+  };
+
+
+  const withdrawTotalData = async () => {
+    try {
+      const { data } = await getWithdrawList(user?._id);
+
+      // Filter deposits with status 'Approved'
+      const approvedDeposits = data?.filter((item: any) => item?.status === 'Approved');
+
+      // Sum the amounts of approved deposits after parsing them as numbers
+      const sumAmount = approvedDeposits?.reduce((acc: number, deposit: any) => {
+        // Parse the amount value as a number
+        const amountAsNumber = parseFloat(deposit.amount);
+
+        // Add the parsed amount to the accumulator
+        return acc + (isNaN(amountAsNumber) ? 0 : amountAsNumber);
+      }, 0);
+
+      // Convert the sum to a number (use 0 if sumAmount is undefined)
+      const sumAmountAsNumber = Number(sumAmount) || 0;
+      setTotalWithdraw(sumAmount || 0);
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
+  const TotalTeamMembers = async () => {
+    try {
+      const { data } = await getRefferalList(user?._id);
+      const transformedData = data?.referredUsers.map((row: any) => ({
+        ...row,
+        managerFirstName: row.manager ? row.manager.firstName : "",
+        members: row.members ? row.members.length : "",
+      }));
+      setTotalTeam(transformedData);
+
+    } catch (error) {
+      console.log(error);
+    };
+  }
+  useEffect(() => {
+    TotalDepositData()
+    TotalTeamMembers()
+    withdrawTotalData()
+  }, [])
+  console.log('user : ', user)
   return (
     <div>
       <div className="container mx-auto mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
@@ -131,46 +222,47 @@ export default function Dashborad() {
         {/* <!-- User Balance --> */}
         <div className="bg-white p-6 rounded-md shadow-md">
           <h2 className="text-xl font-semibold mb-4"> Total Balance</h2>
-          <p className="text-3xl font-bold text-blue-500">$5,000</p>
+          <p className="text-3xl font-bold text-blue-500">Coming Soon</p>
         </div>
 
         {/* <!-- User Profit --> */}
         <div className="bg-white p-6 rounded-md shadow-md">
           <h2 className="text-xl font-semibold mb-4">  Profit</h2>
-          <p className="text-3xl font-bold text-green-500">$2,500</p>
+          <p className="text-3xl font-bold text-green-500">Coming Soon</p>
+
         </div>
 
         {/* <!-- Total Withdraw --> */}
         <div className="bg-white p-6 rounded-md shadow-md">
           <h2 className="text-xl font-semibold mb-4">Total Withdraw</h2>
-          <p className="text-3xl font-bold text-red-500">$1,000</p>
+          <p className="text-3xl font-bold text-red-500">${totalWithdraw}</p>
         </div>
 
         {/* <!-- Total Deposit --> */}
         <div className="bg-white p-6 rounded-md shadow-md">
           <h2 className="text-xl font-semibold mb-4">Total Deposit</h2>
-          <p className="text-3xl font-bold text-purple-500">$3,000</p>
+          <p className="text-3xl font-bold text-purple-500">${totalDeposit}</p>
         </div>
 
         {/* <!-- Total Team Members --> */}
         <div className="bg-white p-6 rounded-md shadow-md">
           <h2 className="text-xl font-semibold mb-4">Total Team Members</h2>
-          <p className="text-3xl font-bold text-orange-500">50</p>
+          <p className="text-3xl font-bold text-orange-500">{totalTeam?.length}</p>
         </div>
 
         {/* <!-- Additional Cards --> */}
         <div className="bg-white p-6 rounded-md shadow-md">
           <h2 className="text-xl font-semibold mb-4">Current Plan</h2>
-          <p className="text-3xl font-bold text-lime-500">100</p>
+          <p className="text-3xl font-bold text-lime-500">{currentPlan}</p>
         </div>
 
         <div className="bg-white p-6 rounded-md shadow-md">
-          <h2 className="text-xl font-semibold mb-4">Coming soon</h2>
+          <h2 className="text-xl font-semibold mb-4">Coming Soon</h2>
           {/* <p>Your content goes here.</p> */}
         </div>
 
         <div className="bg-white p-6 rounded-md shadow-md">
-          <h2 className="text-xl font-semibold mb-4">Coming soon</h2>
+          <h2 className="text-xl font-semibold mb-4">Coming Soon</h2>
           {/* <p>Your content goes here.</p> */}
         </div>
 

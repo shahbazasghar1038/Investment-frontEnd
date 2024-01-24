@@ -240,15 +240,15 @@ const WithdrawList = () => {
             label={
               row.status === "Approved"
                 ? "Approved" 
-                : "Pending"
-            }
+                : row.status === "Reject" ? 'Reject'  : 'Pending'  }
+          
             sx={{
               fontSize: "14px",
               // fontWeight: "bold",
               backgroundColor:
                 row.status === "Approved"
                   ? "#D3FDE4"
-                  : "#FFCBCB",
+                  : row.status === "Reject" ? "#000" : '#FFCBCB',
               color:
                 row.status === "Approved"
                   ? "#3F9748" 

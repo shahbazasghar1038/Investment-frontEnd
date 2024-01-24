@@ -18,6 +18,20 @@ export const getWithdrawList = async (id:any) => {
   return await baseURL.get(`/api/v1/withdraw/list/${id}`);
 };
 
+export const getAllWithdrawReqToAdmin = async () => {
+  const response = await baseURL.get(`/api/v1/withdraw/admin-list`); 
+  return response?.data;
+};
+
+
+
+export const updateWithdrawToAdminStatus = async (id: any, data: any) => {
+  const response = await baseURL.patch(
+    `/api/v1/withdraw/updte-status/${id}`,
+    data
+  );
+  return response.data;
+};
 
 
 

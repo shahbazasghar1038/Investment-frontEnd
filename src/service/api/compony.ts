@@ -6,9 +6,15 @@ export const getList = async (id: any) => {
 };
 
 export const depositRequest = async (data: any) => {
-  const response = await baseURL.post("/api/v1/deposit/deposit", data);
+  const response = await baseURL.post("/api/v1/deposit/depositRequest", data);
   return response.data;
 };
+
+export const updateDepositStatus = async (id: any, data: any) => {
+  const response = await baseURL.patch(`/api/v1/deposit/updte-status/${id}`, data);
+  return response.data;
+};
+
 
 export const deletecompanies = async (id: string) => {
   const response = await baseURL.delete(`/api/v1/companies/${id}`);
@@ -30,6 +36,14 @@ export const updatecompanies = async (id: any, data: any) => {
   return response.data;
 };
 
+
+
+export const getDepositListToAdmin = async () => {
+  
+  const response = await baseURL.get(`/api/v1/deposit/admin-list`);
+  console.log('admin deposit request res:' , response?.data)
+  return response?.data;
+};
 
 
 export const withdrawRequest = async (id: any, data: any) => {

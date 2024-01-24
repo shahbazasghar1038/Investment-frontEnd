@@ -94,6 +94,7 @@ import Notification from "./dasboard/notification/Notification";
 import WithdrawRequest from "./dasboard/withdrawRequest/WithdrawRequest";
 import AllUsers from "./dasboard/adminPages/allusers/AllUsers";
 import PendingDepositReq from "./dasboard/adminPages/pendingDepositReq/PendingDepositReq";
+import WithdrawReq from "./dasboard/adminPages/withdrawReq/WithdrawReq";
 // Usage: <ArticleIcon />
 
 // Usage: <AssignmentIcon />
@@ -145,7 +146,8 @@ export default function AdminDashboard() {
   const drawer = (
     <div>
       <Toolbar sx={{ justifyContent: "center", height: "64px" }}>
-        <img
+
+        <Link to='/'>  <img
           src={logo}
           alt="Logo"
           style={{
@@ -153,6 +155,7 @@ export default function AdminDashboard() {
             marginTop: "16px",
           }}
         />
+        </Link>
       </Toolbar>
       <Divider />
       <List onClick={handleDrawerToggle}>
@@ -297,7 +300,7 @@ export default function AdminDashboard() {
         </ListItemButton>
 
         {/* Withdraw history  */}
-        <ListItemButton component={Link} to="/dashboard/withdraw-list">
+        <ListItemButton component={Link} to="/dashboard/withdraw-requests">
           <ListItemIcon>
             <DescriptionIcon />
           </ListItemIcon>
@@ -392,7 +395,7 @@ export default function AdminDashboard() {
 
           <IconButton>
             <div>
-              {/* <IconButton
+              <IconButton
                 edge="end"
                 aria-label="account of current user"
                 aria-controls={menuId}
@@ -425,24 +428,24 @@ export default function AdminDashboard() {
                 >
                   Profile
                 </MenuItem>
-                <MenuItem
+                {/* <MenuItem
                   onClick={() => {
                     handleMenuClose();
                     navigate(`/dashboard/profile-setting`); // Use menuState.row._id
                   }}
                 >
                   Settings
-                </MenuItem>
+                </MenuItem> */}
                 <MenuItem
                   onClick={() => {
                     handleMenuClose();
-                    navigate(`/`);
+                    window.location.href = '/';
                     logout();
                   }}
                 >
                   Logout
                 </MenuItem>
-              </Menu> */}
+              </Menu>
             </div>
           </IconButton>
         </Toolbar>
@@ -499,7 +502,7 @@ export default function AdminDashboard() {
           <Route path="/all-users" element={<AllUsers />} />
           <Route path="/pending-deposit" element={<PendingDepositReq />} />
           <Route path="/team-edit/:id" element={<UpdateTeam />} />
-          <Route path="/create-branch" element={<CreateBranch />} />
+          <Route path="/withdraw-requests" element={<WithdrawReq />} />
           <Route path="/branchlist" element={<BranchList />} />
           <Route path="/branch-edit/:id" element={<UpdateBranch />} />
           <Route path="/user-list" element={<UserList />} />

@@ -101,16 +101,16 @@ export default function Dashboard() {
   const { user, logout } = useAuth();
 
 
- 
+
 
 
   const navigate = useNavigate();
 
   useEffect(() => {
-      console.log('dashboard are rendered');
-      if (!user) {
-          navigate('/')
-      }
+    console.log('dashboard are rendered');
+    if (!user) {
+      navigate('/')
+    }
   }, [])
 
 
@@ -120,7 +120,7 @@ export default function Dashboard() {
   const [open, setOpen] = useState(true);
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
- 
+
   const isMenuOpen = Boolean(anchorEl);
 
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -144,14 +144,16 @@ export default function Dashboard() {
   const drawer = (
     <div>
       <Toolbar sx={{ justifyContent: "center", height: "64px" }}>
-        <img
-          src={logo}
-          alt="Logo"
-          style={{
-            maxWidth: isMobile ? "60px" : "120px",
-            marginTop: "16px",
-          }}
-        />
+        <Link to='/'>
+          <img
+            src={logo}
+            alt="Logo"
+            style={{
+              maxWidth: isMobile ? "60px" : "120px",
+              marginTop: "16px",
+            }}
+          />
+        </Link>
       </Toolbar>
       <Divider />
       <List onClick={handleDrawerToggle}>
@@ -287,7 +289,7 @@ export default function Dashboard() {
         {/* Deposit history  */}
         <ListItemButton component={Link} to="/dashboard/deposit-list">
           <ListItemIcon>
-          <InputIcon />
+            <InputIcon />
           </ListItemIcon>
           <ListItemText
             primary="Deposit History"
@@ -381,11 +383,15 @@ export default function Dashboard() {
           >
             Dashboard
           </Typography>
-          <IconButton>
-            <Badge badgeContent={4} color="secondary">
+          <Link to='/dashboard/notification' >
+
+            <IconButton>
+              {/* <Badge badgeContent={4} color="secondary">
+            </Badge> */}
               <NotificationsIcon />
-            </Badge>
-          </IconButton>
+            </IconButton>
+          </Link>
+
           <IconButton>
             <div>
               <IconButton
@@ -491,7 +497,7 @@ export default function Dashboard() {
         {/* <Toolbar /> */}
         {/* routes  */}
         <Routes>
-          <Route path="/" element={<HomePage />} /> 
+          <Route path="/" element={<HomePage />} />
           <Route path="/withdraw-request" element={<WithdrawRequest />} />
           <Route path="/notification" element={<Notification />} />
           <Route path="/teamlist" element={<TeamsList />} />
@@ -528,9 +534,9 @@ export default function Dashboard() {
           <Route path="/Upload-folder/:id" element={<Upload />} />
           <Route path="/folder-list" element={<FolderLIst />} />
           {/* Depoist list page  */}
-          <Route path="/deposit-list" element={<DepositList />} />  
-            {/* Depoist list page  */}
-            <Route path="/withdraw-list" element={<WithdrawList />} /> 
+          <Route path="/deposit-list" element={<DepositList />} />
+          {/* Depoist list page  */}
+          <Route path="/withdraw-list" element={<WithdrawList />} />
 
           {/* template list page old */}
           <Route path="/template-list" element={<TemplateList />} />

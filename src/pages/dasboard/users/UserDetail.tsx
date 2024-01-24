@@ -275,7 +275,7 @@ const UserDetail = () => {
                     label={
                       list?.status === "active"
                         ? "Active" 
-                        : "Inactive"
+                        : "Active"
                     }
                     sx={{
                       fontSize: "15px",
@@ -284,28 +284,28 @@ const UserDetail = () => {
                         list?.status === "active"
                           ? "#D3FDE4"
                           : list?.status === "archived"
-                          ? "#FFF7CB"
-                          : "#FFCBCB",
+                          ? "#D3FDE4"
+                          : "#D3FDE4",
                       color:
                         list?.status === "active"
                           ? "#3F9748"
                           : list?.status === "archived"
-                          ? "#D32F2F"
-                          : "#red",
+                          ? "#D3FDE4"
+                          : "#D3FDE4",
                       borderColor:
                         list?.status === "active"
                           ? "#D3FDE4"
                           : list?.status === "archived"
-                          ? "#FFF7CB"
-                          : "#FFCBCB", // Optional: to match border color with background
+                          ? "#D3FDE4"
+                          : "#D3FDE4", // Optional: to match border color with background
                       "& .MuiChip-label": {
                         // This targets the label inside the chip for more specific styling
                         color:
                           list?.status === "active"
                             ? "#3F9748"
                             : list?.status === "archived"
-                            ? "#D36A2F"
-                            : "#D32F2F",
+                            ? "#3F9748"
+                            : "#3F9748",
                       },
                     }}
                   />

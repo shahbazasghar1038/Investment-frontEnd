@@ -28,7 +28,8 @@ import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
 import PersonIcon from "@mui/icons-material/Person";
 
 type FormInputs = {
-  userName: string;
+  id : string;
+  name: string;
   amount: string;
   // country: string;
   // timeZone: string;
@@ -66,12 +67,17 @@ const UpdateCompony = () => {
     navigate(-1);
   };
 
+useEffect(() => {
+  setValue("id", user?._id);
+}, [])
+
   const listData = async () => {
     try {
       setIsLoading(true);
       const { data } = await getcompaniesById(user?._id);
       console.log(data);
-      setValue("userName", data?.name);
+      setValue("id", user?._id);
+      setValue("name", data?.name);
       setValue("amount", data?.amount);
       // setValue("country", data?.country);
       // setValue("timeZone", data?.timeZone);
@@ -223,7 +229,7 @@ const UpdateCompony = () => {
                   User Name
                 </Typography>
                 <Controller
-                  name="userName"
+                  name="name"
                   control={control}
                   defaultValue={user?.name}
                   rules={{ required: " User Name is required" }}
@@ -233,9 +239,9 @@ const UpdateCompony = () => {
                       margin="normal"
                       fullWidth
                       placeholder="Enter your name"
-                      error={Boolean(errors.userName)}
+                      error={Boolean(errors.name)}
                       helperText={
-                        errors.userName ? errors.userName.message : ""
+                        errors.name ? errors.name.message : ""
                       }
                       variant="outlined"
                       size="small"
