@@ -109,8 +109,8 @@ const defaultColumns: GridColDef[] = [
             row.status === "Active"
               ? "Active"
               : row.status === "Archived"
-              ? "Archived"
-              : "Inactive"
+                ? "Archived"
+                : "Inactive"
           }
           sx={{
             fontSize: "14px",
@@ -119,28 +119,28 @@ const defaultColumns: GridColDef[] = [
               row.status === "Active"
                 ? "#D3FDE4"
                 : row.status === "Archived"
-                ? "#FFF7CB"
-                : "#FFCBCB",
+                  ? "#FFF7CB"
+                  : "#FFCBCB",
             color:
               row.status === "Active"
                 ? "#3F9748"
                 : row.status === "Archived"
-                ? "#D32F2F"
-                : "#red",
+                  ? "#D32F2F"
+                  : "#red",
             borderColor:
               row.status === "Active"
                 ? "#D3FDE4"
                 : row.status === "Archived"
-                ? "#FFF7CB"
-                : "#FFCBCB", // Optional: to match border color with background
+                  ? "#FFF7CB"
+                  : "#FFCBCB", // Optional: to match border color with background
             "& .MuiChip-label": {
               // This targets the label inside the chip for more specific styling
               color:
                 row.status === "Active"
                   ? "#3F9748"
                   : row.status === "Archived"
-                  ? "#D36A2F"
-                  : "#D32F2F",
+                    ? "#D36A2F"
+                    : "#D32F2F",
             },
           }}
         />
@@ -170,9 +170,8 @@ const defaultColumns: GridColDef[] = [
     renderCell: ({ row }: { row: any }) => {
       const { manager } = row;
       return (
-        <Typography sx={{ color: "text.secondary" }}>{`${
-          manager?.firstName || "-"
-        }`}</Typography>
+        <Typography sx={{ color: "text.secondary" }}>{`${manager?.firstName || "-"
+          }`}</Typography>
       );
     },
   },
@@ -278,7 +277,7 @@ const ContractList = () => {
       if (window.confirm("Are you sure you want to archive this branch?")) {
         setIsLoading(true);
         const res = await archiveBranch(id, { status: "Archived" });
-        console.log({ res });
+
 
         if (res.ok === true) {
           toast.success(res.message);
@@ -505,7 +504,7 @@ const ContractList = () => {
                 onPaginationModelChange={setPaginationModel}
                 onRowSelectionModelChange={(rows: any) => setSelectedRows(rows)}
                 getRowId={(row) => row._id}
-                // disableColumnMenu
+              // disableColumnMenu
               />
             )}
           </Card>

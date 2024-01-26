@@ -107,7 +107,6 @@ export default function Dashboard() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log('dashboard are rendered');
     if (!user) {
       navigate('/')
     }

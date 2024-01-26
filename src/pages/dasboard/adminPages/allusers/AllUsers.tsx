@@ -151,18 +151,18 @@ const defaultColumns: any[] = [
       </>
     ),
   },
-  {
-    flex: 0.3,
-    minWidth: 125,
-    field: "amount",
-    headerName: "Amount ",
-    renderCell: ({ row }: { row: any }) => {
-      const { amount } = row;
-      return (
-        <Typography sx={{ color: "text.secondary" }}>{amount}</Typography>
-      );
-    },
-  },
+  // {
+  //   flex: 0.3,
+  //   minWidth: 125,
+  //   field: "amount",
+  //   headerName: "Amount ",
+  //   renderCell: ({ row }: { row: any }) => {
+  //     const { amount } = row;
+  //     return (
+  //       <Typography sx={{ color: "text.secondary" }}>{amount}</Typography>
+  //     );
+  //   },
+  // },
   {
     flex: 0.3,
     minWidth: 125,
@@ -220,10 +220,9 @@ const AllUsers = () => {
         managerFirstName: row.manager ? row.manager.firstName : "",
         members: row.members ? row.members.length : "",
       }));
-      console.log('transform :' , transformedData)
+
       setCategorylist(transformedData);
 
-      console.log("teams", data);
     } catch (error) {
       console.log(error);
     } finally {
@@ -242,7 +241,7 @@ const AllUsers = () => {
       if (window.confirm("Are you sure you want to archive this team?")) {
         setIsLoading(true);
         const res = await archiveTeam(id, { status: "Archived" });
-        console.log({ res });
+
 
         if (res.ok === true) {
           toast.success(res.message);
@@ -284,7 +283,6 @@ const AllUsers = () => {
     listData();
   }, []);
 
-  console.log(search, "serch");
 
   const filteredList = useMemo(() => {
     let result = catategorylist;
@@ -341,7 +339,7 @@ const AllUsers = () => {
       <Grid container spacing={6}>
         <Grid item xs={12}>
           <CardHeader title="All Users" className="text-white" />
-        </Grid> 
+        </Grid>
 
         <Grid item xs={12}>
           <Card>
@@ -382,7 +380,7 @@ const AllUsers = () => {
                   onRowSelectionModelChange={(rows: any) =>
                     setSelectedRows(rows)
                   }
-                  getRowId={(row: any) => row._id} 
+                  getRowId={(row: any) => row._id}
                 />
               </Box>
             )}

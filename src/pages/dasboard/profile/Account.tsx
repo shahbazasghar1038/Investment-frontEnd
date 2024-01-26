@@ -17,7 +17,6 @@ const Account: React.FC = () => {
     try {
       setIsLoading(true);
       const data = await getUserId(user?._id);
-      console.log(data?.user.twoFactorAuth);
       setTwoFA(data?.user?.twoFactorAuth);
     } catch (error) {
       console.log(error);
@@ -38,7 +37,6 @@ const Account: React.FC = () => {
         email: user?.email,
       };
       const response = await changepasReq(payload);
-      console.log(response);
       if (response.ok === true) {
         setVerification(false);
         toast.success(response.message);
@@ -46,7 +44,6 @@ const Account: React.FC = () => {
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      console.log(error);
 
       let errorMessage = "failed";
       if (error.response) {
@@ -72,7 +69,7 @@ const Account: React.FC = () => {
         is2FA: true,
       };
       const response = await changepasReq(payload);
-      console.log(response);
+
       if (response.ok === true) {
         toast.success(response.message);
         setVerification(true);

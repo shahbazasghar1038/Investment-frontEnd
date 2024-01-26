@@ -87,10 +87,9 @@ const DepositList = () => {
       setIsLoading(true);
       const { data } = await getDepositList(user?._id);
 
-      setCategorylist(data?.filter((item:any) => user?.email === item?.email));
+      setCategorylist(data?.filter((item: any) => user?.email === item?.email));
 
 
-      console.log("teams", data);
     } catch (error) {
       console.log(error);
     } finally {
@@ -124,7 +123,7 @@ const DepositList = () => {
       if (window.confirm("Are you sure you want to archive this template?")) {
         setIsLoading(true);
         const res = await archiveTemp(id, { status: "Archived" });
-        console.log({ res });
+
 
         if (res.ok === true) {
           toast.success(res.message);
@@ -149,7 +148,7 @@ const DepositList = () => {
         setIsLoading(true);
 
         const res = await archiveTemp(id, { status: "Active" });
-        console.log({ res });
+
 
         if (res.ok === true) {
           toast.success(res.message);
@@ -169,7 +168,6 @@ const DepositList = () => {
     listData();
   }, []);
 
-  console.log(search, "serch");
 
   const filteredList = useMemo(() => {
     let result = catategorylist;
@@ -239,9 +237,9 @@ const DepositList = () => {
             variant="outlined"
             label={
               row.status === "Approved"
-                ? "Approved" 
-                : row.status === "Reject" ? 'Reject'  : 'Pending'  }
-           
+                ? "Approved"
+                : row.status === "Reject" ? 'Reject' : 'Pending'}
+
             sx={{
               fontSize: "14px",
               // fontWeight: "bold",
@@ -251,17 +249,17 @@ const DepositList = () => {
                   : row.status === "Reject" ? "#000" : '#FFCBCB',
               color:
                 row.status === "Approved"
-                  ? "#3F9748" 
+                  ? "#3F9748"
                   : "#red",
               borderColor:
                 row.status === "Approved"
-                  ? "#D3FDE4" 
+                  ? "#D3FDE4"
                   : "#FFCBCB", // Optional: to match border color with background
               "& .MuiChip-label": {
                 // This targets the label inside the chip for more specific styling
                 color:
                   row.status === "Approved"
-                    ? "#3F9748" 
+                    ? "#3F9748"
                     : "#D32F2F",
               },
             }}
@@ -422,10 +420,10 @@ const DepositList = () => {
   return (
     <>
       <Grid container spacing={6}>
-      
-      <Grid item xs={12}>
+
+        <Grid item xs={12}>
           <CardHeader title="Deposit History" className="text-white" />
-         </Grid>
+        </Grid>
 
         <Grid item xs={12}>
           <Card>
@@ -452,7 +450,7 @@ const DepositList = () => {
                 <ProgressCircularCustomization />
               </Box>
             ) : (
-              <Box sx={{ maxHeight: 500, display: "table", tableLayout: "fixed" ,  width: "100%" }}>
+              <Box sx={{ maxHeight: 500, display: "table", tableLayout: "fixed", width: "100%" }}>
                 <DataGrid
                   style={{ paddingLeft: "10px", paddingRight: "10px" }}
                   autoHeight
@@ -468,7 +466,7 @@ const DepositList = () => {
                     setSelectedRows(rows)
                   }
                   getRowId={(row: any) => row._id}
-                  // disableColumnMenu
+                // disableColumnMenu
                 />
               </Box>
             )}

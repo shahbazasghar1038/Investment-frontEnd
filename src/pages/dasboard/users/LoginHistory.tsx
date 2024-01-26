@@ -138,7 +138,6 @@ const LoginHistory = () => {
 
   const applyDateFilter = () => {
     if (startDate && endDate) {
-      console.log(startDate, startDate, "logdate");
 
       const adjustedEndDate = new Date(endDate);
       adjustedEndDate.setHours(23, 59, 59, 999);
@@ -148,7 +147,6 @@ const LoginHistory = () => {
         return itemDate >= startDate && itemDate <= adjustedEndDate;
       });
 
-      console.log(filtered, "logdatef");
       setFilteredList(filtered);
     } else {
       // Reset to full list if no dates are selected
@@ -174,7 +172,6 @@ const LoginHistory = () => {
       const { user } = await logiHistory(id);
       setList(user?.loginHistory);
       setData(user);
-      console.log("user", user);
     } catch (error) {
       console.log(error);
     } finally {
@@ -265,7 +262,7 @@ const LoginHistory = () => {
                 onPaginationModelChange={setPaginationModel}
                 onRowSelectionModelChange={(rows: any) => setSelectedRows(rows)}
                 getRowId={(row) => row._id}
-                // disableColumnMenu
+              // disableColumnMenu
               />
             )}
           </Card>

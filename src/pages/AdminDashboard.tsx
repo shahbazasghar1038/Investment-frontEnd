@@ -36,7 +36,7 @@ import logo from "../img/core-img/logo2.png";
 // import userIcon from "../assets/userLogo.png";
 import PersonIcon from "@mui/icons-material/Person";
 // Import your page components
-import HomePage from "@/pages/dasboard/Dashboard";
+import HomePage from "@/pages/dasboard/adminPages/AdminHom/AdminHomeDash";
 import TeamsList from "@/pages/dasboard/teams/TeamsLiat";
 import SubPage1 from "@/pages/LoginPage";
 import CreateBranch from "@/pages/dasboard/branch/CreateBranch";
@@ -109,7 +109,6 @@ export default function AdminDashboard() {
 
   const navigate = useNavigate();
   useEffect(() => {
-    console.log('dashboard routes are rendered');
     if (!user) {
       navigate('/')
     }

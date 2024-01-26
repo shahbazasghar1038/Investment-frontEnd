@@ -53,7 +53,7 @@ const UpdateApproval = () => {
     try {
       setIsLoading(true);
       const { data } = await getUserListNameID(user?._id);
-      console.log({ data });
+
 
       setUserList(data);
     } catch (error) {

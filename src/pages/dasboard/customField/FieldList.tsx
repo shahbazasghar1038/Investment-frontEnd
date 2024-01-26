@@ -129,7 +129,6 @@ const FieldList = () => {
     listData();
   }, []);
 
-  console.log(search, "serch");
 
   const filteredList = useMemo(() => {
     let result = catategorylist;
@@ -367,7 +366,7 @@ const FieldList = () => {
                     setSelectedRows(rows)
                   }
                   getRowId={(row: any) => row._id}
-                  // disableColumnMenu
+                // disableColumnMenu
                 />
               </Box>
             )}

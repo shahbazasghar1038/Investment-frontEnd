@@ -55,7 +55,7 @@ const LoginPage: React.FC = () => {
         password: data.password,
       };
       const response = await login(payload);
-  
+
       if (response.ok === true) {
         if (response?.user?.twoFactorAuth === true) {
           toast.success(response?.message);
@@ -65,7 +65,7 @@ const LoginPage: React.FC = () => {
         } else {
           toast.success("Logged in successfully!");
           window.location.href = '/dashboard';
-          loginContext(response?.user);  
+          loginContext(response?.user);
         }
       } else {
         toast.error(response?.message || "Something went wrong!");
@@ -92,7 +92,7 @@ const LoginPage: React.FC = () => {
     <>
 
 
-{/* <section className="e ca ci di">
+      {/* <section className="e ca ci di">
         <div className="a">
           <div className="ja qb _d">
             <div className="jc ng">
@@ -352,7 +352,7 @@ const LoginPage: React.FC = () => {
                         }
                         label={
                           <Typography
-                            sx={{ fontSize: "15px", color:'gray', whiteSpace: "nowrap" }}
+                            sx={{ fontSize: "15px", color: 'gray', whiteSpace: "nowrap" }}
                           >
                             Remember me
                           </Typography>

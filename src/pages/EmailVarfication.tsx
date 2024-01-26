@@ -33,7 +33,7 @@ const SignupPage: React.FC = () => {
   const navigate = useNavigate();
   const { loginContext } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
-  console.log(id, "id");
+
   const onSubmit = async () => {
     // Assuming OTP is of length 5
     if (otp.length === 5) {
@@ -42,7 +42,6 @@ const SignupPage: React.FC = () => {
         let payload;
 
         if (condition === "twoFactorAuth") {
-          console.log(condition, "cond");
           payload = {
             email: email,
             otp: otp,

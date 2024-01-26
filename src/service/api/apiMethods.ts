@@ -56,8 +56,7 @@ export const updateBranch = async (id: any, data: any) => {
   const response = await baseURL.put(`/api/v1/branches/upadte/${id}`, data);
   return response.data;
 };
-export const deleteBranch = async (id: string) => {
-  console.log({ id });
+export const deleteBranch = async (id: string) => { 
   const response = await baseURL.delete(`/api/v1/branches/${id}`);
   return response.data;
 };

@@ -47,7 +47,7 @@ const CustomerProfile: React.FC = () => {
   };
 
   const onSubmit = (data: FormData) => {
-    console.log(data);
+    // console.log(data);
   };
 
   return (

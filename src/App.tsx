@@ -47,7 +47,7 @@ function App() {
     checkUserStorage();
   }, []); // Run this effect only once when the component mounts
 
- 
+
   return (
     <>
       <AuthProvider>
@@ -58,20 +58,20 @@ function App() {
           <>
             {isLoading ? (
               <Box sx={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  background:'#030239',
-                  position:'fixed',
-                  inset:0,
-                  height: "100vh",
-                }}>
+                display: "flex",
+                flexWrap: "wrap",
+                alignItems: "center",
+                justifyContent: "center",
+                background: '#030239',
+                position: 'fixed',
+                inset: 0,
+                height: "100vh",
+              }}>
                 <ProgressCircularCustomization />
               </Box>
             ) : user ? (
               <>
-                {user?.role == 1 ?
+                {user?.role == 2 ?
                   <AuthRouts />
                   :
                   <AdminRouts />

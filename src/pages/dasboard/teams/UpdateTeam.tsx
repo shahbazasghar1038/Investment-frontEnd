@@ -53,7 +53,6 @@ const UpdateTeam = () => {
     try {
       setIsLoading(true);
       const data = await getTeamByid(id);
-      console.log(data);
 
       setList(data);
       setValue("name", data?.name);
@@ -74,7 +73,7 @@ const UpdateTeam = () => {
     try {
       setIsLoading(true);
       const { data } = await getUserListNameID(user?._id);
-      console.log({ data });
+
 
       setUserList(data);
     } catch (error) {

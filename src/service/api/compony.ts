@@ -40,8 +40,7 @@ export const updatecompanies = async (id: any, data: any) => {
 
 export const getDepositListToAdmin = async () => {
   
-  const response = await baseURL.get(`/api/v1/deposit/admin-list`);
-  console.log('admin deposit request res:' , response?.data)
+  const response = await baseURL.get(`/api/v1/deposit/admin-list`); 
   return response?.data;
 };
 

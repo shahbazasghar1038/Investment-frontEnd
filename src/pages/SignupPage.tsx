@@ -51,7 +51,7 @@ const SignupPage: React.FC = () => {
   } = useForm<FormInputs>();
   const navigate = useNavigate();
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
-    console.log('data : ', data)
+
     try {
       setIsLoading(true);
 
@@ -62,12 +62,12 @@ const SignupPage: React.FC = () => {
         referralCode: data.referralCode,
         mobile: data.mobile,
         bankDetail: data.bankDetail,
-        role: 1,
+        role: 2,
         emailVerified: true,
       };
 
       const response = await signU(payload);
-      console.log(response);
+
 
       if (response.ok === true) {
         toast.success(response.message);
@@ -362,7 +362,7 @@ const SignupPage: React.FC = () => {
 
 
 
-<Typography variant="subtitle2"  color={'gray'}  sx={{ mt: 0, mb: -1 }}>
+                  <Typography variant="subtitle2" color={'gray'} sx={{ mt: 0, mb: -1 }}>
                     Phone
                   </Typography>
                   <Controller
@@ -374,19 +374,19 @@ const SignupPage: React.FC = () => {
                       minLength: {
                         value: 8,
                         message: "mobile must have at least 8 characters",
-                      }, 
+                      },
                     }}
                     render={({ field }) => (
                       <TextField
-                        {...field} 
+                        {...field}
                         margin="normal"
                         fullWidth
                         autoComplete="current-mobile"
-                        placeholder="Enter mobile" 
-                       
+                        placeholder="Enter mobile"
+
                         variant="outlined"
                         size="small"
-                       
+
                       />
                     )}
                   />

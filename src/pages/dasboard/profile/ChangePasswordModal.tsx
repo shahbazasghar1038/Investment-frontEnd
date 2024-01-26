@@ -54,10 +54,8 @@ const ChangePasswordModal: React.FC<ChangePasswordModalProps> = ({
         currentPassword: data.currentPassword,
         newPassword: data.confirmPassword,
       };
-      console.log(payload, "payload");
 
       const response = await ChangeUserPassword(user?._id, payload);
-      console.log(response.message);
       if (response.ok === true) {
         toast.success(response.message);
         onClose();
@@ -68,7 +66,6 @@ const ChangePasswordModal: React.FC<ChangePasswordModalProps> = ({
         toast.error(errorMessage);
       }
     } catch (error: any) {
-      console.log(error);
 
       let errorMessage = "Login failed";
       if (error.response) {

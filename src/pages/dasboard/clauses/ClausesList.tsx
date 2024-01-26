@@ -217,7 +217,6 @@ const ClausesList = () => {
 
       setCategorylist(data);
 
-      console.log("teams", data);
     } catch (error) {
       console.log(error);
     } finally {
@@ -253,7 +252,7 @@ const ClausesList = () => {
       ) {
         setIsLoading(true);
         const res = await updateStatus(id, { status: "Active" });
-        console.log({ res });
+
 
         if (res.ok === true) {
           toast.success(res.message);
@@ -275,7 +274,7 @@ const ClausesList = () => {
       ) {
         setIsLoading(true);
         const res = await updateStatus(id, { status: "Inactive" });
-        console.log({ res });
+
 
         if (res.ok === true) {
           toast.success(res.message);
@@ -295,7 +294,6 @@ const ClausesList = () => {
     listData();
   }, []);
 
-  console.log(search, "serch");
 
   const filteredList = useMemo(() => {
     let result = catategorylist;
@@ -475,7 +473,7 @@ const ClausesList = () => {
                     setSelectedRows(rows)
                   }
                   getRowId={(row: any) => row._id}
-                  // disableColumnMenu
+                // disableColumnMenu
                 />
               </Box>
             )}

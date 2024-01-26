@@ -85,12 +85,9 @@ const WithdrawReq = () => {
   const listData = async () => {
     try {
       setIsLoading(true);
-      const  data = await getAllWithdrawReqToAdmin();
-      
-      setCategorylist(data);
-     
+      const data = await getAllWithdrawReqToAdmin();
 
-      console.log("withdraw list to admin", data);
+      setCategorylist(data);
     } catch (error) {
       console.log(error);
     } finally {
@@ -139,7 +136,7 @@ const WithdrawReq = () => {
   //     setIsLoading(false);
   //   }
   // };
-  const handleActive = async (id: any , status : any) => {
+  const handleActive = async (id: any, status: any) => {
     try {
       if (
         window.confirm(
@@ -149,7 +146,7 @@ const WithdrawReq = () => {
         setIsLoading(true);
 
         const res = await updateWithdrawToAdminStatus(id, { status: status });
-        console.log({ res });
+
 
         if (res.ok === true) {
           toast.success(res.message);
@@ -169,7 +166,7 @@ const WithdrawReq = () => {
     listData();
   }, []);
 
-  console.log(search, "serch");
+
 
   const filteredList = useMemo(() => {
     let result = catategorylist;
@@ -261,8 +258,8 @@ const WithdrawReq = () => {
             variant="outlined"
             label={
               row.status === "Approved"
-                ? "Approved" 
-                : row.status === "Reject" ? 'Reject'  : 'Pending'  }
+                ? "Approved"
+                : row.status === "Reject" ? 'Reject' : 'Pending'}
             sx={{
               fontSize: "14px",
               fontWeight: "bold",
@@ -272,17 +269,17 @@ const WithdrawReq = () => {
                   : row.status === "Reject" ? "#000" : '#FFCBCB',
               color:
                 row.status === "Approved"
-                  ? "#3F9748" 
+                  ? "#3F9748"
                   : "#red",
               borderColor:
                 row.status === "Approved"
-                  ? "#D3FDE4" 
+                  ? "#D3FDE4"
                   : "#FFCBCB", // Optional: to match border color with background
               "& .MuiChip-label": {
                 // This targets the label inside the chip for more specific styling
                 color:
                   row.status === "Approved"
-                    ? "#3F9748" 
+                    ? "#3F9748"
                     : "#D32F2F",
               },
             }}
@@ -413,7 +410,7 @@ const WithdrawReq = () => {
             <MenuItem
               onClick={() => {
                 handleClose();
-                handleActive(menuState.row?._id , 'Approved' ); // Use menuState.row._id
+                handleActive(menuState.row?._id, 'Approved'); // Use menuState.row._id
               }}
             >
               Approve
@@ -428,7 +425,7 @@ const WithdrawReq = () => {
             </MenuItem> */}
             <MenuItem
               onClick={() => {
-                handleActive(menuState.row?._id , 'Reject' ); // Use menuState.row._id
+                handleActive(menuState.row?._id, 'Reject'); // Use menuState.row._id
                 handleClose();
               }}
             >
@@ -443,10 +440,10 @@ const WithdrawReq = () => {
   return (
     <>
       <Grid container spacing={6}>
-      
-      <Grid item xs={12}>
+
+        <Grid item xs={12}>
           <CardHeader title="Withdraw Requests" className="text-white" />
-         </Grid>
+        </Grid>
 
         <Grid item xs={12}>
           <Card>
@@ -473,7 +470,7 @@ const WithdrawReq = () => {
                 <ProgressCircularCustomization />
               </Box>
             ) : (
-              <Box sx={{ maxHeight: 500, display: "table", tableLayout: "fixed" ,  width: "100%" }}>
+              <Box sx={{ maxHeight: 500, display: "table", tableLayout: "fixed", width: "100%" }}>
                 <DataGrid
                   style={{ paddingLeft: "10px", paddingRight: "10px" }}
                   autoHeight
@@ -489,14 +486,14 @@ const WithdrawReq = () => {
                     setSelectedRows(rows)
                   }
                   getRowId={(row: any) => row._id}
-                  // disableColumnMenu
+                // disableColumnMenu
                 />
               </Box>
             )}
           </Card>
         </Grid>
       </Grid>
-      
+
     </>
   );
 };

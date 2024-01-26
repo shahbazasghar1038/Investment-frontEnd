@@ -28,14 +28,14 @@ import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
 import PersonIcon from "@mui/icons-material/Person";
 
 type FormInputs = {
-  id : string;
+  id: string;
   name: string;
   amount: string;
   // country: string;
   // timeZone: string;
   email: string;
   phoneNumber: string;
-  wallatAddress: string; 
+  wallatAddress: string;
   // websiteUrl: string;
   image: string;
   // billing_email: string;
@@ -67,15 +67,15 @@ const UpdateCompony = () => {
     navigate(-1);
   };
 
-useEffect(() => {
-  setValue("id", user?._id);
-}, [])
+  useEffect(() => {
+    setValue("id", user?._id);
+  }, [])
 
   const listData = async () => {
     try {
       setIsLoading(true);
       const { data } = await getcompaniesById(user?._id);
-      console.log(data);
+
       setValue("id", user?._id);
       setValue("name", data?.name);
       setValue("amount", data?.amount);
@@ -105,7 +105,7 @@ useEffect(() => {
         data.image = imageBase64;
       }
       const response = await depositRequest(data);
-      console.log(response.message);
+
       if (response.ok === true) {
         toast.success(response.message);
         // navigate("/dashboard/compony-list");

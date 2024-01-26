@@ -89,8 +89,8 @@ const defaultColumns: any[] = [
             row.status === "Active"
               ? "Active"
               : row.status === "Archived"
-              ? "Archived"
-              : "Inactive"
+                ? "Archived"
+                : "Inactive"
           }
           sx={{
             fontSize: "14px",
@@ -99,28 +99,28 @@ const defaultColumns: any[] = [
               row.status === "Active"
                 ? "#D3FDE4"
                 : row.status === "Archived"
-                ? "#FFF7CB"
-                : "#FFCBCB",
+                  ? "#FFF7CB"
+                  : "#FFCBCB",
             color:
               row.status === "Active"
                 ? "#3F9748"
                 : row.status === "Archived"
-                ? "#D32F2F"
-                : "#red",
+                  ? "#D32F2F"
+                  : "#red",
             borderColor:
               row.status === "Active"
                 ? "#D3FDE4"
                 : row.status === "Archived"
-                ? "#FFF7CB"
-                : "#FFCBCB", // Optional: to match border color with background
+                  ? "#FFF7CB"
+                  : "#FFCBCB", // Optional: to match border color with background
             "& .MuiChip-label": {
               // This targets the label inside the chip for more specific styling
               color:
                 row.status === "Active"
                   ? "#3F9748"
                   : row.status === "Archived"
-                  ? "#D36A2F"
-                  : "#D32F2F",
+                    ? "#D36A2F"
+                    : "#D32F2F",
             },
           }}
         />
@@ -206,7 +206,6 @@ const TagList = () => {
       ) {
         setIsLoading(true);
         const res = await updateStatus(id, { status: "Active" });
-        console.log({ res });
 
         if (res.ok === true) {
           toast.success(res.message);
@@ -248,7 +247,6 @@ const TagList = () => {
     listData();
   }, []);
 
-  console.log(search, "serch");
 
   const filteredList = useMemo(() => {
     let result = catategorylist;
@@ -469,7 +467,7 @@ const TagList = () => {
                     setSelectedRows(rows)
                   }
                   getRowId={(row: any) => row._id}
-                  // disableColumnMenu
+                // disableColumnMenu
                 />
               </Box>
             )}

@@ -51,13 +51,13 @@ const CompanyDetails: React.FC = () => {
 
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log(id, "idddddd");
+
 
   const onSubmit = async (data: FormInputs) => {
     try {
       data.id = id;
       const response = await CreateCompony(data);
-      console.log(response.message);
+
       if (response.ok === true) {
         toast.success(response.message);
         navigate("/");

@@ -204,7 +204,6 @@ const BranchList = () => {
         managerFirstName: row.manager ? row.manager.firstName : "",
         members: row.members ? row.members.length : "",
       }));
-      console.log("refferal users list", transformedData);
       setCategorylist(transformedData);
 
     } catch (error) {
@@ -225,7 +224,7 @@ const BranchList = () => {
       if (window.confirm("Are you sure you want to archive this team?")) {
         setIsLoading(true);
         const res = await archiveTeam(id, { status: "Archived" });
-        console.log({ res });
+
 
         if (res.ok === true) {
           toast.success(res.message);
@@ -267,7 +266,6 @@ const BranchList = () => {
     listData();
   }, []);
 
-  console.log(search, "serch");
 
   const filteredList = useMemo(() => {
     let result = catategorylist;

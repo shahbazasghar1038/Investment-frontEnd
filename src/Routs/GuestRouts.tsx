@@ -25,13 +25,13 @@ function GuestRouts() {
     if (userString) {
         user = JSON.parse(userString);
     } else {
-        console.log("User data not found ");
+        console.log("Please Login ");
     }
- 
+
     return (
         <>
             <Routes>
-            <Route path="/" element={<Lander />} />
+                <Route path="/" element={<Lander />} />
                 <Route path="/plans" element={<Packages />} />
                 <Route path="/terms-of-services" element={<TnC />} />
                 <Route path="/about-us" element={<AboutUs />} />

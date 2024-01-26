@@ -18,6 +18,21 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+
+body::-webkit-scrollbar {
+  width: 8px;
+}
+ 
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgb(29, 244, 248)
+}
+ 
+body::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background-color: rgb(9, 227, 227);
+  outline: 1px solid rgb(4, 164, 182);
+}
+
 .css-9ogyym-MuiAvatar-root{
   border-radius: 5px !important;
 }

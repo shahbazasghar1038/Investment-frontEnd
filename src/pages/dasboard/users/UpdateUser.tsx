@@ -169,7 +169,6 @@ const UpdateUser = () => {
   };
 
   const handleValidation = () => {
-    console.log(firstName, lastName, email, "ok");
     if (!firstName || !email || !lastName || emailError) {
       toast.error("Please fill the require feilds");
       return;

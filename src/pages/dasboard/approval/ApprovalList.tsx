@@ -94,7 +94,7 @@ const ApprovalList = () => {
 
       setCategorylist(data);
 
-      console.log("teams", data);
+
     } catch (error) {
       console.log(error);
     } finally {
@@ -127,7 +127,6 @@ const ApprovalList = () => {
     listData();
   }, []);
 
-  console.log(search, "serch");
 
   const filteredList = useMemo(() => {
     let result = catategorylist;
@@ -400,7 +399,7 @@ const ApprovalList = () => {
                     setSelectedRows(rows)
                   }
                   getRowId={(row: any) => row._id}
-                  // disableColumnMenu
+                // disableColumnMenu
                 />
               </Box>
             )}

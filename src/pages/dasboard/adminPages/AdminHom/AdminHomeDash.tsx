@@ -1,9 +1,9 @@
 import { useAuth } from "@/hooks/useAuth";
-import { getRefferalList } from "@/service/api/apiMethods";
+import { getAllUserList, getRefferalList } from "@/service/api/apiMethods";
 import { getDepositList, getWithdrawList } from "@/service/api/template";
 import React, { useEffect, useState } from "react";
 
-export default function Dashborad() {
+export default function AdminHomeDash() {
   const { user } = useAuth();
 
   const names: string[] = [
@@ -195,23 +195,24 @@ export default function Dashborad() {
   };
 
 
-  const TotalTeamMembers = async () => {
+  const allUser = async () => {
     try {
-      const { data } = await getRefferalList(user?._id);
-      const transformedData = data?.referredUsers.map((row: any) => ({
+      const { data } = await getAllUserList(user?._id);
+      const transformedData = data.map((row: any) => ({
         ...row,
         managerFirstName: row.manager ? row.manager.firstName : "",
         members: row.members ? row.members.length : "",
       }));
+
       setTotalTeam(transformedData);
 
     } catch (error) {
       console.log(error);
-    };
-  }
+    }
+  };
   useEffect(() => {
     TotalDepositData()
-    TotalTeamMembers()
+    allUser()
     withdrawTotalData()
   }, [])
   return (
@@ -245,14 +246,14 @@ export default function Dashborad() {
 
         {/* <!-- Total Team Members --> */}
         <div className="bg-white p-6 rounded-md shadow-md">
-          <h2 className="text-xl font-semibold mb-4">Total Team Members</h2>
+          <h2 className="text-xl font-semibold mb-4">Total Members</h2>
           <p className="text-3xl font-bold text-orange-500">{totalTeam?.length}</p>
         </div>
 
         {/* <!-- Additional Cards --> */}
         <div className="bg-white p-6 rounded-md shadow-md">
-          <h2 className="text-xl font-semibold mb-4">Current Plan</h2>
-          <p className="text-3xl font-bold text-lime-500">{currentPlan}</p>
+          <h2 className="text-xl font-semibold mb-4">Total Rejecet</h2>
+          <p className="text-3xl font-bold text-lime-500">Coming Soon</p>
         </div>
 
         <div className="bg-white p-6 rounded-md shadow-md">
@@ -270,7 +271,7 @@ export default function Dashborad() {
       <div className="container md:flex mx-auto mt-8 gap-5 ">
 
         {/* <!-- Withdraw Card --> */}
-        <div className=" w-full  bg-white shadow-md p-8 rounded-md transition-transform duration-500 transform">
+        {/* <div className=" w-full  bg-white shadow-md p-8 rounded-md transition-transform duration-500 transform">
           <p className="text-3xl font-bold text-purple-500">Currently Withdraw</p>
           <div id="userCard">
 
@@ -282,7 +283,7 @@ export default function Dashborad() {
           <div id="userCardDepo">
 
           </div>
-        </div>
+        </div> */}
 
       </div>
     </div>

@@ -62,22 +62,22 @@ const WithdrawRequest = () => {
     const timeZones = moment.tz.names();
     setTimeZoneList(timeZones);
   };
-useEffect(() => {
+  useEffect(() => {
 
-  setValue("id", user?._id);
-  setValue("userName", user?.name);  
-  setValue("email", user?.email);
-  setValue("phone", user?.phone);
-}, [ ])
+    setValue("id", user?._id);
+    setValue("userName", user?.name);
+    setValue("email", user?.email);
+    setValue("phone", user?.phone);
+  }, [])
   const handleBack = () => {
     navigate(-1);
   };
-console.log('user in  : ' , user)
+
   const listData = async () => {
     try {
       setIsLoading(true);
       const { data } = await getcompaniesById(user?._id);
-      console.log(data);
+
       setValue("id", user?._id);
       setValue("userName", user?.name);
       setValue("amount", data?.amount);
@@ -107,7 +107,7 @@ console.log('user in  : ' , user)
         data.image = imageBase64;
       }
       const response = await withdrawRequest(user?._id, data);
-      console.log(response.message);
+
       if (response.ok === true) {
         toast.success(response.message);
         setValue("amount", '');
@@ -147,10 +147,10 @@ console.log('user in  : ' , user)
   return (
     <Container maxWidth="xl" sx={{ padding: 1 }} className="bg-blue-100" >
 
-      
-        <Grid item xs={12}>
-          <CardHeader title="Withdraw Request" className="font-bold " />
-         </Grid>
+
+      <Grid item xs={12}>
+        <CardHeader title="Withdraw Request" className="font-bold " />
+      </Grid>
       <Grid container sx={{ height: "100%" }}>
         <Grid
           item
@@ -162,7 +162,7 @@ console.log('user in  : ' , user)
             alignItems: "center",
             justifyContent: "center",
           }}
-        > 
+        >
 
           <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate>
             <Grid container spacing={2} className="p-6 ">
@@ -263,12 +263,12 @@ console.log('user in  : ' , user)
                   </div>
                 </Box>
               </Grid>
- 
 
-             
 
-             
-           
+
+
+
+
             </Grid>
           </Box>
         </Grid>

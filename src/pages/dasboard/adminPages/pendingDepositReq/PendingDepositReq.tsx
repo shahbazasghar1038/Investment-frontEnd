@@ -86,12 +86,11 @@ const PendingDepositReq = () => {
   const listData = async () => {
     try {
       setIsLoading(true);
-      const  data = await getDepositListToAdmin();
+      const data = await getDepositListToAdmin();
 
       setCategorylist(data);
 
 
-      console.log("admin side deposit requests", data);
     } catch (error) {
       console.log(error);
     } finally {
@@ -125,7 +124,7 @@ const PendingDepositReq = () => {
       if (window.confirm("Are you sure you want to archive this template?")) {
         setIsLoading(true);
         const res = await archiveTemp(id, { status: "Archived" });
-        console.log({ res });
+
 
         if (res.ok === true) {
           toast.success(res.message);
@@ -140,8 +139,8 @@ const PendingDepositReq = () => {
       setIsLoading(false);
     }
   };
-  const handleActive = async (id: any , status:any) => {
-    console.log('active')
+  const handleActive = async (id: any, status: any) => {
+
     try {
       if (
         window.confirm(
@@ -151,7 +150,7 @@ const PendingDepositReq = () => {
         setIsLoading(true);
 
         const res = await updateDepositStatus(id, { status: status });
-        console.log({ res });
+
 
         if (res.ok === true) {
           toast.success(res.message);
@@ -170,9 +169,9 @@ const PendingDepositReq = () => {
   useEffect(() => {
     listData();
   }, []);
- 
 
-  const handleOpenImage = (imageUrl:any) => {
+
+  const handleOpenImage = (imageUrl: any) => {
     window.open(imageUrl, "_blank");
   };
 
@@ -192,8 +191,8 @@ const PendingDepositReq = () => {
   };
 
   const columns: GridColDef[] = [
-    
-    
+
+
     {
       flex: 0.2,
       field: "name",
@@ -211,14 +210,14 @@ const PendingDepositReq = () => {
         );
       },
     },
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
     {
       flex: 0.2,
       field: "amount",
@@ -237,7 +236,7 @@ const PendingDepositReq = () => {
       },
     },
 
-   
+
 
 
     {
@@ -281,7 +280,7 @@ const PendingDepositReq = () => {
 
 
 
-    
+
 
 
 
@@ -325,8 +324,8 @@ const PendingDepositReq = () => {
             variant="outlined"
             label={
               row.status === "Approved"
-                ? "Approved" 
-                : row.status === "Reject" ? 'Reject'  : 'Pending'  } 
+                ? "Approved"
+                : row.status === "Reject" ? 'Reject' : 'Pending'}
             sx={{
               fontSize: "14px",
               fontWeight: "bold",
@@ -336,17 +335,17 @@ const PendingDepositReq = () => {
                   : row.status === "Reject" ? "#000" : '#FFCBCB',
               color:
                 row.status === "Approved"
-                  ? "#3F9748" 
+                  ? "#3F9748"
                   : "#red",
               borderColor:
                 row.status === "Approved"
-                  ? "#D3FDE4" 
+                  ? "#D3FDE4"
                   : "#FFCBCB", // Optional: to match border color with background
               "& .MuiChip-label": {
                 // This targets the label inside the chip for more specific styling
                 color:
                   row.status === "Approved"
-                    ? "#3F9748" 
+                    ? "#3F9748"
                     : "#D32F2F",
               },
             }}
@@ -429,32 +428,32 @@ const PendingDepositReq = () => {
 
         return (
           <Box sx={{ display: "flex", alignItems: "center" }}>
-            <Box sx={{ display: "flex", flexDirection: "column" }}> 
-            
-            {image ? 
-              <button onClick={() => handleOpenImage(image)}><Chip
-              size="small"
-              variant="outlined"
-              label={  "OPEN"   }
-              sx={{
-                fontSize: "14px",
-                fontWeight: "bold",
-                backgroundColor:
-                  row.status === "Approved"
-                    ? "#3F9748"
-                    : "#3F9748",
-                        
-                "& .MuiChip-label": { 
-                  color:
-                    row.status === "Approved"
-                      ? "#FFF" 
-                      : "#FFF",
-                },
-              }}
-            /></button>
-            : 'N/A'
-            }
-              </Box>
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
+
+              {image ?
+                <button onClick={() => handleOpenImage(image)}><Chip
+                  size="small"
+                  variant="outlined"
+                  label={"OPEN"}
+                  sx={{
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    backgroundColor:
+                      row.status === "Approved"
+                        ? "#3F9748"
+                        : "#3F9748",
+
+                    "& .MuiChip-label": {
+                      color:
+                        row.status === "Approved"
+                          ? "#FFF"
+                          : "#FFF",
+                    },
+                  }}
+                /></button>
+                : 'N/A'
+              }
+            </Box>
           </Box>
         );
       },
@@ -519,7 +518,7 @@ const PendingDepositReq = () => {
             <MenuItem
               onClick={() => {
                 handleClose();
-                handleActive(menuState.row?._id , 'Approved'); // Use menuState.row._id
+                handleActive(menuState.row?._id, 'Approved'); // Use menuState.row._id
               }}
             >
               Approve
@@ -534,7 +533,7 @@ const PendingDepositReq = () => {
             </MenuItem> */}
             <MenuItem
               onClick={() => {
-                handleActive(menuState.row?._id , 'Reject'); // Use menuState.row._id
+                handleActive(menuState.row?._id, 'Reject'); // Use menuState.row._id
                 handleClose();
               }}
             >
@@ -549,10 +548,10 @@ const PendingDepositReq = () => {
   return (
     <>
       <Grid container spacing={6}>
-      
-      <Grid item xs={12}>
+
+        <Grid item xs={12}>
           <CardHeader title="Deposit Requests" className="text-white" />
-         </Grid>
+        </Grid>
 
         <Grid item xs={12}>
           <Card>
@@ -579,7 +578,7 @@ const PendingDepositReq = () => {
                 <ProgressCircularCustomization />
               </Box>
             ) : (
-              <Box sx={{ maxHeight: 500, display: "table", tableLayout: "fixed" ,  width: "100%" }}>
+              <Box sx={{ maxHeight: 500, display: "table", tableLayout: "fixed", width: "100%" }}>
                 <DataGrid
                   style={{ paddingLeft: "10px", paddingRight: "10px" }}
                   autoHeight
@@ -595,7 +594,7 @@ const PendingDepositReq = () => {
                     setSelectedRows(rows)
                   }
                   getRowId={(row: any) => row._id}
-                  // disableColumnMenu
+                // disableColumnMenu
                 />
               </Box>
             )}

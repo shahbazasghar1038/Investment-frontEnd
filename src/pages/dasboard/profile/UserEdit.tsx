@@ -100,7 +100,6 @@ const UserEdit = () => {
     try {
       setIsLoading(true);
       const { user } = await getUserId(id);
-      console.log(user);
       setList(user);
       setValue("firstName", user?.firstName);
       setValue("lastName", user?.lastName);

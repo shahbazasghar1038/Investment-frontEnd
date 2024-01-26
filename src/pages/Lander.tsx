@@ -1110,7 +1110,7 @@ const Lander = () => {
                                 <div className="contact_info_area sm:flex justify-between">
                                     {/* <!-- Content Info --> */}
                                     <div className="contact_info mt-x text-center fadeInUp" data-wow-delay="0.3s">
-                                        <h5 className='light-green'>PRIVACY & TOS</h5>
+                                        <h5 className='light-green'>NAVIGATE</h5>
                                         <a href="#"><p>Home</p></a>
                                         <a href="#"><p>Plans</p></a>
                                         <a href="#"><p>How it Works</p></a>
@@ -1124,7 +1124,7 @@ const Lander = () => {
                                 {/* <!-- Content Info --> */}
                                 <div className="contact_info_area sm:flex justify-between">
                                     <div className="contact_info mt-s text-center fadeInUp" data-wow-delay="0.2s">
-                                        <h5 className='light-green'>NAVIGATE</h5>
+                                        <h5 className='light-green'>PRIVACY & TOS</h5>
 
                                         <p>
                                             <Link to='terms-of-services' className='text-white'>Terms of Services</Link>
@@ -1146,8 +1146,8 @@ const Lander = () => {
                                         <h5 className='light-green'>CONTACT US</h5>
                                         <p>Mailing Address:xx00 E. Union Ave</p>
                                         <p>Suite 1100. Denver, CO 80237</p>
-                                        <p>+999 90932 627</p>
-                                        <p>support@yourdomain.com</p>
+                                        {/* <p>+999 90932 627</p> */}
+                                        <p>info@gwmining.com</p>
                                     </div>
                                 </div>
                             </div>

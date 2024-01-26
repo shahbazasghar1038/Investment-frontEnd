@@ -89,7 +89,6 @@ const TemplateList = () => {
 
       setCategorylist(data);
 
-      console.log("teams", data);
     } catch (error) {
       console.log(error);
     } finally {
@@ -123,7 +122,7 @@ const TemplateList = () => {
       if (window.confirm("Are you sure you want to archive this template?")) {
         setIsLoading(true);
         const res = await archiveTemp(id, { status: "Archived" });
-        console.log({ res });
+
 
         if (res.ok === true) {
           toast.success(res.message);
@@ -148,7 +147,7 @@ const TemplateList = () => {
         setIsLoading(true);
 
         const res = await archiveTemp(id, { status: "Active" });
-        console.log({ res });
+
 
         if (res.ok === true) {
           toast.success(res.message);
@@ -168,7 +167,6 @@ const TemplateList = () => {
     listData();
   }, []);
 
-  console.log(search, "serch");
 
   const filteredList = useMemo(() => {
     let result = catategorylist;
@@ -240,8 +238,8 @@ const TemplateList = () => {
               row.status === "Active"
                 ? "Active"
                 : row.status === "Archived"
-                ? "Archived"
-                : "Inactive"
+                  ? "Archived"
+                  : "Inactive"
             }
             sx={{
               fontSize: "14px",
@@ -250,28 +248,28 @@ const TemplateList = () => {
                 row.status === "Active"
                   ? "#D3FDE4"
                   : row.status === "Archived"
-                  ? "#FFF7CB"
-                  : "#FFCBCB",
+                    ? "#FFF7CB"
+                    : "#FFCBCB",
               color:
                 row.status === "Active"
                   ? "#3F9748"
                   : row.status === "Archived"
-                  ? "#D32F2F"
-                  : "#red",
+                    ? "#D32F2F"
+                    : "#red",
               borderColor:
                 row.status === "Active"
                   ? "#D3FDE4"
                   : row.status === "Archived"
-                  ? "#FFF7CB"
-                  : "#FFCBCB", // Optional: to match border color with background
+                    ? "#FFF7CB"
+                    : "#FFCBCB", // Optional: to match border color with background
               "& .MuiChip-label": {
                 // This targets the label inside the chip for more specific styling
                 color:
                   row.status === "Active"
                     ? "#3F9748"
                     : row.status === "Archived"
-                    ? "#D36A2F"
-                    : "#D32F2F",
+                      ? "#D36A2F"
+                      : "#D32F2F",
               },
             }}
           />
@@ -529,7 +527,7 @@ const TemplateList = () => {
                     setSelectedRows(rows)
                   }
                   getRowId={(row: any) => row._id}
-                  // disableColumnMenu
+                // disableColumnMenu
                 />
               </Box>
             )}

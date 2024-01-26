@@ -106,7 +106,7 @@ const UserDetail = () => {
     try {
       setIsLoading(true);
       const { user } = await getUserId(id);
-      console.log(user);
+
       setImage(user?.image);
       if (user.status === "active") {
         setIsAccessDisabled(true);
@@ -156,7 +156,6 @@ const UserDetail = () => {
   const updateStatusf = async () => {
     try {
       setIsLoading(true);
-      console.log(isAccessDisabled, "isAccessDisabled");
 
       const status = isAccessDisabled
         ? { status: "active" }
@@ -164,7 +163,6 @@ const UserDetail = () => {
 
       const res = await updateStatus(id, status);
 
-      console.log({ res });
       if (res.ok === true) {
         listData();
       } else {
@@ -176,8 +174,6 @@ const UserDetail = () => {
       setIsLoading(false);
     }
   };
-
-  console.log(imageBase64, "image");
 
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -262,7 +258,7 @@ const UserDetail = () => {
                 <Box sx={{ ml: 6 }}>
                   <Typography
                     variant="subtitle1"
-                    // sx={{ color: "text.secondary" }}
+                  // sx={{ color: "text.secondary" }}
                   >{user?.name}</Typography>
                   {/* <Typography
                     variant="subtitle2"
@@ -274,7 +270,7 @@ const UserDetail = () => {
                     variant="outlined"
                     label={
                       list?.status === "active"
-                        ? "Active" 
+                        ? "Active"
                         : "Active"
                     }
                     sx={{
@@ -284,28 +280,28 @@ const UserDetail = () => {
                         list?.status === "active"
                           ? "#D3FDE4"
                           : list?.status === "archived"
-                          ? "#D3FDE4"
-                          : "#D3FDE4",
+                            ? "#D3FDE4"
+                            : "#D3FDE4",
                       color:
                         list?.status === "active"
                           ? "#3F9748"
                           : list?.status === "archived"
-                          ? "#D3FDE4"
-                          : "#D3FDE4",
+                            ? "#D3FDE4"
+                            : "#D3FDE4",
                       borderColor:
                         list?.status === "active"
                           ? "#D3FDE4"
                           : list?.status === "archived"
-                          ? "#D3FDE4"
-                          : "#D3FDE4", // Optional: to match border color with background
+                            ? "#D3FDE4"
+                            : "#D3FDE4", // Optional: to match border color with background
                       "& .MuiChip-label": {
                         // This targets the label inside the chip for more specific styling
                         color:
                           list?.status === "active"
                             ? "#3F9748"
                             : list?.status === "archived"
-                            ? "#3F9748"
-                            : "#3F9748",
+                              ? "#3F9748"
+                              : "#3F9748",
                       },
                     }}
                   />

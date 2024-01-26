@@ -75,10 +75,10 @@ const defaultColumns: GridColDef[] = [
         <Typography sx={{ color: "text.secondary" }}>
           <Checkbox
             sx={{ mr: 1 }}
-            // Include any logic for determining if the checkbox should be checked
-            // checked={/* your logic here, e.g., row.isChecked */}
-            // Include any additional props or event handlers
-            // onChange={/* your event handler here, if needed */}
+          // Include any logic for determining if the checkbox should be checked
+          // checked={/* your logic here, e.g., row.isChecked */}
+          // Include any additional props or event handlers
+          // onChange={/* your event handler here, if needed */}
           />
           {"full access , ets "}
         </Typography>
@@ -140,7 +140,6 @@ const RoleTable = () => {
       setIsLoading(true);
       const { data } = await getUserList(user?._id);
       setCategorylist(data);
-      console.log("branc", data);
     } catch (error) {
       console.log(error);
     } finally {
@@ -272,7 +271,7 @@ const RoleTable = () => {
                 onPaginationModelChange={setPaginationModel}
                 onRowSelectionModelChange={(rows: any) => setSelectedRows(rows)}
                 getRowId={(row) => row._id}
-                // disableColumnMenu
+              // disableColumnMenu
               />
             )}
           </Card>

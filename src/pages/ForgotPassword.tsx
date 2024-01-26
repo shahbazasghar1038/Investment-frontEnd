@@ -39,7 +39,7 @@ const ForgotPassword: React.FC = () => {
         email: data.email,
       };
       const response = await forgotPass(payload);
-      console.log(response);
+
       if (response.ok === true) {
         navigate("/emailverification");
         navigate("/emailvarfication", {

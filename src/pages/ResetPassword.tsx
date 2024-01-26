@@ -59,12 +59,10 @@ const ResetPassword: React.FC = () => {
             state: { user: true },
           });
         } else {
-          console.log(response, "rrsp");
           const errorMessage = response.data || response.message;
           toast.error(errorMessage);
         }
       } else {
-        console.log("else");
         const payload = {
           email: email, // Assuming email is defined somewhere
           newPassword: data.confirmPassword, // Assuming you want to send confirmPassword here
@@ -74,13 +72,11 @@ const ResetPassword: React.FC = () => {
           toast.success("Update successful!");
           navigate("/");
         } else {
-          console.log(response, "rrsp");
           const errorMessage = response.data || response.message;
           toast.error(errorMessage);
         }
       }
     } catch (error) {
-      console.log(error, "ersasar");
 
       const errorMessage = "Failed";
       toast.error(errorMessage);
