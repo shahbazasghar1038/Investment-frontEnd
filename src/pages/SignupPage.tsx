@@ -62,7 +62,7 @@ const SignupPage: React.FC = () => {
         referralCode: data.referralCode,
         mobile: data.mobile,
         bankDetail: data.bankDetail,
-        role: 2,
+        role: 1,
         emailVerified: true,
       };
 
