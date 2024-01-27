@@ -17,9 +17,10 @@ import RedirectRoute from "./RedirectRout";
 import { useEffect } from "react";
 import TnC from "@/pages/TnC";
 import AboutUs from "@/pages/AboutUs";
+import ContactUs from "@/pages/ContactUs";
 function AuthRouts() {
 
-    
+
 
     return (
         <>
@@ -30,6 +31,7 @@ function AuthRouts() {
                 <Route path="dashboard/*" element={<Dashboard />} />
                 <Route path="/terms-of-services" element={<TnC />} />
                 <Route path="/about-us" element={<AboutUs />} />
+                <Route path="/contact-us" element={<ContactUs />} />
                 <Route path="/*" element={<RedirectRoute to="/dashboard" />} />
             </Routes>
 

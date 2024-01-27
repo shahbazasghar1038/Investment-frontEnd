@@ -400,13 +400,13 @@ const SignupPage: React.FC = () => {
                     name="referralCode"
                     control={control}
                     defaultValue=""
-                    rules={{
-                      required: "Referal Code is required",
-                      // pattern: {
-                      //   // value: /^\S+@\S+\.\S+$/,
-                      //   message: "Invalid referal code",
-                      // },
-                    }}
+                    // rules={{
+                    //   required: "Referal Code is required",
+                    //   // pattern: {
+                    //   //   // value: /^\S+@\S+\.\S+$/,
+                    //   //   message: "Invalid referal code",
+                    //   // },
+                    // }}
                     render={({ field }) => (
                       <TextField
                         {...field}
@@ -415,8 +415,8 @@ const SignupPage: React.FC = () => {
                         type="text"
                         autoComplete="code"
                         placeholder="Enter referel code"
-                        error={Boolean(errors.referralCode)}
-                        helperText={errors.referralCode ? errors.referralCode.message : ""}
+                        // error={Boolean(errors.referralCode)}
+                        // helperText={errors.referralCode ? errors.referralCode.message : ""}
                         variant="outlined"
                         size="small"
                       />

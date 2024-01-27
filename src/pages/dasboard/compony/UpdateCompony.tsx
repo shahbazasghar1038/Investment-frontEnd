@@ -103,6 +103,9 @@ const UpdateCompony = () => {
     try {
       if (imageBase64) {
         data.image = imageBase64;
+      } else {
+        toast.error('Please Upload Screenshot');
+        return;
       }
       const response = await depositRequest(data);
 

@@ -17,6 +17,7 @@ import RedirectRoute from "./RedirectRout";
 import { useEffect } from "react";
 import TnC from "@/pages/TnC";
 import AboutUs from "@/pages/AboutUs";
+import ContactUs from "@/pages/ContactUs";
 function GuestRouts() {
 
     const userString: string | null = localStorage.getItem("user");
@@ -35,6 +36,7 @@ function GuestRouts() {
                 <Route path="/plans" element={<Packages />} />
                 <Route path="/terms-of-services" element={<TnC />} />
                 <Route path="/about-us" element={<AboutUs />} />
+                <Route path="/contact-us" element={<ContactUs />} />
 
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/signup" element={<SignupPage />} />

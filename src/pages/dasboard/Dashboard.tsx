@@ -214,14 +214,41 @@ export default function Dashborad() {
     TotalTeamMembers()
     withdrawTotalData()
   }, [])
+
+
+  const [isCopied, setIsCopied] = useState(false);
+
+  const handleCopyClick = () => {
+    const referralCode = user?.referralCode;
+
+    if (referralCode) {
+      navigator.clipboard.writeText(referralCode);
+      setIsCopied(true);
+
+      // Reset the "Copied" state after a certain duration if needed
+      setTimeout(() => {
+        setIsCopied(false);
+      }, 2000);
+    }
+  };
+
+
   return (
     <div>
       <div className="container mx-auto mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
 
         {/* <!-- User Balance --> */}
         <div className="bg-white p-6 rounded-md shadow-md">
-          <h2 className="text-xl font-semibold mb-4"> Total Balance</h2>
-          <p className="text-3xl font-bold text-blue-500">Coming Soon</p>
+          <h2 className="text-xl font-semibold mb-4"> Invite Friends</h2>
+          <div className="flex items-center justify-between p-3 text-sm font-bold text-gray-900  rounded-lg bg-gray-300 hover:bg-gray-100 mb-3">
+            <span className="whitespace-nowrap ">{user?.referralCode}</span>
+          </div>
+          <span
+            className={`inline-flex items-center justify-center px-6 font-semibold py-1 ms-3 text-sm font-  text-white rounded cursor-pointer ${isCopied ? 'bg-green-500 text-white' : 'bg-purple-500'}`}
+            onClick={handleCopyClick}
+          >
+            {isCopied ? 'Copied!' : 'Copy'}
+          </span>
         </div>
 
         {/* <!-- User Profit --> */}
@@ -256,8 +283,8 @@ export default function Dashborad() {
         </div>
 
         <div className="bg-white p-6 rounded-md shadow-md">
-          <h2 className="text-xl font-semibold mb-4">Coming Soon</h2>
-          {/* <p>Your content goes here.</p> */}
+          <h2 className="text-xl font-semibold mb-4"> Total Balance</h2>
+          <p className="text-3xl font-bold text-blue-500">Coming Soon</p>
         </div>
 
         <div className="bg-white p-6 rounded-md shadow-md">
