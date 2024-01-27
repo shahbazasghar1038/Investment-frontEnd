@@ -149,7 +149,7 @@ const PendingDepositReq = () => {
       ) {
         setIsLoading(true);
 
-        const res = await updateDepositStatus(id, { status: status });
+        const res = await updateDepositStatus(id, { status: status, id: user?._id });
 
 
         if (res.ok === true) {

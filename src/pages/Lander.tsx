@@ -1115,7 +1115,7 @@ const Lander = () => {
                                         <a href="#"><p>Plans</p></a>
                                         <a href="#"><p>How it Works</p></a>
                                         <a href="#"><p>Roadmap</p></a>
-                                        <a href="#"><p>Support</p></a>
+                                        {/* <a href="#"><p>Support</p></a> */}
                                     </div>
                                 </div>
                             </div>

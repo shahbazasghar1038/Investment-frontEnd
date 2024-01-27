@@ -65,7 +65,7 @@ const Nav = () => {
 							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
 						</svg>
 					</li>
-					<li><a className="text-sm text-white hover:text-gray-200" href="#contact">Support</a></li>
+					<li>  <Link to='about-us' className="text-sm text-white hover:text-gray-200">About Us</Link></li>
 				</ul>
 				{user ?
 					<Link className="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" to="/dashboard">Dashboard</Link>
@@ -93,7 +93,7 @@ const Nav = () => {
 					<div>
 						<ul>
 							<li className="mb-1">
-								<a onClick={() => { setShow(false) }} className='block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded' href='index.html'>Home</a>
+								<Link onClick={() => { setShow(false) }} className='block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded' to='/'>Home</Link>
 							</li>
 							<li className="mb-1">
 								<Link className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" to="/plans">Plans</Link>
@@ -105,7 +105,7 @@ const Nav = () => {
 								<a onClick={() => { setShow(false) }} className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#roadmap">Roadmap</a>
 							</li>
 							<li className="mb-1">
-								<a onClick={() => { setShow(false) }} className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#contact">Support</a>
+								<Link to='about-us' onClick={() => { setShow(false) }} className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded">About Us</Link>
 							</li>
 						</ul>
 					</div>
