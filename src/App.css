@@ -5448,6 +5448,46 @@ input#checkboxLabel:checked ~ .box span{
   background-image: url('./img/svg/discount-bg-1.svg');
 }
 
+
+
+
+
+.dash span {
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  display: inline-block;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: rgba(0, 224, 196, 1);
+}
+
+.dash label {
+  /* border-radius:35px; */
+  height: 40px;
+  width: 100%;
+  background-position: left;
+  background-repeat: no-repeat;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  line-height: 2.5rem;
+  letter-spacing: 0.025em;
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
+  font-weight: normal;
+  background-image: url('./img/svg/discount-bg-1.svg');
+}
+
+
+
+
+
+
 /*
 * ----------------------------------------------------------------------------------------
 *  START counter-down STYLE
