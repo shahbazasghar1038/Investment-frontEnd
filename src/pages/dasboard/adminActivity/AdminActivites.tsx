@@ -78,8 +78,27 @@ const defaultColumns: any[] = [
   {
     flex: 0.2,
     minWidth: 230,
-    field: "email",
-    headerName: "Email ",
+    field: "amount",
+    headerName: "Amount",
+    sortable: true,
+    renderCell: ({ row }: any) => {
+      const { email } = row;
+
+      return (
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <Typography sx={{ color: "text.secondary" }}>{email}</Typography>
+          </Box>
+        </Box>
+      );
+    },
+  },
+
+  {
+    flex: 0.2,
+    minWidth: 230,
+    field: "walletAddress",
+    headerName: "Wallet Address",
     sortable: true,
     renderCell: ({ row }: any) => {
       const { email } = row;
@@ -139,8 +158,8 @@ const defaultColumns: any[] = [
   {
     flex: 0.3,
     minWidth: 125,
-    field: "amount",
-    headerName: "Amount ",
+    field: "name",
+    headerName: "Respond By ",
     renderCell: ({ row }: { row: any }) => {
       const { amount } = row;
       return (
@@ -216,9 +235,12 @@ const AdminActivites = () => {
 
   const ITEM_HEIGHT = 48;
 
-  // const handleEditClick = (row: any) => {
-  //   router.push(`edit/${row.id}`)
-  // }
+
+  // useEffect(() => {
+  //   if (true) {
+  //     navigate('/dashboard/pending-deposit')
+  //   }
+  // }, [])
 
   const handleArchive = async (id: any) => {
     try {

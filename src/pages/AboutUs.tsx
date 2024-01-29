@@ -15,9 +15,9 @@ const AboutUs = () => {
                                     </div>
                                     <h4 className="text-white fadeInUp font-bold" data-wow-delay="0.3s">About Us</h4>
                                     <p className="text-white">
-                                    Discover GW Mining, a beacon in the digital investment realm. Our vision is financial 
-                                    empowerment through innovative, secure, and transparent solutions. 
-                                    Join us on this exciting journey!
+                                        Discover GW Mining, a beacon in the digital investment realm. Our vision is financial
+                                        empowerment through innovative, secure, and transparent solutions.
+                                        Join us on this exciting journey!
                                     </p>
                                 </div>
                             </div>
@@ -107,7 +107,7 @@ const AboutUs = () => {
 
 
 
-                <h5 className='sub-heading'> 7. Our Commitment to You</h5>
+                <h5 className='sub-heading'> 5. Our Commitment to You</h5>
                 <p className='tnc-decs'>
                     At GW Mining, we are committed to your success and financial well-being.
                     We believe in fostering a community of informed investors who can confidently navigate

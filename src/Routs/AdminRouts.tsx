@@ -16,23 +16,29 @@ import Lander from "@/pages/Lander";
 import RedirectRoute from "./RedirectRout";
 import { useEffect } from "react";
 import AdminDashboard from "@/pages/AdminDashboard";
+import TnC from "@/pages/TnC";
+import AboutUs from "@/pages/AboutUs";
+import ContactUs from "@/pages/ContactUs";
 function AdminRouts() {
 
-   
+
     return (
         <>
-           
-           <Routes>
-           
+
+            <Routes>
+
                 <Route path="/" element={<Lander />} />
                 <Route path="/plans" element={<Packages />} />
                 <Route path="dashboard/*" element={<AdminDashboard />} />
+                <Route path="/terms-of-services" element={<TnC />} />
+                <Route path="/about-us" element={<AboutUs />} />
+                <Route path="/contact-us" element={<ContactUs />} />
                 <Route path="/*" element={<RedirectRoute to="/dashboard" />} />
 
 
-                </Routes>              
+            </Routes>
 
-          
+
         </>
     );
 }
