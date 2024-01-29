@@ -383,7 +383,8 @@ const SignupPage: React.FC = () => {
                         fullWidth
                         autoComplete="current-mobile"
                         placeholder="Enter mobile"
-
+                        error={Boolean(errors.mobile)}
+                        helperText={errors.mobile ? errors.mobile.message : ""}
                         variant="outlined"
                         size="small"
 
