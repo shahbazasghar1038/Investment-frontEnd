@@ -91,6 +91,12 @@ export const getRefferalList = async (id: any) => {
   return await baseURL.get(`/api/v1/users/referrals/${id}`);
 };
 
+
+export const getAdminActivites = async () => {
+  return await baseURL.get(`/api/v1/activity/list`);
+};
+
+
 export const getAllUserList = async (id: any) => {
   return await baseURL.get(`/api/v1/users/list-user`);
 };

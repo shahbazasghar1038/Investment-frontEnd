@@ -95,6 +95,7 @@ import WithdrawRequest from "./dasboard/withdrawRequest/WithdrawRequest";
 import AllUsers from "./dasboard/adminPages/allusers/AllUsers";
 import PendingDepositReq from "./dasboard/adminPages/pendingDepositReq/PendingDepositReq";
 import WithdrawReq from "./dasboard/adminPages/withdrawReq/WithdrawReq";
+import AdminActivites from "./dasboard/adminActivity/AdminActivites";
 // Usage: <ArticleIcon />
 
 // Usage: <AssignmentIcon />
@@ -211,6 +212,19 @@ export default function AdminDashboard() {
             primaryTypographyProps={{ variant: "subtitle2" }}
           />
         </ListItemButton>
+
+        <ListItemButton component={Link} to="/dashboard/admin-activities">
+          <ListItemIcon>
+            <AccountTreeIcon />
+          </ListItemIcon>
+          <ListItemText
+            primary="Admin Activites"
+            primaryTypographyProps={{ variant: "subtitle2" }}
+          />
+        </ListItemButton>
+
+
+
         {/* <ListItemButton component={Link} to="/dashboard/branchlist">
           <ListItemIcon>
             <AccountTreeIcon />
@@ -499,7 +513,9 @@ export default function AdminDashboard() {
           <Route path="/withdraw-request" element={<WithdrawRequest />} />
           <Route path="/notification" element={<Notification />} />
           <Route path="/all-users" element={<AllUsers />} />
+          <Route path="/admin-activities" element={<AdminActivites />} />
           <Route path="/pending-deposit" element={<PendingDepositReq />} />
+
           <Route path="/team-edit/:id" element={<UpdateTeam />} />
           <Route path="/withdraw-requests" element={<WithdrawReq />} />
           <Route path="/branchlist" element={<BranchList />} />

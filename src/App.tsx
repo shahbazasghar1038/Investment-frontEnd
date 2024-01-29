@@ -47,6 +47,7 @@ function App() {
     checkUserStorage();
   }, []); // Run this effect only once when the component mounts
 
+  console.log('user : ', user)
 
   return (
     <>
