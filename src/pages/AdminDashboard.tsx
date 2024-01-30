@@ -185,15 +185,19 @@ export default function AdminDashboard() {
             You can add more sub-items here
           </List>
         </Collapse> */}
-        <ListItemButton component={Link} to="/dashboard">
-          <ListItemIcon>
-            <HomeIcon />
-          </ListItemIcon>
-          <ListItemText
-            primary="Home"
-            primaryTypographyProps={{ variant: "subtitle2" }}
-          />
-        </ListItemButton>
+
+        {user?.role == 2 &&
+
+          <ListItemButton component={Link} to="/dashboard">
+            <ListItemIcon>
+              <HomeIcon />
+            </ListItemIcon>
+            <ListItemText
+              primary="Home"
+              primaryTypographyProps={{ variant: "subtitle2" }}
+            />
+          </ListItemButton>
+        }
         {/* <ListItemButton component={Link} to="/dashboard/contract-list">
           <ListItemIcon>
             <ArticleIcon />
@@ -203,26 +207,28 @@ export default function AdminDashboard() {
             primaryTypographyProps={{ variant: "subtitle2" }}
           />
         </ListItemButton> */}
-        <ListItemButton component={Link} to="/dashboard/all-users">
-          <ListItemIcon>
-            <GroupsIcon />
-          </ListItemIcon>
-          <ListItemText
-            primary="All Users"
-            primaryTypographyProps={{ variant: "subtitle2" }}
-          />
-        </ListItemButton>
-
-        <ListItemButton component={Link} to="/dashboard/admin-activities">
-          <ListItemIcon>
-            <AccountTreeIcon />
-          </ListItemIcon>
-          <ListItemText
-            primary="Admin Activites"
-            primaryTypographyProps={{ variant: "subtitle2" }}
-          />
-        </ListItemButton>
-
+        {user?.role == 2 &&
+          <ListItemButton component={Link} to="/dashboard/all-users">
+            <ListItemIcon>
+              <GroupsIcon />
+            </ListItemIcon>
+            <ListItemText
+              primary="All Users"
+              primaryTypographyProps={{ variant: "subtitle2" }}
+            />
+          </ListItemButton>
+        }
+        {user?.role == 2 &&
+          <ListItemButton component={Link} to="/dashboard/admin-activities">
+            <ListItemIcon>
+              <AccountTreeIcon />
+            </ListItemIcon>
+            <ListItemText
+              primary="Admin Activites"
+              primaryTypographyProps={{ variant: "subtitle2" }}
+            />
+          </ListItemButton>
+        }
 
         {/* <ListItemButton component={Link} to="/dashboard/branchlist">
           <ListItemIcon>
@@ -301,7 +307,7 @@ export default function AdminDashboard() {
         </ListItemButton> */}
 
         {/* Deposit history  */}
-        <ListItemButton component={Link} to="/dashboard/pending-deposit">
+        <ListItemButton component={Link} to="/dashboard/deposit-requests">
           <ListItemIcon>
             <InputIcon />
           </ListItemIcon>
@@ -513,7 +519,7 @@ export default function AdminDashboard() {
           <Route path="/notification" element={<Notification />} />
           <Route path="/all-users" element={<AllUsers />} />
           <Route path="/admin-activities" element={<AdminActivites />} />
-          <Route path="/pending-deposit" element={<PendingDepositReq />} />
+          <Route path="/deposit-requests" element={<PendingDepositReq />} />
 
           <Route path="/team-edit/:id" element={<UpdateTeam />} />
           <Route path="/withdraw-requests" element={<WithdrawReq />} />

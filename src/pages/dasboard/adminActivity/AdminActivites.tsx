@@ -19,6 +19,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
+import { format, utcToZonedTime } from "date-fns-tz";
 // ** Third Party Imports
 import logo from "@/assets/team_icon.svg";
 import toast from "react-hot-toast";
@@ -37,6 +38,7 @@ import AddIcon from "@mui/icons-material/Add";
 import ProgressCircularCustomization from "@/pages/dasboard/users/ProgressCircularCustomization";
 import { useAuth } from "@/hooks/useAuth";
 import axios from "axios";
+import CategoryList from "../category/CategoryList";
 interface CellType {
   row: any;
   _id: any;
@@ -58,23 +60,23 @@ interface RowType {
 // ** Styled components
 
 const defaultColumns: any[] = [
-  {
-    flex: 0.2,
-    field: "name",
-    minWidth: 230,
-    headerName: "Name",
-    renderCell: ({ row }: any) => {
-      const { name } = row;
+  // {
+  //   flex: 0.2,
+  //   field: "name",
+  //   minWidth: 230,
+  //   headerName: "Name",
+  //   renderCell: ({ row }: any) => {
+  //     const { name } = row;
 
-      return (
-        <Box sx={{ display: "flex", alignItems: "center" }}>
-          <Box sx={{ display: "flex", flexDirection: "column" }}>
-            <Typography sx={{ color: "text.secondary" }}>{name}</Typography>
-          </Box>
-        </Box>
-      );
-    },
-  },
+  //     return (
+  //       <Box sx={{ display: "flex", alignItems: "center" }}>
+  //         <Box sx={{ display: "flex", flexDirection: "column" }}>
+  //           <Typography sx={{ color: "text.secondary" }}>{name}</Typography>
+  //         </Box>
+  //       </Box>
+  //     );
+  //   },
+  // },
   {
     flex: 0.2,
     minWidth: 230,
@@ -82,23 +84,25 @@ const defaultColumns: any[] = [
     headerName: "Amount",
     sortable: true,
     renderCell: ({ row }: any) => {
-      const { email } = row;
+      const { amount } = row;
 
       return (
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <Box sx={{ display: "flex", flexDirection: "column" }}>
-            <Typography sx={{ color: "text.secondary" }}>{email}</Typography>
+            <Typography sx={{ color: "text.secondary" }}>{amount}</Typography>
           </Box>
         </Box>
       );
     },
   },
 
+
+
   {
     flex: 0.2,
     minWidth: 230,
-    field: "walletAddress",
-    headerName: "Wallet Address",
+    field: "email",
+    headerName: "Email",
     sortable: true,
     renderCell: ({ row }: any) => {
       const { email } = row;
@@ -112,6 +116,47 @@ const defaultColumns: any[] = [
       );
     },
   },
+
+  // {
+  //   flex: 0.2,
+  //   minWidth: 230,
+  //   field: "walletAddress",
+  //   headerName: "Wallet Address",
+  //   sortable: true,
+  //   renderCell: ({ row }: any) => {
+  //     const { email } = row;
+
+  //     return (
+  //       <Box sx={{ display: "flex", alignItems: "center" }}>
+  //         <Box sx={{ display: "flex", flexDirection: "column" }}>
+  //           <Typography sx={{ color: "text.secondary" }}>{email}</Typography>
+  //         </Box>
+  //       </Box>
+  //     );
+  //   },
+  // },
+
+
+
+  {
+    flex: 0.2,
+    minWidth: 125,
+    field: "type",
+    headerName: "Request Type",
+    renderCell: ({ row }: { row: any }) => (
+      <>
+        <Chip
+          size="small"
+          variant="outlined"
+          label={row.type ? row.type : ' N / A'}
+          sx={{ textTransform: 'capitalize' }}
+        />
+      </>
+    ),
+  },
+
+
+
 
   {
     flex: 0.2,
@@ -124,46 +169,88 @@ const defaultColumns: any[] = [
           size="small"
           variant="outlined"
           label={
-            row.status === "Active"
-              ? "Active"
-              : "Active"
+            row.status === "Approved"
+              ? "Approved"
+              : "Rejected"
           }
           sx={{
             fontSize: "14px",
             // fontWeight: "bold",
             backgroundColor:
-              row.status === "Active"
+              row.status === "Approved"
                 ? "#D3FDE4"
-                : "#D3FDE4",
+                : "#000",
             color:
-              row.status === "Active"
+              row.status === "Approved"
                 ? "#3F9748"
-                : "#3F9748",
+                : "red",
             borderColor:
-              row.status === "Active"
+              row.status === "Approved"
                 ? "#D3FDE4"
                 : "#D3FDE4", // Optional: to match border color with background
             "& .MuiChip-label": {
               // This targets the label inside the chip for more specific styling
               color:
-                row.status === "Active"
+                row.status === "Approved"
                   ? "#3F9748"
-                  : "#3F9748",
+                  : "#D32F2F",
             },
           }}
         />
       </>
     ),
   },
+
+
+
+
+
+
+
+
+
+  {
+    flex: 0.2,
+    field: "createdAt",
+    minWidth: 140,
+    headerName: "Date",
+    renderCell: ({ row }: any) => {
+      const { createdAt } = row;
+
+      // Specify the desired time zone, e.g., 'America/New_York'
+      const timeZone = "America/New_York";
+
+      // Convert UTC date to the specified time zone
+      const zonedDate = utcToZonedTime(new Date(createdAt), timeZone);
+
+      // Format the date and time with hours, minutes, and AM/PM
+      const formattedDateTime = format(zonedDate, "dd-MM-yyyy hh:mm a", {
+        timeZone,
+      });
+
+      return (
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <Typography sx={{ color: "text.secondary" }}>
+              {formattedDateTime}
+            </Typography>
+          </Box>
+        </Box>
+      );
+    },
+  },
+
+
+
   {
     flex: 0.3,
     minWidth: 125,
-    field: "name",
+    field: "UserId",
     headerName: "Respond By ",
     renderCell: ({ row }: { row: any }) => {
-      const { amount } = row;
+      const { UserId } = row;
       return (
-        <Typography sx={{ color: "text.secondary" }}>{amount}</Typography>
+        <Typography sx={{ color: "text.secondary" }}>{UserId[0]?.name}</Typography>
       );
     },
   },
@@ -192,8 +279,8 @@ const AdminActivites = () => {
   });
   const [isLoading, setIsLoading] = useState(true);
   const [catategorylist, setCategorylist] = useState<Array<any>>([]);
+  console.log('cat activity :', catategorylist)
   const [selectedRows, setSelectedRows] = useState<GridRowId[]>([]);
-
   const [menuState, setMenuState] = useState<{
     anchorEl: null | HTMLElement;
     row: CellType | null;
@@ -234,13 +321,16 @@ const AdminActivites = () => {
   };
 
   const ITEM_HEIGHT = 48;
+  console.log(user)
 
 
-  // useEffect(() => {
-  //   if (true) {
-  //     navigate('/dashboard/pending-deposit')
-  //   }
-  // }, [])
+  useEffect(() => {
+    if (user?.role == 2) {
+      return;
+    } else {
+      navigate('/dashboard/deposit-requests')
+    }
+  }, [])
 
   const handleArchive = async (id: any) => {
     try {

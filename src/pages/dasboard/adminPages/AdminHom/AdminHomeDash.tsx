@@ -2,10 +2,11 @@ import { useAuth } from "@/hooks/useAuth";
 import { getAllUserList, getRefferalList } from "@/service/api/apiMethods";
 import { getDepositList, getWithdrawList } from "@/service/api/template";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function AdminHomeDash() {
   const { user } = useAuth();
-
+  const navigate = useNavigate();
   const names: string[] = [
     'Alice', 'Trisha', 'Bob', 'Jasmine', 'Aylin', 'Charlie', 'Kavya', 'David', 'Fatima', 'Eva',
     'Frank', 'Deniz', 'Aryan', 'Grace', 'Melis', 'Henry', 'Karan', 'Aisha', 'Ivy', 'Jack',
@@ -194,6 +195,13 @@ export default function AdminHomeDash() {
     }
   };
 
+  useEffect(() => {
+    if (user?.role == 2) {
+      return;
+    } else {
+      navigate('/dashboard/deposit-requests')
+    }
+  }, [])
 
   const allUser = async () => {
     try {

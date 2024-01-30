@@ -136,7 +136,7 @@ const WithdrawReq = () => {
   //     setIsLoading(false);
   //   }
   // };
-  const handleActive = async (id: any, status: any) => {
+  const handleActive = async (id: any, status: any, menuState: any) => {
     try {
       if (
         window.confirm(
@@ -145,7 +145,7 @@ const WithdrawReq = () => {
       ) {
         setIsLoading(true);
 
-        const res = await updateWithdrawToAdminStatus(id, { status: status });
+        const res = await updateWithdrawToAdminStatus(id, { status: status, UserId: user?._id, email: menuState?.email, type: 'withdraw', amount: menuState?.amount });
 
 
         if (res.ok === true) {
@@ -370,36 +370,109 @@ const WithdrawReq = () => {
     //   },
     // },
 
+    // {
+    //   flex: 0.02,
+    //   minWidth: 100,
+    //   sortable: false,
+    //   field: "actions",
+    //   headerName: "Actions",
+    //   headerAlign: "center",
+    //   renderCell: ({ row }: any) => (
+
+
+
+    //     <div>
+    //       <IconButton
+    //         aria-label="more"
+    //         aria-controls="long-menu"
+    //         aria-haspopup="true"
+    //         onClick={(e: any) => handleClick(e, row)} // Pass the current row here
+    //       >
+    //         <MoreVertIcon />
+    //       </IconButton>
+    //       <Menu
+    //         id="long-menu"
+    //         anchorEl={menuState.anchorEl}
+    //         open={Boolean(menuState.anchorEl)}
+    //         onClose={handleClose}
+    //         PaperProps={{
+    //           style: {
+    //             maxHeight: ITEM_HEIGHT * 4.5,
+    //             width: "20ch",
+    //           },
+    //         }}
+    //       >
+    //         {/* <MenuItem
+    //           onClick={() => {
+    //             handleClose();
+    //             navigate(`/dashboard/update-template/${menuState.row?._id}`); // Use menuState.row._id
+    //           }}
+    //         >
+    //           Edit
+    //         </MenuItem> */}
+    //         <MenuItem
+    //           onClick={() => {
+    //             handleClose();
+    //             handleActive(menuState.row?._id, 'Approved', menuState.row); // Use menuState.row._id
+    //           }}
+    //         >
+    //           Approve
+    //         </MenuItem>
+    //         {/* <MenuItem
+    //           onClick={() => {
+    //             handleClose();
+    //             handleArchive(menuState.row?._id); // Use menuState.row._id
+    //           }}
+    //         >
+    //           Archive
+    //         </MenuItem> */}
+    //         <MenuItem
+    //           onClick={() => {
+    //             handleActive(menuState.row?._id, 'Reject', menuState.row); // Use menuState.row._id
+    //             handleClose();
+    //           }}
+    //         >
+    //           Reject
+    //         </MenuItem>
+    //       </Menu>
+    //     </div>
+    //   ),
+    // },
+
+
     {
       flex: 0.02,
-      minWidth: 100,
-      sortable: false,
       field: "actions",
+      minWidth: 100,
       headerName: "Actions",
-      headerAlign: "center",
-      renderCell: ({ row }: any) => (
-        <div>
-          <IconButton
-            aria-label="more"
-            aria-controls="long-menu"
-            aria-haspopup="true"
-            onClick={(e: any) => handleClick(e, row)} // Pass the current row here
-          >
-            <MoreVertIcon />
-          </IconButton>
-          <Menu
-            id="long-menu"
-            anchorEl={menuState.anchorEl}
-            open={Boolean(menuState.anchorEl)}
-            onClose={handleClose}
-            PaperProps={{
-              style: {
-                maxHeight: ITEM_HEIGHT * 4.5,
-                width: "20ch",
-              },
-            }}
-          >
-            {/* <MenuItem
+      renderCell: ({ row }: any) => {
+        const { status } = row;
+
+        return (
+          <>
+            {status !== 'Approved' && status !== 'Reject' && <>
+              <div>
+                <IconButton
+                  aria-label="more"
+                  aria-controls="long-menu"
+                  aria-haspopup="true"
+                  onClick={(e: any) => handleClick(e, row)} // Pass the current row here
+                >
+                  <MoreVertIcon />
+                </IconButton>
+                <Menu
+                  id="long-menu"
+                  anchorEl={menuState.anchorEl}
+                  open={Boolean(menuState.anchorEl)}
+                  onClose={handleClose}
+                  PaperProps={{
+                    style: {
+                      maxHeight: ITEM_HEIGHT * 4.5,
+                      width: "20ch",
+                    },
+                  }}
+                >
+                  {/* <MenuItem
               onClick={() => {
                 handleClose();
                 navigate(`/dashboard/update-template/${menuState.row?._id}`); // Use menuState.row._id
@@ -407,15 +480,15 @@ const WithdrawReq = () => {
             >
               Edit
             </MenuItem> */}
-            <MenuItem
-              onClick={() => {
-                handleClose();
-                handleActive(menuState.row?._id, 'Approved'); // Use menuState.row._id
-              }}
-            >
-              Approve
-            </MenuItem>
-            {/* <MenuItem
+                  <MenuItem
+                    onClick={() => {
+                      handleClose();
+                      handleActive(menuState.row?._id, 'Approved', menuState.row); // Use menuState.row._id
+                    }}
+                  >
+                    Approve
+                  </MenuItem>
+                  {/* <MenuItem
               onClick={() => {
                 handleClose();
                 handleArchive(menuState.row?._id); // Use menuState.row._id
@@ -423,18 +496,25 @@ const WithdrawReq = () => {
             >
               Archive
             </MenuItem> */}
-            <MenuItem
-              onClick={() => {
-                handleActive(menuState.row?._id, 'Reject'); // Use menuState.row._id
-                handleClose();
-              }}
-            >
-              Reject
-            </MenuItem>
-          </Menu>
-        </div>
-      ),
+                  <MenuItem
+                    onClick={() => {
+                      handleActive(menuState.row?._id, 'Reject', menuState.row); // Use menuState.row._id
+                      handleClose();
+                    }}
+                  >
+                    Reject
+                  </MenuItem>
+                </Menu>
+              </div>
+            </>}
+          </>
+        );
+      },
     },
+
+
+
+
   ];
 
   return (

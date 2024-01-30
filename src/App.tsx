@@ -72,10 +72,10 @@ function App() {
               </Box>
             ) : user ? (
               <>
-                {user?.role == 1 ?
-                  <AuthRouts />
-                  :
+                {user?.role > 1 ?
                   <AdminRouts />
+                  :
+                  <AuthRouts />
                 }
               </>
             ) : (

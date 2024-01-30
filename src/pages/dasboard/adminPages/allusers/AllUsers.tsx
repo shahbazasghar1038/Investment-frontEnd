@@ -232,9 +232,13 @@ const AllUsers = () => {
 
   const ITEM_HEIGHT = 48;
 
-  // const handleEditClick = (row: any) => {
-  //   router.push(`edit/${row.id}`)
-  // }
+  useEffect(() => {
+    if (user?.role == 2) {
+      return;
+    } else {
+      navigate('/dashboard/deposit-requests')
+    }
+  }, [])
 
   const handleArchive = async (id: any) => {
     try {
