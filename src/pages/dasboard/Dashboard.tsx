@@ -103,7 +103,7 @@ export default function Dashborad() {
     setInterval(() => {
       const updatedUsers: User[] = getRandomUsers(5);
       updateUserCard(updatedUsers);
-    }, 5000);
+    }, 10000);
   };
 
   // Initial setup
@@ -118,7 +118,7 @@ export default function Dashborad() {
     setInterval(() => {
       const updatedUsers: User[] = getRandomUsersDepo(5);
       updateUserCardDepo(updatedUsers)
-    }, 5000);
+    }, 10000);
   };
 
   // Initial setup
@@ -133,6 +133,7 @@ export default function Dashborad() {
 
 
   const [totalDeposit, setTotalDeposit] = useState<number>(0);
+  const [totalProfit, setTotalProfit] = useState<number>(0);
   const [totalWithdraw, setTotalWithdraw] = useState<number>(0);
   const [totalTeam, setTotalTeam] = useState<Array<any>>([]);
 
@@ -142,11 +143,10 @@ export default function Dashborad() {
   const TotalDepositData = async () => {
     try {
       const { data } = await getDepositList(user?._id);
-
-      // Filter deposits with status 'Approved'
+      const approvedTransactions = data.filter((transaction: any) => transaction.status === 'Approved');
+      const sumOfProfits = approvedTransactions.reduce((sum: any, transaction: any) => sum + transaction.profit, 0);
+      setTotalProfit(sumOfProfits)
       const approvedDeposits = data?.filter((item: any) => item?.status === 'Approved');
-
-      // Use Array.reduce() to find the latest deposit based on the createdAt property
       const latestDeposit = approvedDeposits.reduce((latest: any, deposit: any) => {
         if (!latest || deposit.createdAt > latest.createdAt) {
           return deposit;
@@ -253,8 +253,8 @@ export default function Dashborad() {
 
         {/* <!-- User Profit --> */}
         <div className="bg-white p-6 rounded-md shadow-md">
-          <h2 className="text-xl font-semibold mb-4">  Profit</h2>
-          <p className="text-3xl font-bold text-green-500">Coming Soon</p>
+          <h2 className="text-xl font-semibold mb-4"> Total Profit</h2>
+          <p className="text-3xl font-bold text-green-500">{totalProfit}</p>
 
         </div>
 
@@ -289,7 +289,7 @@ export default function Dashborad() {
 
         <div className="bg-white p-6 rounded-md shadow-md">
           <h2 className="text-xl font-semibold mb-4">Coming Soon</h2>
-          {/* <p>Your content goes here.</p> */}
+          <p className="text-3xl font-bold text-yellow-400">Coming Soon</p>
         </div>
 
       </div>

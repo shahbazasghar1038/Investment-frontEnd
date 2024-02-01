@@ -60,7 +60,7 @@ const DepositList = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [catategorylist, setCategorylist] = useState<Array<any>>([]);
   const [selectedRows, setSelectedRows] = useState<GridRowId[]>([]);
-  console.log('catategorylist : ', catategorylist)
+  console.log('deposit list : ', catategorylist)
   const [menuState, setMenuState] = useState<{
     anchorEl: null | HTMLElement;
     row: CellType | null;
@@ -200,6 +200,28 @@ const DepositList = () => {
         );
       },
     },
+
+
+    {
+      flex: 0.2,
+      field: "profit",
+      minWidth: 230,
+      headerName: "Profit",
+      renderCell: ({ row }: any) => {
+        const { profit } = row;
+
+        return (
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
+              <Typography sx={{ color: "text.secondary" }}>{profit}</Typography>
+            </Box>
+          </Box>
+        );
+      },
+    },
+
+
+
     // {
     //   flex: 0.4,
     //   field: "description",
@@ -416,6 +438,7 @@ const DepositList = () => {
     //   ),
     // },
   ];
+
 
   return (
     <>

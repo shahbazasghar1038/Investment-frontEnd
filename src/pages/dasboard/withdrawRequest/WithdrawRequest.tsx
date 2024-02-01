@@ -27,6 +27,7 @@ import moment from "moment-timezone";
 import { useAuth } from "@/hooks/useAuth";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
 import PersonIcon from "@mui/icons-material/Person";
+import { getDepositList } from "@/service/api/template";
 
 type FormInputs = {
   id: string;
@@ -101,35 +102,82 @@ const WithdrawRequest = () => {
     if (user?._id) listData();
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user?._id]);
-  const onSubmit = async (data: FormInputs) => {
+
+
+  const [totalProfit, setTotalProfit] = useState<number>(0);
+
+
+
+  const TotalDepositData = async () => {
     try {
-      if (imageBase64) {
-        data.image = imageBase64;
-      }
-      const response = await withdrawRequest(user?._id, data);
-
-      if (response.ok === true) {
-        toast.success(response.message);
-        setValue("amount", '');
-        // navigate("/dashboard/compony-list");
-      } else {
-        const errorMessage = response.data || response.message;
-        toast.error(errorMessage);
-      }
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
+      const { data } = await getDepositList(user?._id);
+      const approvedTransactions = data.filter((transaction: any) => transaction.status === 'Approved');
+      const sumOfProfits = approvedTransactions.reduce((sum: any, transaction: any) => sum + transaction.profit, 0);
+      setTotalProfit(sumOfProfits)
+    } catch (error) {
       console.log(error);
+    } finally {
+      console.error('error');
+    }
+  };
 
-      let errorMessage = "failed";
-      if (error.response) {
-        errorMessage = error.response.data?.message || error.response.data.message;
+  useEffect(() => {
+    TotalDepositData()
+  }, [])
+
+
+
+
+
+
+
+
+
+
+  const onSubmit = async (data: FormInputs) => {
+    const minProfitForWithdrawal: number = 20;
+
+    if (totalProfit > minProfitForWithdrawal) {
+      const withdrawalAmount: number = totalProfit - minProfitForWithdrawal;
+      console.log(`You can request a withdrawal of $${withdrawalAmount}`);
+
+      if (Number(data?.amount) <= withdrawalAmount) {
+
+
+        try {
+          const response = await withdrawRequest(user?._id, data);
+
+          if (response.ok === true) {
+            toast.success(response.message);
+            setValue("amount", '');
+            // navigate("/dashboard/compony-list");
+          } else {
+            const errorMessage = response.data || response.message;
+            toast.error(errorMessage);
+          }
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } catch (error: any) {
+          console.log(error);
+
+          let errorMessage = "failed";
+          if (error.response) {
+            errorMessage = error.response.data?.message || error.response.data.message;
+          } else {
+            errorMessage = error.message;
+          }
+          toast.error(errorMessage);
+
+          // Handle error
+          console.error(errorMessage);
+        }
+
       } else {
-        errorMessage = error.message;
+        toast.error(`You can request a withdrawal of $${withdrawalAmount}`);
       }
-      toast.error(errorMessage);
 
-      // Handle error
-      console.error(errorMessage);
+    } else {
+      // User's profit is not enough for withdrawal
+      toast.error("Sorry, your profit is not sufficient for withdrawal.");
     }
   };
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -144,6 +192,15 @@ const WithdrawRequest = () => {
       reader.readAsDataURL(file);
     }
   };
+
+
+
+
+
+
+
+
+
   return (
     <Container maxWidth="xl" sx={{ padding: 1 }} className="bg-blue-100" >
 
@@ -164,113 +221,119 @@ const WithdrawRequest = () => {
           }}
         >
 
-          <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate>
-            <Grid container spacing={2} className="p-6 ">
-              {/* Company Name Field */}
-              <Grid item xs={12} md={6}>
-                <Typography
-                  variant="subtitle2"
-                  sx={{
-                    mt: -2,
-                    mb: -1,
-                  }}
-                >
-                  Amout
-                </Typography>
-                <Controller
-                  name="amount"
-                  control={control}
-                  defaultValue=""
-                  rules={{ required: "Amount is required" }}
-                  render={({ field }) => (
-                    <TextField
-                      {...field}
-                      margin="normal"
-                      fullWidth
-                      placeholder="Enter amount"
-                      error={Boolean(errors.amount)}
-                      helperText={
-                        errors.amount ? errors.amount.message : ""
-                      }
-                      variant="outlined"
-                      size="small"
-                    />
-                  )}
-                />
+          <h6 className="text-red-500">Important instruction </h6>
+          <p>Maintain a $20 profit in your account at all times. Withdraw only profits exceeding $20. <br /> Regularly monitor your account to ensure compliance. No withdrawals allowed if the account profit falls below $20. </p>
+          {totalProfit > 20 ?
+            <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate>
+              <Grid container spacing={2} className="p-6 ">
+                {/* Company Name Field */}
+                <Grid item xs={12} md={6}>
+                  <Typography
+                    variant="subtitle2"
+                    sx={{
+                      mt: -2,
+                      mb: -1,
+                    }}
+                  >
+                    Amout
+                  </Typography>
+                  <Controller
+                    name="amount"
+                    control={control}
+                    defaultValue=""
+                    rules={{ required: "Amount is required" }}
+                    render={({ field }) => (
+                      <TextField
+                        {...field}
+                        margin="normal"
+                        fullWidth
+                        placeholder="Enter amount"
+                        error={Boolean(errors.amount)}
+                        helperText={
+                          errors.amount ? errors.amount.message : ""
+                        }
+                        variant="outlined"
+                        size="small"
+                      />
+                    )}
+                  />
+                </Grid>
+
+
+
+                <Grid item xs={12} md={6}>
+                  <Typography
+                    variant="subtitle2"
+                    sx={{
+                      mt: -2,
+                      mb: -1,
+                    }}
+                  >
+                    Wallet Address
+                  </Typography>
+                  <Controller
+                    name="wallatAddress"
+                    control={control}
+                    defaultValue={user?.bankDetail}
+                    rules={{ required: "wallat address is required" }}
+                    render={({ field }) => (
+                      <TextField
+                        {...field}
+                        margin="normal"
+                        fullWidth
+                        placeholder="Enter wallet address"
+                        error={Boolean(errors.wallatAddress)}
+                        helperText={
+                          errors.wallatAddress ? errors.wallatAddress.message : ""
+                        }
+                        variant="outlined"
+                        size="small"
+                      />
+                    )}
+                  />
+                </Grid>
+
+                {/* Company Size Field */}
+                <Grid item xs={12} md={6}>
+                  <Box
+                    sx={{
+                      display: "flex", // Enable Flexbox for this container
+                      justifyContent: "end", // Center content horizontally
+                      mt: 2.8, // Top margin
+                    }}
+                  >
+                    <div>
+                      <Button
+                        variant="outlined"
+                        sx={{ textTransform: "none" }}
+                        component={Link}
+                        to="/dashboard"
+                      >
+                        Cancel
+                      </Button>
+
+                      <Button
+                        sx={{ ml: 2, textTransform: "none" }}
+                        type="submit"
+                        variant="contained"
+                        color="primary"
+                      >
+                        Send
+                      </Button>
+                    </div>
+                  </Box>
+                </Grid>
+
+
+
+
+
+
               </Grid>
-
-
-
-              <Grid item xs={12} md={6}>
-                <Typography
-                  variant="subtitle2"
-                  sx={{
-                    mt: -2,
-                    mb: -1,
-                  }}
-                >
-                  Wallet Address
-                </Typography>
-                <Controller
-                  name="wallatAddress"
-                  control={control}
-                  defaultValue={user?.bankDetail}
-                  rules={{ required: "wallat address is required" }}
-                  render={({ field }) => (
-                    <TextField
-                      {...field}
-                      margin="normal"
-                      fullWidth
-                      placeholder="Enter wallet address"
-                      error={Boolean(errors.wallatAddress)}
-                      helperText={
-                        errors.wallatAddress ? errors.wallatAddress.message : ""
-                      }
-                      variant="outlined"
-                      size="small"
-                    />
-                  )}
-                />
-              </Grid>
-
-              {/* Company Size Field */}
-              <Grid item xs={12} md={6}>
-                <Box
-                  sx={{
-                    display: "flex", // Enable Flexbox for this container
-                    justifyContent: "end", // Center content horizontally
-                    mt: 2.8, // Top margin
-                  }}
-                >
-                  <div>
-                    <Button
-                      variant="outlined"
-                      sx={{ textTransform: "none" }}
-                      component={Link}
-                      to="/dashboard"
-                    >
-                      Cancel
-                    </Button>
-
-                    <Button
-                      sx={{ ml: 2, textTransform: "none" }}
-                      type="submit"
-                      variant="contained"
-                      color="primary"
-                    >
-                      Send
-                    </Button>
-                  </div>
-                </Box>
-              </Grid>
-
-
-
-
-
-
-            </Grid>
-          </Box>
+            </Box>
+            :
+            <h4 className="text-red-500 text-[20px] my-5 font-bold">Your profit must be greater then $20 to withdraw money. </h4>
+          }
         </Grid>
       </Grid>
     </Container>
