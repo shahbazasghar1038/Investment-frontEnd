@@ -322,28 +322,28 @@ const PendingDepositReq = () => {
             size="small"
             variant="outlined"
             label={
-              row.status === "Approved"
-                ? "Approved"
+              row.status === "approved"
+                ? "approved"
                 : row.status === "Reject" ? 'Reject' : 'Pending'}
             sx={{
               fontSize: "14px",
               fontWeight: "bold",
               backgroundColor:
-                row.status === "Approved"
+                row.status === "approved"
                   ? "#D3FDE4"
                   : row.status === "Reject" ? "#000" : '#FFCBCB',
               color:
-                row.status === "Approved"
+                row.status === "approved"
                   ? "#3F9748"
                   : "#red",
               borderColor:
-                row.status === "Approved"
+                row.status === "approved"
                   ? "#D3FDE4"
                   : "#FFCBCB", // Optional: to match border color with background
               "& .MuiChip-label": {
                 // This targets the label inside the chip for more specific styling
                 color:
-                  row.status === "Approved"
+                  row.status === "approved"
                     ? "#3F9748"
                     : "#D32F2F",
               },
@@ -438,13 +438,13 @@ const PendingDepositReq = () => {
                     fontSize: "14px",
                     fontWeight: "bold",
                     backgroundColor:
-                      row.status === "Approved"
+                      row.status === "approved"
                         ? "#3F9748"
                         : "#3F9748",
 
                     "& .MuiChip-label": {
                       color:
-                        row.status === "Approved"
+                        row.status === "approved"
                           ? "#FFF"
                           : "#FFF",
                     },
@@ -525,7 +525,7 @@ const PendingDepositReq = () => {
     //         <MenuItem
     //           onClick={() => {
     //             handleClose();
-    //             handleActive(menuState.row?._id, 'Approved', menuState.row); // Use menuState.row._id
+    //             handleActive(menuState.row?._id, 'approved', menuState.row); // Use menuState.row._id
     //           }}
     //         >
     //           Approve
@@ -565,7 +565,7 @@ const PendingDepositReq = () => {
 
         return (
           <>
-            {status !== 'Approved' && status !== 'Reject' && <>
+            {status !== 'approved' && status !== 'Reject' && <>
               <div>
                 <IconButton
                   aria-label="more"
@@ -590,7 +590,7 @@ const PendingDepositReq = () => {
                   <MenuItem
                     onClick={() => {
                       handleClose();
-                      handleActive(menuState.row?._id, 'Approved', menuState.row); // Use menuState.row._id
+                      handleActive(menuState.row?._id, 'approved', menuState.row); // Use menuState.row._id
                     }}
                   >
                     Approve

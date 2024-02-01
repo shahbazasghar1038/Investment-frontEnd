@@ -32,7 +32,7 @@ type FormInputs = {
   name: string;
   amount: string;
   // country: string;
-  // timeZone: string;
+  status: string;
   email: string;
   phoneNumber: string;
   wallatAddress: string;
@@ -69,6 +69,7 @@ const UpdateCompony = () => {
 
   useEffect(() => {
     setValue("id", user?._id);
+    // setValue("status", 'approved');
   }, [])
 
   const listData = async () => {
@@ -79,14 +80,10 @@ const UpdateCompony = () => {
       setValue("id", user?._id);
       setValue("name", data?.name);
       setValue("amount", data?.amount);
-      // setValue("country", data?.country);
-      // setValue("timeZone", data?.timeZone);
       setValue("email", data?.email);
-      // setValue("country", data?.country);
       setValue("phoneNumber", data?.phoneNumber);
       setValue("wallatAddress", data?.wallatAddress);
-      // setValue("websiteUrl", data?.websiteUrl);
-      // setValue("billing_email", data?.billing_email);
+      // setValue("status", 'approved');
       setImage(data?.image);
     } catch (error) {
       console.log(error);
@@ -101,24 +98,28 @@ const UpdateCompony = () => {
   }, [user?._id]);
   const onSubmit = async (data: FormInputs) => {
     try {
-      if (imageBase64) {
-        data.image = imageBase64;
-      } else {
-        toast.error('Please Upload Screenshot');
-        return;
-      }
-      const response = await depositRequest(data);
+      if (Number(data?.amount) > 49) {
 
-      if (response.ok === true) {
-        toast.success(response.message);
-        // navigate("/dashboard/compony-list");
+        if (imageBase64) {
+          data.image = imageBase64;
+        } else {
+          toast.error('Please Upload Screenshot');
+          return;
+        }
+        const response = await depositRequest(data);
+
+        if (response.ok === true) {
+          toast.success(response.message);
+          // navigate("/dashboard/compony-list");
+        } else {
+          const errorMessage = response.data || response.message;
+          toast.error(errorMessage);
+        }
       } else {
-        const errorMessage = response.data || response.message;
-        toast.error(errorMessage);
+        toast.error('Minimum amount should be $50.');
       }
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
     } catch (error: any) {
-      console.log(error);
 
       let errorMessage = "failed";
       if (error.response) {
@@ -126,10 +127,15 @@ const UpdateCompony = () => {
       } else {
         errorMessage = error.message;
       }
-      toast.error(errorMessage);
 
+
+      if (error?.response?.status == 413) {
+        toast.error('Screenshot must be less then 100 kb');
+      } else {
+        toast.error(errorMessage);
+      }
       // Handle error
-      console.error(errorMessage);
+      console.error('ok', errorMessage);
     }
   };
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -209,10 +215,7 @@ const UpdateCompony = () => {
                     variant="subtitle1"
                     sx={{ color: "text.secondary", fontWeight: "600" }}
                   >{`Upload Screenshot`}</Typography>
-                  {/* <Typography
-                    variant="subtitle2"
-                    sx={{ color: "#92929D" }}
-                  >{`Administrator `}</Typography> */}
+                  <h5 className="text-[]">image must be less then 100 kb</h5>
                 </Box>
               </Box>
             </Grid>

@@ -145,7 +145,11 @@ export default function Dashborad() {
       const { data } = await getDepositList(user?._id);
       const approvedTransactions = data.filter((transaction: any) => transaction.status === 'Approved');
       const sumOfProfits = approvedTransactions.reduce((sum: any, transaction: any) => sum + transaction.profit, 0);
-      setTotalProfit(sumOfProfits)
+
+      // Convert to string to remove leading zeros and then parse back to a number
+      const totalProfitWithoutLeadingZeros: number = parseFloat(sumOfProfits.toString());
+
+      setTotalProfit(totalProfitWithoutLeadingZeros);
       const approvedDeposits = data?.filter((item: any) => item?.status === 'Approved');
       const latestDeposit = approvedDeposits.reduce((latest: any, deposit: any) => {
         if (!latest || deposit.createdAt > latest.createdAt) {
