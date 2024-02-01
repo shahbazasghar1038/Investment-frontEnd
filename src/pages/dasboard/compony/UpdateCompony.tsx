@@ -215,7 +215,7 @@ const UpdateCompony = () => {
                     variant="subtitle1"
                     sx={{ color: "text.secondary", fontWeight: "600" }}
                   >{`Upload Screenshot`}</Typography>
-                  <h5 className="text-[]">image must be less then 100 kb</h5>
+                  <h5 className="text-[8px] text-red-600  ">image must be less then 100 kb</h5>
                 </Box>
               </Box>
             </Grid>

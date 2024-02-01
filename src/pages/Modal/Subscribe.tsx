@@ -6,7 +6,7 @@ export default function Subscribe() {
   const [showModal, setShowModal] = React.useState(false);
 
   const [isCopied, setIsCopied] = useState(false);
-  const referralCode = '1Lbcfr7sAHTD9CgdQo3HTMTkV8LK4ZnX71'
+  const referralCode = 'TN1SPZBtDkgfKHvAZo7D7T613VPG74WuA8'
   const handleCopyClick = () => {
 
     if (referralCode) {
