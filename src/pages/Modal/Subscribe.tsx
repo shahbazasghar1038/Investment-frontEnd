@@ -1,12 +1,14 @@
 import { useAuth } from "@/hooks/useAuth";
-import React, { useState } from "react";
+import { getAdminWallet } from "@/service/api/apiMethods";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Subscribe() {
   const [showModal, setShowModal] = React.useState(false);
 
   const [isCopied, setIsCopied] = useState(false);
-  const referralCode = 'TN1SPZBtDkgfKHvAZo7D7T613VPG74WuA8'
+  const [referralCode, setReferralCode] = useState<string>('');
+  // const referralCode = 'TN1SPZBtDkgfKHvAZo7D7T613VPG74WuA8'
   const handleCopyClick = () => {
 
     if (referralCode) {
@@ -21,6 +23,24 @@ export default function Subscribe() {
   };
 
   const { user } = useAuth();
+
+
+
+
+  const handlegetAdminWallet = async () => {
+    try {
+      const { data } = await getAdminWallet();
+      setReferralCode(data?.address);
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    handlegetAdminWallet()
+  }, [])
+
+
   return (
     <>
       <button

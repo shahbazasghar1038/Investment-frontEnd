@@ -56,7 +56,7 @@ export const updateBranch = async (id: any, data: any) => {
   const response = await baseURL.put(`/api/v1/branches/upadte/${id}`, data);
   return response.data;
 };
-export const deleteBranch = async (id: string) => { 
+export const deleteBranch = async (id: string) => {
   const response = await baseURL.delete(`/api/v1/branches/${id}`);
   return response.data;
 };
@@ -95,6 +95,17 @@ export const getRefferalList = async (id: any) => {
 export const getAdminActivites = async () => {
   return await baseURL.get(`/api/v1/activity/list`);
 };
+
+
+export const getAdminWallet = async () => {
+  return await baseURL.get(`/api/v1/adminWallet/getAdminWallet`);
+};
+
+
+export const createAdminWallet = async (data: any) => {
+  return await baseURL.post(`/api/v1/adminWallet/createAdminWallet`, data);
+};
+
 
 
 export const getAllUserList = async (id: any) => {

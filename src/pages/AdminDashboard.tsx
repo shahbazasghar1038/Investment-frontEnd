@@ -96,6 +96,7 @@ import AllUsers from "./dasboard/adminPages/allusers/AllUsers";
 import PendingDepositReq from "./dasboard/adminPages/pendingDepositReq/PendingDepositReq";
 import WithdrawReq from "./dasboard/adminPages/withdrawReq/WithdrawReq";
 import AdminActivites from "./dasboard/adminActivity/AdminActivites";
+import WalletAddressList from "./dasboard/adminPages/WalletAddresses/WalletAddressList";
 // Usage: <ArticleIcon />
 
 // Usage: <AssignmentIcon />
@@ -219,6 +220,17 @@ export default function AdminDashboard() {
           </ListItemButton>
         }
         {user?.role == 2 &&
+          <ListItemButton component={Link} to="/dashboard/wallet-address">
+            <ListItemIcon>
+              <FolderOpenIcon />
+            </ListItemIcon>
+            <ListItemText
+              primary="Wallet Address"
+              primaryTypographyProps={{ variant: "subtitle2" }}
+            />
+          </ListItemButton>
+        }
+        {user?.role == 2 &&
           <ListItemButton component={Link} to="/dashboard/admin-activities">
             <ListItemIcon>
               <AccountTreeIcon />
@@ -286,15 +298,7 @@ export default function AdminDashboard() {
           />
         </ListItemButton> */}
 
-        {/* <ListItemButton component={Link} to="/dashboard/folder-list">
-          <ListItemIcon>
-            <FolderOpenIcon />
-          </ListItemIcon>
-          <ListItemText
-            primary="Folders"
-            primaryTypographyProps={{ variant: "subtitle2" }}
-          />
-        </ListItemButton> */}
+
 
         {/* <ListItemButton component={Link} to="/dashboard/template-list">
           <ListItemIcon>
@@ -518,6 +522,7 @@ export default function AdminDashboard() {
           <Route path="/withdraw-request" element={<WithdrawRequest />} />
           <Route path="/notification" element={<Notification />} />
           <Route path="/all-users" element={<AllUsers />} />
+          <Route path="/wallet-address" element={<WalletAddressList />} />
           <Route path="/admin-activities" element={<AdminActivites />} />
           <Route path="/deposit-requests" element={<PendingDepositReq />} />
 

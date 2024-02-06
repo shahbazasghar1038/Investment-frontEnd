@@ -51,6 +51,12 @@ export const withdrawRequest = async (id: any, data: any) => {
 };
 
 
+export const updateWalletAddress = async (id: any, data: any) => {
+  const response = await baseURL.post(`/api/v1/withdraw/withdrawRequest`, data);
+  return response.data;
+};
+
+
 
 export const getcompaniesById = async (id: any) => {
   const response = await baseURL.get(`/api/v1/companies/single/${id}`);
