@@ -167,7 +167,13 @@ const WalletAddressList = () => {
 
 
 
-
+  useEffect(() => {
+    if (user?.role == 2) {
+      return;
+    } else {
+      navigate('/dashboard/deposit-requests')
+    }
+  }, [])
 
 
 
