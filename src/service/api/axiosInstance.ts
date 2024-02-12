@@ -3,8 +3,11 @@ import axios from "axios";
 // const baseURL = axios.create({
 //   baseURL: "http://localhost:1337",
 // });
+// const baseURL = axios.create({
+//   baseURL: "13.200.247.126:1337",
+// });
 const baseURL = axios.create({
-  baseURL: "13.200.247.126:1337",
+  baseURL: "http://api.gwminings.com",
 });
 
 export default baseURL;
