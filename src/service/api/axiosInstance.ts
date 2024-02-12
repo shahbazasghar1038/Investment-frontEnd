@@ -7,7 +7,7 @@ import axios from "axios";
 //   baseURL: "13.200.247.126:1337",
 // });
 const baseURL = axios.create({
-  baseURL: "http://api.gwminings.com",
+  baseURL: "https://api.gwminings.com",
 });
 
 export default baseURL;
