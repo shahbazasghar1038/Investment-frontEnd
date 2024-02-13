@@ -124,8 +124,6 @@ const WalletAddressList = () => {
       setTotalProfit(sumOfProfits)
     } catch (error) {
       console.log(error);
-    } finally {
-      console.error('error');
     }
   };
 
@@ -138,7 +136,6 @@ const WalletAddressList = () => {
 
     try {
       const response = await createAdminWallet(data);
-      console.log('res admin wallet create ', response);
       const responseData: ApiResponse = response.data; // Assert response data to ApiResponse interface
       if (responseData.ok === true) {
         toast.success(responseData.message);
@@ -148,7 +145,6 @@ const WalletAddressList = () => {
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      console.log(error);
 
       let errorMessage = "failed";
       if (error.response) {

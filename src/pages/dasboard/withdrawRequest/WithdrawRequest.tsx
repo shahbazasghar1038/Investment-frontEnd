@@ -139,7 +139,7 @@ const WithdrawRequest = () => {
 
     if (totalProfit > minProfitForWithdrawal) {
       const withdrawalAmount: number = totalProfit - minProfitForWithdrawal;
-      console.log(`You can request a withdrawal of $${withdrawalAmount}`);
+      // console.log(`You can request a withdrawal of $${withdrawalAmount}`);
 
       if (Number(data?.amount) <= withdrawalAmount) {
 
@@ -157,7 +157,7 @@ const WithdrawRequest = () => {
           }
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
-          console.log(error);
+          // console.log(error);
 
           let errorMessage = "failed";
           if (error.response) {
@@ -167,8 +167,8 @@ const WithdrawRequest = () => {
           }
           toast.error(errorMessage);
 
-          // Handle error
-          console.error(errorMessage);
+          // // Handle error
+          // console.error(errorMessage);
         }
 
       } else {

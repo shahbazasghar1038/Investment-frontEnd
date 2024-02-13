@@ -22,7 +22,7 @@ const Nav = () => {
 	}, []);
 
 	const [show, setShow] = useState(false)
-	console.log(user)
+
 	return (
 		<div>
 

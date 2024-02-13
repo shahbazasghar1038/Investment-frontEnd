@@ -134,8 +134,6 @@ const UpdateCompony = () => {
       } else {
         toast.error(errorMessage);
       }
-      // Handle error
-      console.error('ok', errorMessage);
     }
   };
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {

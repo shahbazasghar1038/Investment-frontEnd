@@ -983,7 +983,7 @@ const Lander = () => {
             </section>
             {/* <!-- ##### Team Area End ##### --> */}
 
-            <section className="container mx-auto sm:px-4" >
+            {/* <section className="container mx-auto sm:px-4" >
                 <div className="subscribe section-padding-0-100">
                     <div className="flex flex-wrap ">
                         <div className="w-full pr-4 pl-4">
@@ -1008,7 +1008,7 @@ const Lander = () => {
 
                     </div>
                 </div>
-            </section>
+            </section> */}
 
 
             {/* <!-- ##### Footer Area Start ##### --> */}
@@ -1112,9 +1112,9 @@ const Lander = () => {
                                     <div className="contact_info mt-x text-center fadeInUp" data-wow-delay="0.3s">
                                         <h5 className='light-green'>NAVIGATE</h5>
                                         <a href="#"><p>Home</p></a>
-                                        <a href="#"><p>Plans</p></a>
-                                        <a href="#"><p>How it Works</p></a>
-                                        <a href="#"><p>Roadmap</p></a>
+                                        <Link to="plans"><p>Plans</p></Link>
+                                        <a href="#howitworks"><p>How it Works</p></a>
+                                        <a href="#roadmap"><p>Roadmap</p></a>
                                         {/* <a href="#"><p>Support</p></a> */}
                                     </div>
                                 </div>
@@ -1147,7 +1147,7 @@ const Lander = () => {
                                         <p>Mailing Address:xx00 E. Union Ave</p>
                                         <p>Suite 1100. Denver, CO 80237</p>
                                         {/* <p>+999 90932 627</p> */}
-                                        <p>info@gwmining.com</p>
+                                        <p>info@gwminings.com</p>
                                     </div>
                                 </div>
                             </div>

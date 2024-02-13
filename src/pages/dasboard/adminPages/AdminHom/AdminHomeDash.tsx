@@ -164,8 +164,6 @@ export default function AdminHomeDash() {
 
     } catch (error) {
       console.log(error);
-    } finally {
-      console.error('error');
     }
   };
 

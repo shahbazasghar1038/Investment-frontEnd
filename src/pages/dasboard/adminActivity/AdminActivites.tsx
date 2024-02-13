@@ -279,7 +279,7 @@ const AdminActivites = () => {
   });
   const [isLoading, setIsLoading] = useState(true);
   const [catategorylist, setCategorylist] = useState<Array<any>>([]);
-  console.log('cat activity :', catategorylist)
+
   const [selectedRows, setSelectedRows] = useState<GridRowId[]>([]);
   const [menuState, setMenuState] = useState<{
     anchorEl: null | HTMLElement;
@@ -321,8 +321,6 @@ const AdminActivites = () => {
   };
 
   const ITEM_HEIGHT = 48;
-  console.log(user)
-
 
   useEffect(() => {
     if (user?.role == 2) {

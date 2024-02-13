@@ -167,8 +167,6 @@ export default function Dashborad() {
 
     } catch (error) {
       console.log(error);
-    } finally {
-      console.error('error');
     }
   };
 
