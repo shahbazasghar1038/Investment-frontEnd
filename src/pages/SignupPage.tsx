@@ -15,8 +15,7 @@ import {
   IconButton,
   InputAdornment,
 } from "@mui/material";
-import logo from "../assets/logo.jpg"; // Adjust the path to your logo image
-import loginBanner from "@/assets/login_banner.png"; // Adjust the path to your background image
+
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useNavigate } from "react-router-dom";

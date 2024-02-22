@@ -14,7 +14,7 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import logo from "../assets/logo.jpg";
+
 import logoVerification from "../assets/email_verification.png";
 import OtpInput from "react-otp-input";
 import { useLocation, useNavigate } from "react-router-dom";

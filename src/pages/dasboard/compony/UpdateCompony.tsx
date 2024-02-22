@@ -17,7 +17,7 @@ import {
   FormHelperText,
   Tooltip,
 } from "@mui/material";
-import logo from "@/assets/contract-logo.png"; // Ensure this path is correct
+
 import { Link, useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import { CreateCompony } from "@/service/api/apiMethods";

@@ -12,8 +12,7 @@ import {
   useTheme,
   Link,
 } from "@mui/material";
-import logo from "../assets/logo.jpg"; // Adjust the path to your logo image
-import loginBanner from "@/assets/login_banner.png"; // Adjust the path to your background image
+
 import toast from "react-hot-toast";
 import { forgotPass } from "@/service/api/apiMethods";
 import { useNavigate } from "react-router-dom";

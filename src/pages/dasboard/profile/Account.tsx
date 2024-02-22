@@ -116,13 +116,7 @@ const Account: React.FC = () => {
         <Typography variant="subtitle1" gutterBottom>
           Manage Account
         </Typography>
-        {/* <Typography
-          variant="body1"
-          gutterBottom
-          sx={{ color: "text.secondary" }}
-        >
-          Compony Name
-        </Typography> */}
+
         <Divider sx={{ my: 2 }} />
         <Box
           sx={{

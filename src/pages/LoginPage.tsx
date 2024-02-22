@@ -17,8 +17,6 @@ import {
   InputAdornment,
   IconButton,
 } from "@mui/material";
-import logo from "../assets/logo.jpg";
-import loginBanner from "@/assets/login_banner.png"; // Adjust the path to your background image
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { login, loginUser } from "@/service/api/apiMethods";

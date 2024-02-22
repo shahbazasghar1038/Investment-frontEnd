@@ -100,7 +100,7 @@ const Nav = () => {
 							<li className="mb-1">
 								<Link onClick={() => { setShow(false) }} className='block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded' to='/'>Home</Link>
 							</li>
-							<li className="mb-1">
+							<li onClick={() => { setShow(false) }} className="mb-1">
 								<Link className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" to="/plans">Plans</Link>
 							</li>
 							<li className="mb-1">

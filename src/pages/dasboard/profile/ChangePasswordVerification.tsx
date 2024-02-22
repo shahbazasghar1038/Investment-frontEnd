@@ -13,7 +13,7 @@ import {
   Paper,
   Link,
 } from "@mui/material";
-import logo from "@/assets/logo.jpg";
+
 import logoVerification from "@/assets/email_verification.png";
 import CloseIcon from "@mui/icons-material/Close";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -151,14 +151,7 @@ const ChangePasswordVerification: React.FC<ChangePasswordVerification> = ({
                 ...(isMobile && { paddingBottom: 2 }),
               }}
             >
-              {/* <img
-                src={logo}
-                alt="Logo"
-                style={{
-                  maxWidth: isMobile ? "100px" : "220px",
-                  marginTop: "16px",
-                }}
-              /> */}
+
 
               <Box
                 sx={{

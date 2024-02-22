@@ -14,7 +14,7 @@ import {
   MenuItem,
   FormHelperText,
 } from "@mui/material";
-import logo from "../assets/logo.jpg"; // Ensure this path is correct
+
 import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { CreateCompony } from "@/service/api/apiMethods";
@@ -96,11 +96,11 @@ const CompanyDetails: React.FC = () => {
             justifyContent: "center",
           }}
         >
-          <img
+          {/* <img
             src={logo}
             alt="Logo"
             style={{ maxWidth: "320px", marginTop: "16px" }}
-          />
+          /> */}
           <Box sx={{ width: "100%", maxWidth: 800, m: 3 }}>
             <Paper elevation={3} sx={{ p: 4, borderRadius: 2 }}>
               <Typography

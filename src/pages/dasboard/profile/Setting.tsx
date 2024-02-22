@@ -123,24 +123,7 @@ const Setting = () => {
           <Tab label="Account" sx={{ fontWeight: "bold" }} />
         </Tabs>
 
-        {/* <Box
-          sx={{
-            ml: "auto",
-          }}
-        >
-          <Button
-            sx={{
-              textTransform: "none",
-              mr: 5,
-              maxHeight: 35,
-              mt: 1,
-            }}
-            component={Link}
-            to={`/dashboard/user-update-user/${id}`}
-          >
-            Edit
-          </Button>
-        </Box> */}
+
       </Box>
 
       <TabPanel value={tabValue} index={0}>

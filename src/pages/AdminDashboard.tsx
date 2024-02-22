@@ -1,102 +1,52 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useEffect, useState } from "react";
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import {
+  AppBar,
   Box,
   CssBaseline,
-  AppBar,
-  Toolbar,
-  Typography,
+  Divider,
   Drawer,
+  IconButton,
   List,
   ListItemButton,
-  ListItemText,
-  IconButton,
-  Divider,
-  Badge,
   ListItemIcon,
-  useMediaQuery,
-  Collapse,
-  useTheme,
-  MenuItem,
+  ListItemText,
   Menu,
+  MenuItem,
+  Toolbar,
+  Typography,
+  useMediaQuery,
+  useTheme
 } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Link, Route, Routes, useNavigate } from "react-router-dom";
 
 import {
-  Menu as MenuIcon,
-  Notifications as NotificationsIcon,
   AccountCircle as AccountCircleIcon,
-  ExpandLess,
-  ExpandMore,
-  Dashboard as DashboardIcon,
   Home as HomeIcon,
-  Info as InfoIcon,
+  Menu as MenuIcon
 } from "@mui/icons-material";
 import logo from "../img/core-img/logo2.png";
 // import userIcon from "../assets/userLogo.png";
-import PersonIcon from "@mui/icons-material/Person";
 // Import your page components
 import HomePage from "@/pages/dasboard/adminPages/AdminHom/AdminHomeDash";
-import TeamsList from "@/pages/dasboard/teams/TeamsLiat";
-import SubPage1 from "@/pages/LoginPage";
-import CreateBranch from "@/pages/dasboard/branch/CreateBranch";
-import BranchList from "@/pages/dasboard/branch/BranchList";
-import CreateTeam from "@/pages/dasboard/teams/CreateTeam";
-import UpdateBranch from "@/pages/dasboard/branch/UpdateBranch";
-import UpdateTeam from "@/pages/dasboard/teams/UpdateTeam";
-import UserList from "@/pages/dasboard/users/UserList";
-import CreateUser from "@/pages/dasboard/users/CreateUser";
-import ResetPassword from "@/pages/ResetPassword";
-import LoginHistory from "@/pages/dasboard/users/LoginHistory";
-import UpdateUser from "@/pages/dasboard/users/UpdateUser";
-import UserDetail from "@/pages/dasboard/users/UserDetail";
-import UserEdit from "@/pages/dasboard/profile/UserEdit";
+
 import { useAuth } from "@/hooks/useAuth";
-import Setting from "@/pages/dasboard/profile/Setting";
+import LoginHistory from "@/pages/dasboard/users/LoginHistory";
+import UserDetail from "@/pages/dasboard/users/UserDetail";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import GroupsIcon from "@mui/icons-material/Groups";
-import CategoryList from "@/pages/dasboard/category/CategoryList";
-import CreateCategory from "@/pages/dasboard/category/CreateCategory";
-import UpdateCategory from "@/pages/dasboard/category/UpdateCategoey";
-import CreateTags from "@/pages/dasboard/tags/CreateTags";
-import TagList from "@/pages/dasboard/tags/TagList";
-import UpdateTags from "@/pages/dasboard/tags/UpdateTags";
-import ClausesList from "@/pages/dasboard/clauses/ClausesList";
-import UpdateClauses from "@/pages/dasboard/clauses/UpdateClauses";
-import CreateClauses from "@/pages/dasboard/clauses/CreateClauses";
-import FolderLIst from "@/pages/dasboard/folders/FolderList";
-import Upload from "@/pages/dasboard/folders/Upload";
-import ComponyList from "@/pages/dasboard/compony/ComponyList";
-import UpdateCompony from "@/pages/dasboard/compony/UpdateCompony";
-import CategoryIcon from "@mui/icons-material/Category";
-import LocalOfferIcon from "@mui/icons-material/LocalOffer";
-import TaskIcon from "@mui/icons-material/Task";
-import FolderOpenIcon from "@mui/icons-material/FolderOpen";
-import BusinessIcon from "@mui/icons-material/Business";
-import TemplateList from "@/pages/dasboard/templates/TemplateList";
-import CreateTemplate from "@/pages/dasboard/templates/CreateTemplate";
-import UpdateTemplate from "@/pages/dasboard/templates/UpdateTemplate";
+
 import DescriptionIcon from "@mui/icons-material/Description";
-import FieldList from "@/pages/dasboard/customField/FieldList";
+import FolderOpenIcon from "@mui/icons-material/FolderOpen";
 import InputIcon from "@mui/icons-material/Input";
-import ApprovalList from "@/pages/dasboard/approval/ApprovalList";
-import CreateApproval from "@/pages/dasboard/approval/CreateApproval";
-import UpdateApproval from "@/pages/dasboard/approval/UpdateApproval";
-import HowToRegIcon from "@mui/icons-material/HowToReg";
-import ContractList from "@/pages/dasboard/contract/ContractList";
-import ArticleIcon from "@mui/icons-material/Article";
-import CreateContract from "@/pages/dasboard/contract/CreateContract";
-import TinyDahsbord from "@/pages/dasboard/contract/sdk/TinyDahsbord";
-import CustomTextEditor from "@/pages/dasboard/contract/sdk/CustomTextEditor";
-import DepositList from "./dasboard/depositHistory/DepositList";
-import WithdrawList from "./dasboard/withdrawHistory/WithdrawList";
-import Notification from "./dasboard/notification/Notification";
-import WithdrawRequest from "./dasboard/withdrawRequest/WithdrawRequest";
+import AdminActivites from "./dasboard/adminActivity/AdminActivites";
 import AllUsers from "./dasboard/adminPages/allusers/AllUsers";
 import PendingDepositReq from "./dasboard/adminPages/pendingDepositReq/PendingDepositReq";
-import WithdrawReq from "./dasboard/adminPages/withdrawReq/WithdrawReq";
-import AdminActivites from "./dasboard/adminActivity/AdminActivites";
 import WalletAddressList from "./dasboard/adminPages/WalletAddresses/WalletAddressList";
+import WithdrawReq from "./dasboard/adminPages/withdrawReq/WithdrawReq";
+import Notification from "./dasboard/notification/Notification";
+import WithdrawRequest from "./dasboard/withdrawRequest/WithdrawRequest";
+import CreateMember from "./dasboard/adminPages/CreateMember/CreateMember";
 // Usage: <ArticleIcon />
 
 // Usage: <AssignmentIcon />
@@ -160,32 +110,7 @@ export default function AdminDashboard() {
       </Toolbar>
       <Divider />
       <List onClick={handleDrawerToggle}>
-        {/* <ListItemButton onClick={handleClick}>
-          <ListItemIcon>
-            <DashboardIcon />
-          </ListItemIcon>
-          <ListItemText
-            primary="Dashboard"
-            primaryTypographyProps={{ variant: "subtitle2" }}
-          />
-          {open ? <ExpandLess /> : <ExpandMore />}
-        </ListItemButton> */}
-        {/* Collapsible sub-items */}
-        {/* <Collapse in={open} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            <ListItemButton
-              sx={{ pl: 4 }}
-              component={Link}
-              to="/dashboard/sub-page-1"
-            >
-              <ListItemText
-                primary="Sub Page 1"
-                primaryTypographyProps={{ variant: "subtitle2" }}
-              />
-            </ListItemButton>
-            You can add more sub-items here
-          </List>
-        </Collapse> */}
+
 
         {user?.role == 2 &&
 
@@ -199,15 +124,6 @@ export default function AdminDashboard() {
             />
           </ListItemButton>
         }
-        {/* <ListItemButton component={Link} to="/dashboard/contract-list">
-          <ListItemIcon>
-            <ArticleIcon />
-          </ListItemIcon>
-          <ListItemText
-            primary="Contracts"
-            primaryTypographyProps={{ variant: "subtitle2" }}
-          />
-        </ListItemButton> */}
         {user?.role == 2 &&
           <ListItemButton component={Link} to="/dashboard/all-users">
             <ListItemIcon>
@@ -242,73 +158,7 @@ export default function AdminDashboard() {
           </ListItemButton>
         }
 
-        {/* <ListItemButton component={Link} to="/dashboard/branchlist">
-          <ListItemIcon>
-            <AccountTreeIcon />
-          </ListItemIcon>
-          <ListItemText
-            primary="Branches"
-            primaryTypographyProps={{ variant: "subtitle2" }}
-          />
-        </ListItemButton> */}
 
-        {/* <ListItemButton component={Link} to="/dashboard/user-list">
-          <ListItemIcon>
-            <PersonIcon />
-          </ListItemIcon>
-          <ListItemText
-            primary="Users"
-            primaryTypographyProps={{ variant: "subtitle2" }}
-          />
-        </ListItemButton> */}
-        {/* <ListItemButton component={Link} to="/dashboard/approval-list">
-          <ListItemIcon>
-            <HowToRegIcon />
-          </ListItemIcon>
-          <ListItemText
-            primary="Approvals"
-            primaryTypographyProps={{ variant: "subtitle2" }}
-          />
-        </ListItemButton> */}
-        {/* <ListItemButton component={Link} to="/dashboard/category-list">
-          <ListItemIcon>
-            <CategoryIcon />
-          </ListItemIcon>
-          <ListItemText
-            primary="Categories"
-            primaryTypographyProps={{ variant: "subtitle2" }}
-          />
-        </ListItemButton> */}
-        {/* <ListItemButton component={Link} to="/dashboard/tags-list">
-          <ListItemIcon>
-            <LocalOfferIcon />
-          </ListItemIcon>
-          <ListItemText
-            primary="Tags"
-            primaryTypographyProps={{ variant: "subtitle2" }}
-          />
-        </ListItemButton> */}
-        {/* <ListItemButton component={Link} to="/dashboard/clauses-list">
-          <ListItemIcon>
-            <TaskIcon />
-          </ListItemIcon>
-          <ListItemText
-            primary="Clauses"
-            primaryTypographyProps={{ variant: "subtitle2" }}
-          />
-        </ListItemButton> */}
-
-
-
-        {/* <ListItemButton component={Link} to="/dashboard/template-list">
-          <ListItemIcon>
-            <DescriptionIcon />
-          </ListItemIcon>
-          <ListItemText
-            primary="Templates"
-            primaryTypographyProps={{ variant: "subtitle2" }}
-          />
-        </ListItemButton> */}
 
         {/* Deposit history  */}
         <ListItemButton component={Link} to="/dashboard/deposit-requests">
@@ -332,44 +182,18 @@ export default function AdminDashboard() {
           />
         </ListItemButton>
 
-        {/* <ListItemButton component={Link} to="/dashboard/feild-list">
-          <ListItemIcon>
-            <InputIcon />
-          </ListItemIcon>
-          <ListItemText
-            primary="Custom Fields"
-            primaryTypographyProps={{ variant: "subtitle2" }}
-          />
-        </ListItemButton> */}
-        {/* <ListItemButton component={Link} to="/dashboard/update-compony">
-          <ListItemIcon> 
-            <TaskIcon />
-          </ListItemIcon>
-          <ListItemText
-            primary="Deposit Request"
-            primaryTypographyProps={{ variant: "subtitle2" }}
-          />
-        </ListItemButton> */}
+        {user?.role == 2 &&
+          <ListItemButton component={Link} to="/dashboard/create-member">
+            <ListItemIcon>
+              <GroupsIcon />
+            </ListItemIcon>
+            <ListItemText
+              primary="Create Member"
+              primaryTypographyProps={{ variant: "subtitle2" }}
+            />
+          </ListItemButton>
+        }
 
-        {/* <ListItemButton component={Link} to="/dashboard/withdraw-request">
-          <ListItemIcon> 
-            <CategoryIcon />
-          </ListItemIcon>
-          <ListItemText
-            primary="Withdraw Request"
-            primaryTypographyProps={{ variant: "subtitle2" }}
-          />
-        </ListItemButton> */}
-
-        {/* <ListItemButton component={Link} to="/dashboard/notification">
-          <ListItemIcon> 
-            <NotificationsIcon />
-          </ListItemIcon>
-          <ListItemText
-            primary="Notifications"
-            primaryTypographyProps={{ variant: "subtitle2" }}
-          />
-        </ListItemButton> */}
       </List>
     </div>
   );
@@ -405,13 +229,6 @@ export default function AdminDashboard() {
             Admin Dashboard
           </Typography>
 
-          {/* notification bell icon  */}
-
-          {/* <IconButton>
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton> */}
 
           {/* user profile icon */}
 
@@ -450,14 +267,7 @@ export default function AdminDashboard() {
                 >
                   Profile
                 </MenuItem>
-                {/* <MenuItem
-                  onClick={() => {
-                    handleMenuClose();
-                    navigate(`/dashboard/profile-setting`); // Use menuState.row._id
-                  }}
-                >
-                  Settings
-                </MenuItem> */}
+
                 <MenuItem
                   onClick={() => {
                     handleMenuClose();
@@ -525,59 +335,11 @@ export default function AdminDashboard() {
           <Route path="/wallet-address" element={<WalletAddressList />} />
           <Route path="/admin-activities" element={<AdminActivites />} />
           <Route path="/deposit-requests" element={<PendingDepositReq />} />
-
-          <Route path="/team-edit/:id" element={<UpdateTeam />} />
           <Route path="/withdraw-requests" element={<WithdrawReq />} />
-          <Route path="/branchlist" element={<BranchList />} />
-          <Route path="/branch-edit/:id" element={<UpdateBranch />} />
-          <Route path="/user-list" element={<UserList />} />
-          <Route path="/create-user" element={<CreateUser />} />
-          <Route path="/create-password/:token" element={<ResetPassword />} />
-          <Route path="/user-edit/:id" element={<UpdateUser />} />
-          <Route path="/user-update-user/:id" element={<UserEdit />} />
           <Route path="/user-detail/:id" element={<UserDetail />} />
-          <Route path="/profile-setting" element={<Setting />} />
 
-          <Route path="/login-history" element={<LoginHistory />} />
+          <Route path="/create-member" element={<CreateMember />} />
 
-          <Route path="/category-list" element={<CategoryList />} />
-          <Route path="/create-cetegory" element={<CreateCategory />} />
-          <Route path="/update-cetegory/:id" element={<UpdateCategory />} />
-
-          <Route path="/create-tags" element={<CreateTags />} />
-          <Route path="/tags-list" element={<TagList />} />
-          <Route path="/update-tags/:id" element={<UpdateTags />} />
-
-          <Route path="/create-clauses" element={<CreateClauses />} />
-          <Route path="/clauses-list" element={<ClausesList />} />
-          <Route path="/update-clauses/:id" element={<UpdateClauses />} />
-
-          <Route path="/compony-list" element={<ComponyList />} />
-          <Route path="/update-compony" element={<UpdateCompony />} />
-
-          <Route path="/Upload-folder/:id" element={<Upload />} />
-          <Route path="/folder-list" element={<FolderLIst />} />
-          {/* Depoist list page  */}
-          <Route path="/deposit-list" element={<DepositList />} />
-          {/* Depoist list page  */}
-          <Route path="/withdraw-list" element={<WithdrawList />} />
-
-          {/* template list page old */}
-          <Route path="/template-list" element={<TemplateList />} />
-          <Route path="/create-template" element={<CreateTemplate />} />
-          <Route path="/update-template/:id" element={<UpdateTemplate />} />
-
-          <Route path="/feild-list" element={<FieldList />} />
-
-          <Route path="/approval-list" element={<ApprovalList />} />
-          <Route path="/create-approval" element={<CreateApproval />} />
-          <Route path="/update-approval/:id" element={<UpdateApproval />} />
-
-          <Route path="/contract-list" element={<ContractList />} />
-          <Route path="/create-contract" element={<CreateContract />} />
-          <Route path="/tiny-dahsbord" element={<TinyDahsbord />} />
-          <Route path="/sub-page-1" element={<SubPage1 />} />
-          <Route path="/editor" element={<CustomTextEditor />} />
         </Routes>
       </Box>
     </Box>

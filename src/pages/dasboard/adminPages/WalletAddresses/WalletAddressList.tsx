@@ -18,7 +18,7 @@ import {
   Tooltip,
   CardHeader,
 } from "@mui/material";
-import logo from "@/assets/contract-logo.png"; // Ensure this path is correct
+
 import { Link, useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import { CreateCompony, createAdminWallet, getAdminWallet } from "@/service/api/apiMethods";
@@ -86,30 +86,29 @@ const WalletAddressList = () => {
     setValue("id", user?._id);
     setValue("adminWallet", referralCode);
   }, [referralCode]);
-  const handleBack = () => {
-    navigate(-1);
-  };
 
-  const listData = async () => {
-    try {
-      setIsLoading(true);
-      const { data } = await getcompaniesById(user?._id);
 
-      setValue("id", user?._id);
-      setValue("userName", user?.name);
-      setValue("adminWallet", data?.adminWallet);
-      setImage(data?.image);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-  React.useEffect(() => {
-    getTimeZoneList();
-    if (user?._id) listData();
-    //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user?._id]);
+
+  // const listData = async () => {
+  //   try {
+  //     setIsLoading(true);
+  //     const { data } = await getcompaniesById(user?._id);
+
+  //     setValue("id", user?._id);
+  //     setValue("userName", user?.name);
+  //     setValue("adminWallet", data?.adminWallet);
+  //     setImage(data?.image);
+  //   } catch (error) {
+  //     console.log(error);
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
+  // React.useEffect(() => {
+  //   getTimeZoneList();
+  //   if (user?._id) listData();
+  //   //eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [user?._id]);
 
 
   const [totalProfit, setTotalProfit] = useState<number>(0);
