@@ -45,10 +45,12 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import GroupsIcon from "@mui/icons-material/Groups";
 import InputIcon from "@mui/icons-material/Input";
 import TaskIcon from "@mui/icons-material/Task";
+import BusinessIcon from "@mui/icons-material/Business";
 import DepositList from "./dasboard/depositHistory/DepositList";
 import Notification from "./dasboard/notification/Notification";
 import WithdrawList from "./dasboard/withdrawHistory/WithdrawList";
 import WithdrawRequest from "./dasboard/withdrawRequest/WithdrawRequest";
+import UserPlans from "./dasboard/plans/UserPlans";
 // Usage: <ArticleIcon />
 
 // Usage: <AssignmentIcon />
@@ -176,6 +178,16 @@ export default function Dashboard() {
           </ListItemIcon>
           <ListItemText
             primary="Withdraw Request"
+            primaryTypographyProps={{ variant: "subtitle2" }}
+          />
+        </ListItemButton>
+        <ListItemButton component={Link} to="/dashboard/user-plans">
+          <ListItemIcon>
+            <BusinessIcon />
+            {/* <NotificationsIcon /> */}
+          </ListItemIcon>
+          <ListItemText
+            primary="Plans"
             primaryTypographyProps={{ variant: "subtitle2" }}
           />
         </ListItemButton>
@@ -341,6 +353,8 @@ export default function Dashboard() {
           <Route path="/" element={<HomePage />} />
           <Route path="/withdraw-request" element={<WithdrawRequest />} />
           <Route path="/notification" element={<Notification />} />
+          <Route path="/user-plans" element={<UserPlans />} />
+
           <Route path="/teamlist" element={<TeamsList />} />
 
 
