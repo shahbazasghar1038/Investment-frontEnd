@@ -20,7 +20,6 @@ import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import ProgressCircularCustomization from "@/pages/dasboard/users/ProgressCircularCustomization";
 import { useAuth } from "@/hooks/useAuth";
-import { UploadFiles } from "@/service/api/folder";
 import logo from "@/assets/upload_logo.png";
 import {
   create,

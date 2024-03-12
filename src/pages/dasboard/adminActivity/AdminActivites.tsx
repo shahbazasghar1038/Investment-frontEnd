@@ -38,7 +38,6 @@ import AddIcon from "@mui/icons-material/Add";
 import ProgressCircularCustomization from "@/pages/dasboard/users/ProgressCircularCustomization";
 import { useAuth } from "@/hooks/useAuth";
 import axios from "axios";
-import CategoryList from "../category/CategoryList";
 interface CellType {
   row: any;
   _id: any;
